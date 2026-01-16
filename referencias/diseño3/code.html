@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Newcom Argentina - Urban Intelligence</title>
+<meta content="Engineering the future of urban intelligence. LPR, WIM, and AI solutions." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0066FF",
+              "background-dark": "#000000",
+              "card-dark": "#111111",
+              "card-hover": "#1a1a1a",
+              "border-dark": "#333333",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem", // Sharp edges like AMD
+              'xl': '0.5rem',
+            },
+            backgroundImage: {
+                'grid-pattern': "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)",
+                'tech-gradient': "linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(10,10,10,0.8) 100%)",
+            }
+          },
+        },
+      };
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --primary-glow: rgba(0, 102, 255, 0.4);
+        }
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .amd-card {
+            background-color: #111;
+            transition: all 0.3s ease;
+        }
+        .amd-card:hover {
+            background-color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px var(--primary-glow);
+        }.scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-100 font-display transition-colors duration-300 antialiased selection:bg-primary selection:text-white">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white text-3xl">token</span>
+<span class="font-bold text-lg tracking-tight text-white uppercase">Newcom <span class="text-gray-500 text-xs normal-case ml-1 tracking-widest">ARGENTINA</span></span>
+</div>
+<div class="hidden md:flex space-x-10">
+<a class="text-xs font-semibold uppercase tracking-widest hover:text-primary transition-colors text-gray-300" href="#ecosystem">Solutions</a>
+<a class="text-xs font-semibold uppercase tracking-widest hover:text-primary transition-colors text-gray-300" href="#specs">Performance</a>
+<a class="text-xs font-semibold uppercase tracking-widest hover:text-primary transition-colors text-gray-300" href="#security">Security</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-gray-400 hover:text-white cursor-pointer">search</span>
+<span class="material-symbols-outlined text-gray-400 hover:text-white cursor-pointer">person</span>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative min-h-[90vh] flex items-center overflow-hidden bg-black pt-16">
+<div class="absolute inset-0 z-0">
+<img alt="Abstract digital network connections representing urban intelligence" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPRiWfovrGq1xRUND4TCDomBCrzp3XTsWr6EdaFKBOMSn2HLyAZ8Sf4tvHzUYBmgIkbwsFpQVqS7SXr39nMgGt3SrECgGn33rhm_yqSlw2EwfCOZDZHKCcMW_TlTuRQDoJhSKl4bUBEdqaQKkPXQ7MsnU0WpEuLb5ZgkhfaiFV7VqbAV7ZP1NH0b9_Ab4kbFMnE__nwSoHWdFw9Mybv0mHM37uC3QBj6RPUdlkPLQ2vRkKRgy4jnNf22CCHPzK6xeq7Lhh9RhOELY"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-screen-2xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<div class="inline-flex items-center gap-2 mb-6">
+<span class="w-1 h-8 bg-primary block"></span>
+<span class="text-primary font-mono text-sm uppercase tracking-widest font-bold">Next Gen Urban Intelligence</span>
+</div>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[0.9] tracking-tighter">
+                    THE FUTURE <br/>
+                    IS <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">DIGITAL.</span>
+</h1>
+<p class="mt-6 max-w-xl text-lg text-gray-400 font-light leading-relaxed">
+                    Accelerate your city's infrastructure with advanced LPR networks, dynamic weighing systems, and AI-driven security protocols tailored for high-stakes environments.
+                </p>
+<div class="mt-10 flex flex-wrap gap-4">
+<button class="px-8 py-3 bg-white text-black font-bold uppercase text-sm tracking-wide hover:bg-gray-200 transition-colors flex items-center gap-2">
+                        Discover Ecosystem
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="px-8 py-3 border border-white/30 text-white font-bold uppercase text-sm tracking-wide hover:bg-white/10 transition-colors flex items-center gap-2">
+                        Technical Docs
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-5 hidden lg:block">
+<div class="bg-zinc-900/80 backdrop-blur-md border border-zinc-800 p-8 rounded-sm shadow-2xl relative overflow-hidden group hover:border-zinc-700 transition-all">
+<div class="absolute top-0 right-0 p-4 opacity-20">
+<span class="material-symbols-outlined text-6xl">hub</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-2">Centralized Command</h3>
+<p class="text-gray-400 text-sm mb-6">Unified dashboard for real-time monitoring of all urban assets.</p>
+<div class="space-y-3 font-mono text-xs text-gray-300 mb-6">
+<div class="flex justify-between border-b border-zinc-700 pb-2">
+<span>UPTIME</span>
+<span class="text-green-500">99.99%</span>
+</div>
+<div class="flex justify-between border-b border-zinc-700 pb-2">
+<span>NODES</span>
+<span>4,203</span>
+</div>
+<div class="flex justify-between pb-2">
+<span>LATENCY</span>
+<span>&lt;20ms</span>
+</div>
+</div>
+<a class="text-primary text-sm font-bold uppercase flex items-center gap-2 hover:text-white transition-colors" href="#">
+                        View Live Demo <span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+</div>
+</div>
+</div>
+</header>
+<div class="bg-zinc-900 py-10 border-y border-zinc-800">
+<div class="max-w-screen-2xl mx-auto px-4">
+<p class="text-center text-xs text-gray-500 uppercase tracking-widest mb-8 font-mono">Trusted by Infrastructure Leaders</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">public</span> MINISTRY OF TRANSPORT</div>
+<div class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">security</span> PROVINCIAL POLICE</div>
+<div class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">toll</span> AUTOPISTAS</div>
+<div class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">domain</span> MUNICIPAL GOV</div>
+</div>
+</div>
+</div>
+<section class="py-24 bg-black relative" id="ecosystem">
+<div class="max-w-screen-2xl mx-auto px-4">
+<div class="flex justify-between items-end mb-12 border-b border-gray-800 pb-4">
+<h2 class="text-4xl font-bold text-white tracking-tight">The Ecosystem</h2>
+<a class="hidden md:flex items-center gap-1 text-sm font-semibold text-gray-400 hover:text-white transition-colors" href="#">
+                    VIEW FULL PORTFOLIO <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="md:col-span-2 relative group overflow-hidden bg-card-dark border border-zinc-800 hover:border-zinc-600 transition-colors h-[400px]">
+<img alt="Highway traffic monitoring with LPR technology" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 group-hover:scale-105 transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPD9ss8_JcYIM6rIepQOm3Bh0Q2Pr9eeBfkzwZip275X_DCAipfQXQ_rEW6LAL-kOGUZQwHDxCzhGtWYd4M-PexfM2tHm8tp7_UB-69nfgw7taD-MB4r4v4oTwdylhM_awMX0M1KBr5tajPnoEn7iFMADI9l_pZEalA9lh2wnM86lYv9eeSyQJFk2sPoM-Cyap4AONiBlNjpOoaUlY4aw_36XdyKt84uLTom1n1K__BjHLwWwRDMrcuVaBfRL34ci0B-f6qC2CXvE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="bg-primary text-white text-xs font-bold px-2 py-1 inline-block mb-3 uppercase tracking-wider">Flagship</div>
+<h3 class="text-3xl font-bold text-white mb-2">LPR Digital Ring</h3>
+<p class="text-gray-300 max-w-md mb-4 text-sm line-clamp-2">High-speed license plate recognition networks creating a secure digital perimeter for urban centers.</p>
+<span class="flex items-center gap-2 text-white font-semibold text-sm group-hover:translate-x-2 transition-transform">
+                            Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</div>
+</div>
+<div class="md:col-span-1 relative group overflow-hidden bg-card-dark border border-zinc-800 hover:border-zinc-600 transition-colors h-[400px] flex flex-col">
+<div class="h-1/2 relative overflow-hidden">
+<img alt="WIM Sensor" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9acqWmHlitFwalrzfW_w-XVUfF8y-DLl9M5DJVWVDcg0vB1wE_9Imp4fQc8I78jk5mW_fsF1xZuPYSHwHSze5X1N0sIKVfwXxPj4C5udM59_H1OXKb7NMeUHtXBE9kFY6-x_IIgZ6ILXD-lZeBNUl2Cjo0TsPextYQqnkzIOMDifiJ_E_5xyiiMiAOlGC5S62nsoFl80KM7jt9F_EvUkwPSwo3IW0diF7MBhkUYusQWYvafSHlZKP3gyHnMxcNODAF4rU7azsbdk"/>
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+</div>
+<div class="h-1/2 p-6 flex flex-col justify-between bg-zinc-900">
+<div>
+<h3 class="text-xl font-bold text-white mb-2">Dynamic Weighing</h3>
+<p class="text-gray-400 text-xs leading-relaxed">WIM sensors detecting overloads at highway speeds without stopping traffic flow.</p>
+</div>
+<a class="text-white text-sm font-bold flex items-center gap-2 mt-4 hover:text-primary transition-colors" href="#">
+                            Spec Sheet <span class="material-symbols-outlined text-sm">download</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-1 relative group overflow-hidden bg-card-dark border border-zinc-800 hover:border-zinc-600 transition-colors h-[400px] flex flex-col">
+<div class="h-1/2 bg-zinc-900 p-6 flex items-center justify-center border-b border-zinc-800 relative">
+<div class="absolute inset-0 p-4 opacity-20 font-mono text-[10px] text-green-500 overflow-hidden leading-tight select-none">
+                            function analyze() {<br/>
+                              return true;<br/>
+                            }<br/>
+                            const sys = new System();<br/>
+                            sys.init();
+                         </div>
+<span class="material-symbols-outlined text-6xl text-gray-600 group-hover:text-white transition-colors relative z-10">terminal</span>
+</div>
+<div class="h-1/2 p-6 flex flex-col justify-between bg-zinc-900">
+<div>
+<h3 class="text-xl font-bold text-white mb-2">Software Foundry</h3>
+<p class="text-gray-400 text-xs leading-relaxed">Custom-built logic layers and processing engines for specific municipal needs.</p>
+</div>
+<a class="text-white text-sm font-bold flex items-center gap-2 mt-4 hover:text-primary transition-colors" href="#">
+                           Github <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+<div class="md:col-span-2 lg:col-span-4 relative group overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-zinc-600 transition-colors h-[300px] flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 lg:p-12 flex flex-col justify-center z-10">
+<h3 class="text-2xl md:text-3xl font-bold text-white mb-3">AI &amp; Public Safety</h3>
+<p class="text-gray-400 max-w-lg mb-6 text-sm md:text-base">Deploy neural networks on the edge. Our video analytics engine identifies threats, accidents, and traffic violations in real-time, reducing response times by up to 40%.</p>
+<div class="flex gap-4">
+<button class="bg-white text-black px-6 py-2 text-sm font-bold uppercase hover:bg-gray-200 transition-colors">Watch Demo</button>
+<button class="border border-zinc-600 text-white px-6 py-2 text-sm font-bold uppercase hover:bg-zinc-800 transition-colors">Read Case Study</button>
+</div>
+</div>
+<div class="md:w-1/2 relative h-full">
+<img alt="AI visualization" class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPEhURSslSs5UOUe_WbgjtSuHJY-agg2y11Gkf5M7gqmbPJkMv5rVxUlxgFTY-WIWR_ugdrewkh-kaz-itYxsCL-s1PFGBWk-RVGWswWP0Br1SpSouZbjZw6QDt4-4MVmoxt_8m7nZN6zTFUCDLZlQZ6pFuP7-BlAjAqbWp9hMLWcfxOkn__voHMw8GyGt0FylfDiG42DSSoQeAW8siExbHSS01Vjq-vKgb3Aaojy3kzFntOQ8lXEcxRbp7R9VfToNm8EA7cLpsiI"/>
+<div class="absolute inset-0 bg-gradient-to-l from-transparent via-zinc-900/50 to-zinc-900"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-zinc-900 border-y border-zinc-800" id="specs">
+<div class="max-w-screen-2xl mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12">
+<div>
+<span class="text-primary font-bold text-sm uppercase tracking-wider mb-2 block">System Metrics</span>
+<h2 class="text-3xl md:text-4xl font-bold text-white">Technical Performance</h2>
+</div>
+<div class="flex gap-2 mt-4 md:mt-0">
+<button class="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center text-white hover:bg-zinc-800 transition-colors"><span class="material-symbols-outlined">arrow_back</span></button>
+<button class="w-10 h-10 border border-zinc-700 rounded-full flex items-center justify-center text-white hover:bg-zinc-800 transition-colors"><span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-black p-8 border-t-4 border-primary shadow-lg">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl text-gray-600">memory</span>
+<span class="font-mono text-xs text-green-500 bg-green-900/20 px-2 py-1 rounded">LIVE</span>
+</div>
+<div class="font-mono text-4xl font-bold text-white mb-2">1.2M+</div>
+<p class="text-gray-400 text-sm font-medium uppercase tracking-wide mb-4">Daily Transactions Processed</p>
+<div class="w-full bg-zinc-800 h-1">
+<div class="bg-primary h-1 w-[85%]"></div>
+</div>
+<p class="text-right text-xs text-gray-500 mt-2 font-mono">LOAD: 85%</p>
+</div>
+<div class="bg-black p-8 border-t-4 border-gray-700 shadow-lg hover:border-white transition-colors group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl text-gray-600 group-hover:text-white transition-colors">check_circle</span>
+<span class="font-mono text-xs text-gray-500">LPR ENGINE</span>
+</div>
+<div class="font-mono text-4xl font-bold text-white mb-2">99.8%</div>
+<p class="text-gray-400 text-sm font-medium uppercase tracking-wide mb-4">Recognition Accuracy</p>
+<div class="grid grid-cols-10 gap-1 mt-4">
+<div class="h-1 bg-green-500 col-span-9"></div>
+<div class="h-1 bg-gray-700 col-span-1"></div>
+</div>
+</div>
+<div class="bg-black p-8 border-t-4 border-gray-700 shadow-lg hover:border-white transition-colors group">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl text-gray-600 group-hover:text-white transition-colors">speed</span>
+<span class="font-mono text-xs text-gray-500">LATENCY</span>
+</div>
+<div class="font-mono text-4xl font-bold text-white mb-2">&lt; 20ms</div>
+<p class="text-gray-400 text-sm font-medium uppercase tracking-wide mb-4">Edge Processing Time</p>
+<div class="flex justify-between text-xs text-gray-500 mt-4 font-mono">
+<span>Min: 12ms</span>
+<span>Max: 24ms</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-black relative overflow-hidden" id="security">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-zinc-900/30 -skew-x-12 transform translate-x-20"></div>
+<div class="max-w-screen-2xl mx-auto px-4 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+                        SECURE INFRASTRUCTURE <br/>
+<span class="text-gray-500">BY DESIGN.</span>
+</h2>
+<p class="text-lg text-gray-300 font-light max-w-xl">
+                        Our architecture prioritizes data integrity and operational continuity. Newcom Argentina ensures that critical urban infrastructure remains resilient against modern threats through military-grade encryption and decentralized node architecture.
+                    </p>
+<div class="space-y-6 pt-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-zinc-900 border border-zinc-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg">End-to-End Encryption</h4>
+<p class="text-gray-500 text-sm">AES-256 encryption for all data in transit and at rest.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-zinc-900 border border-zinc-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">cloud_sync</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg">Hybrid Cloud Deployment</h4>
+<p class="text-gray-500 text-sm">Seamless integration between on-premise servers and secure cloud storage.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square max-w-md mx-auto relative">
+<div class="absolute inset-0 border border-zinc-800 rounded-full animate-[spin_10s_linear_infinite]"></div>
+<div class="absolute inset-8 border border-zinc-800 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+<div class="absolute inset-16 border border-zinc-700 rounded-full opacity-30"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-zinc-900 p-8 rounded-full border border-zinc-700 shadow-[0_0_50px_rgba(0,102,255,0.15)] relative z-10">
+<span class="material-symbols-outlined text-6xl text-primary">shield_lock</span>
+</div>
+</div>
+<div class="absolute top-1/2 left-1/2 w-full h-1 -translate-y-1/2 -translate-x-1/2 rotate-45">
+<div class="w-2 h-2 bg-white rounded-full absolute right-0 animate-pulse shadow-[0_0_10px_white]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-zinc-950 border-t border-zinc-800 pt-20 pb-10" id="contact">
+<div class="max-w-screen-2xl mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+<div class="md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-white text-2xl">token</span>
+<span class="font-bold text-lg text-white uppercase">Newcom</span>
+</div>
+<p class="text-gray-500 text-sm mb-6">Engineering the smart cities of tomorrow with precision, security, and intelligence.</p>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><i class="material-symbols-outlined">alternate_email</i></a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#"><i class="material-symbols-outlined">share</i></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold uppercase text-xs tracking-widest mb-6">Solutions</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">LPR Systems</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Weigh-In-Motion</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Video Analytics</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Software Development</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold uppercase text-xs tracking-widest mb-6">Company</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Partners</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold uppercase text-xs tracking-widest mb-6">Inquiries</h4>
+<div class="glass-panel p-6 rounded-sm border border-zinc-800">
+<form class="space-y-3">
+<input class="w-full bg-zinc-900 border border-zinc-700 text-white text-sm px-3 py-2 rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Email Address" type="email"/>
+<textarea class="w-full bg-zinc-900 border border-zinc-700 text-white text-sm px-3 py-2 rounded-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none" placeholder="Message" rows="2"></textarea>
+<button class="w-full bg-primary hover:bg-blue-600 text-white font-bold text-sm py-2 rounded-sm transition-colors">SEND</button>
+</form>
+</div>
+</div>
+</div>
+<div class="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+<div class="mb-4 md:mb-0">
+                    © 2024 Newcom Argentina S.A. All rights reserved.
+                </div>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Privacy</a>
+<a class="hover:text-white transition-colors" href="#">Terms</a>
+<a class="hover:text-white transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Clock script
+        function updateTime() {
+            // Placeholder for functionality if needed later
+        }
+    </script>
+
+</body></html>
