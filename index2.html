@@ -29,9 +29,10 @@
                         mono: ["JetBrains Mono", "monospace"],
                     },
                     boxShadow: {
-                        'card': '0 2px 8px rgba(0, 0, 0, 0.08)',
-                        'card-hover': '0 8px 24px rgba(0, 0, 0, 0.12)',
+                        'card': '0 2px 8px rgba(0, 0, 0, 0.06)',
+                        'card-hover': '0 12px 32px rgba(0, 102, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08)',
                         'elevated': '0 4px 16px rgba(0, 0, 0, 0.1)',
+                        'blue-glow': '0 8px 24px rgba(0, 102, 255, 0.15)',
                     },
                     animation: {
                         'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
@@ -46,6 +47,9 @@
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(ellipse at center, var(--tw-gradient-stops))',
                     }
                 }
             }
@@ -63,18 +67,37 @@
             scroll-behavior: smooth;
         }
 
-        /* Card Styles */
+        /* Card Styles - Enhanced */
         .card-corporate {
             background: white;
-            border: 1px solid #DEE2E6;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-corporate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #0066FF, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .card-corporate:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 102, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+            transform: translateY(-6px);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+        
+        .card-corporate:hover::before {
+            opacity: 1;
         }
 
         /* Progress Bar Animation */
@@ -102,37 +125,42 @@
             background: linear-gradient(135deg, #001E3C 0%, #0A2744 50%, #001E3C 100%);
         }
 
-        /* Button styles */
+        /* Button styles - Enhanced */
         .btn-primary {
-            background: #0066FF;
+            background: linear-gradient(180deg, #0066FF 0%, #0052CC 100%);
             color: white;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25);
         }
         
         .btn-primary:hover {
-            background: #0052CC;
+            background: linear-gradient(180deg, #3385FF 0%, #0066FF 100%);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);
         }
 
         .btn-secondary {
             background: white;
             color: #001E3C;
-            border: 2px solid #DEE2E6;
-            transition: all 0.3s ease;
+            border: 2px solid #E5E7EB;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .btn-secondary:hover {
             border-color: #0066FF;
             color: #0066FF;
+            background: rgba(0, 102, 255, 0.05);
+            box-shadow: 0 4px 16px rgba(0, 102, 255, 0.1);
         }
 
-        /* Status indicator */
+        /* Status indicator - Enhanced */
         .status-dot {
             width: 8px;
             height: 8px;
             background: #22C55E;
             border-radius: 50%;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
             animation: pulse-soft 2s ease-in-out infinite;
         }
 
@@ -140,6 +168,39 @@
         .section-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, #DEE2E6, transparent);
+        }
+
+        /* Background Patterns - Subtle textures */
+        .bg-dots-pattern {
+            background-image: radial-gradient(circle, #0066FF 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.03;
+        }
+
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(rgba(0, 102, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .bg-topo-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5C16.2 5 5 16.2 5 30s11.2 25 25 25 25-11.2 25-25S43.8 5 30 5zm0 45c-11 0-20-9-20-20s9-20 20-20 20 9 20 20-9 20-20 20z' fill='%230066FF' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        /* Blue accent line */
+        .accent-line {
+            position: relative;
+        }
+        .accent-line::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0066FF, #3385FF);
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -240,7 +301,8 @@
     </header>
 
     <!-- Trusted By Section -->
-    <div class="bg-white py-12 border-b border-gray-100">
+    <div class="bg-white py-12 border-b border-gray-100 relative">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
         <div class="max-w-screen-xl mx-auto px-4">
             <p class="text-center text-sm text-gray-500 mb-8 font-medium">Infraestructura de Confianza para Organizaciones Líderes</p>
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
@@ -264,12 +326,14 @@
     </div>
 
     <!-- Ecosystem Section - Bento Grid -->
-    <section class="py-24 bg-pearl" id="ecosystem">
-        <div class="max-w-screen-xl mx-auto px-4">
+    <section class="py-24 bg-pearl relative" id="ecosystem">
+        <!-- Subtle background pattern -->
+        <div class="absolute inset-0 bg-dots-pattern"></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
                 <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Ecosistema Tecnológico</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep">Pilares de Integración</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-navy-deep inline-block accent-line">Pilares de Integración</h2>
+                <p class="text-gray-600 mt-8 max-w-2xl mx-auto">
                     Cuatro verticales tecnológicas que combinan hardware especializado y software de alto rendimiento.
                 </p>
             </div>
@@ -278,12 +342,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <!-- PILAR 1: ITS & Infraestructura Crítica -->
-                <div class="card-corporate p-8 hover:shadow-lg transition-all duration-300 group">
+                <div class="card-corporate p-8 group">
                     <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                            <span class="material-symbols-outlined text-primary text-2xl">filter_center_focus</span>
+                        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:shadow-blue-glow transition-all duration-300">
+                            <span class="material-symbols-outlined text-primary group-hover:text-white text-2xl transition-colors">filter_center_focus</span>
                         </div>
-                        <span class="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">PILAR 01</span>
+                        <span class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">PILAR 01</span>
                     </div>
                     <h3 class="text-xl font-bold text-navy-deep mb-3">ITS & Infraestructura Crítica</h3>
                     <p class="text-gray-600 text-sm mb-6 leading-relaxed">
@@ -301,12 +365,12 @@
                 </div>
 
                 <!-- PILAR 2: Software Factory & Cloud -->
-                <div class="card-corporate p-8 hover:shadow-lg transition-all duration-300 group">
+                <div class="card-corporate p-8 group">
                     <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
-                            <span class="material-symbols-outlined text-green-600 text-2xl">terminal</span>
+                        <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center group-hover:bg-green-500 group-hover:shadow-lg transition-all duration-300">
+                            <span class="material-symbols-outlined text-green-600 group-hover:text-white text-2xl transition-colors">terminal</span>
                         </div>
-                        <span class="text-xs font-medium text-green-600 bg-green-500/10 px-3 py-1 rounded-full">PILAR 02</span>
+                        <span class="text-xs font-semibold text-green-600 bg-green-500/10 px-3 py-1.5 rounded-full border border-green-500/20">PILAR 02</span>
                     </div>
                     <h3 class="text-xl font-bold text-navy-deep mb-3">Software Factory & Cloud</h3>
                     <p class="text-gray-600 text-sm mb-6 leading-relaxed">
@@ -325,12 +389,12 @@
                 </div>
 
                 <!-- PILAR 3: Experiencia Digital & Movilidad -->
-                <div class="card-corporate p-8 hover:shadow-lg transition-all duration-300 group">
+                <div class="card-corporate p-8 group">
                     <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
-                            <span class="material-symbols-outlined text-cyan-600 text-2xl">smartphone</span>
+                        <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center group-hover:bg-cyan-500 group-hover:shadow-lg transition-all duration-300">
+                            <span class="material-symbols-outlined text-cyan-600 group-hover:text-white text-2xl transition-colors">smartphone</span>
                         </div>
-                        <span class="text-xs font-medium text-cyan-600 bg-cyan-500/10 px-3 py-1 rounded-full">PILAR 03</span>
+                        <span class="text-xs font-semibold text-cyan-600 bg-cyan-500/10 px-3 py-1.5 rounded-full border border-cyan-500/20">PILAR 03</span>
                     </div>
                     <h3 class="text-xl font-bold text-navy-deep mb-3">Apps & Movilidad</h3>
                     <p class="text-gray-600 text-sm mb-6 leading-relaxed">
@@ -348,12 +412,12 @@
                 </div>
 
                 <!-- PILAR 4: QA, IoT & Big Analytics -->
-                <div class="card-corporate p-8 hover:shadow-lg transition-all duration-300 group">
+                <div class="card-corporate p-8 group">
                     <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center group-hover:bg-purple-500/20 transition-colors">
-                            <span class="material-symbols-outlined text-purple-600 text-2xl">analytics</span>
+                        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center group-hover:bg-purple-500 group-hover:shadow-lg transition-all duration-300">
+                            <span class="material-symbols-outlined text-purple-600 group-hover:text-white text-2xl transition-colors">analytics</span>
                         </div>
-                        <span class="text-xs font-medium text-purple-600 bg-purple-500/10 px-3 py-1 rounded-full">PILAR 04</span>
+                        <span class="text-xs font-semibold text-purple-600 bg-purple-500/10 px-3 py-1.5 rounded-full border border-purple-500/20">PILAR 04</span>
                     </div>
                     <h3 class="text-xl font-bold text-navy-deep mb-3">QA, IoT & Big Analytics</h3>
                     <p class="text-gray-600 text-sm mb-6 leading-relaxed">
@@ -398,8 +462,10 @@
     </section>
 
     <!-- Deep Dive: Capacidades Verticales -->
-    <section class="py-24 bg-white border-y border-gray-100" id="capacidades">
-        <div class="max-w-screen-xl mx-auto px-4">
+    <section class="py-24 bg-white border-y border-gray-100 relative" id="capacidades">
+        <!-- Subtle topographic pattern -->
+        <div class="absolute inset-0 bg-topo-pattern"></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
             <div class="text-center mb-20">
                 <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Profundización Técnica</span>
                 <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4">Capacidades Verticales</h2>
@@ -588,14 +654,16 @@
     </section>
 
     <!-- WIM Section - Modern Dashboard Style -->
-    <section class="py-24 bg-white border-y border-gray-100" id="wim">
-        <div class="max-w-screen-xl mx-auto px-4">
+    <section class="py-24 bg-white border-y border-gray-100 relative" id="wim">
+        <!-- Subtle background accent -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent"></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
                 <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Hardware de Precisión</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4">
+                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">
                     Pesaje Dinámico <span class="text-primary">WIM</span>
                 </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
+                <p class="text-gray-600 max-w-2xl mx-auto mt-8">
                     Weigh-In-Motion: Sistema de pesaje inteligente que detecta sobrecarga a velocidad de autopista sin interrumpir el flujo vehicular.
                 </p>
             </div>
@@ -761,14 +829,16 @@
     </section>
 
     <!-- Technical Performance Section -->
-    <section class="py-24 bg-pearl" id="metrics">
-        <div class="max-w-screen-xl mx-auto px-4">
+    <section class="py-24 bg-pearl relative" id="metrics">
+        <!-- Subtle grid pattern -->
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <!-- Left Info -->
                 <div class="lg:col-span-1">
                     <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Telemetría en Tiempo Real</span>
-                    <h2 class="text-3xl font-black text-navy-deep mb-6">Rendimiento del Sistema</h2>
-                    <p class="text-gray-600 leading-relaxed mb-8">
+                    <h2 class="text-3xl font-black text-navy-deep mb-6 accent-line">Rendimiento del Sistema</h2>
+                    <p class="text-gray-600 leading-relaxed mb-8 mt-8">
                         Métricas en tiempo real del throughput transaccional y latencia a través de la red de nodos metropolitanos.
                     </p>
                     <div class="flex items-center gap-4 text-sm text-gray-600 card-corporate p-4">
@@ -788,8 +858,8 @@
                         <div class="text-4xl font-black text-navy-deep mb-4 font-mono">
                             <span class="counter" data-target="1.2" data-suffix="M+">0</span>
                         </div>
-                        <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-                            <div class="bg-primary h-2 rounded-full progress-animate" style="--progress-width: 85%"></div>
+                        <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-primary to-blue-400 h-2.5 rounded-full progress-animate" style="--progress-width: 85%"></div>
                         </div>
                         <span class="text-xs text-gray-500 mt-2 block text-right">85% Capacidad</span>
                     </div>
@@ -853,16 +923,18 @@
     </section>
 
     <!-- Security Section -->
-    <section class="py-24 bg-white border-y border-gray-100" id="security">
-        <div class="max-w-screen-xl mx-auto px-4">
+    <section class="py-24 bg-white border-y border-gray-100 relative overflow-hidden" id="security">
+        <!-- Subtle radial gradient -->
+        <div class="absolute inset-0 bg-gradient-radial from-primary/[0.03] via-transparent to-transparent"></div>
+        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <!-- Left - Visual -->
                 <div class="order-2 lg:order-1 relative">
                     <div class="aspect-square max-w-md mx-auto relative flex items-center justify-center">
                         <div class="absolute w-full h-full border-2 border-gray-100 rounded-full"></div>
-                        <div class="absolute w-[80%] h-[80%] border-2 border-dashed border-gray-200 rounded-full"></div>
-                        <div class="absolute w-[60%] h-[60%] border-2 border-primary/30 rounded-full shadow-lg"></div>
-                        <div class="z-10 bg-white p-10 rounded-full border-2 border-gray-100 shadow-elevated">
+                        <div class="absolute w-[80%] h-[80%] border-2 border-dashed border-primary/20 rounded-full animate-[spin_30s_linear_infinite]"></div>
+                        <div class="absolute w-[60%] h-[60%] border-2 border-primary/40 rounded-full shadow-blue-glow"></div>
+                        <div class="z-10 bg-white p-10 rounded-full border-2 border-primary/20 shadow-blue-glow">
                             <span class="material-symbols-outlined text-6xl text-primary">shield_lock</span>
                         </div>
                     </div>
@@ -872,7 +944,7 @@
                 <div class="order-1 lg:order-2 space-y-8">
                     <div>
                         <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Pilar de Ciberseguridad</span>
-                        <h2 class="text-4xl md:text-5xl font-black text-navy-deep leading-tight">
+                        <h2 class="text-4xl md:text-5xl font-black text-navy-deep leading-tight accent-line">
                             Infraestructura<br/>
                             <span class="text-primary">Resiliente</span>
                         </h2>
