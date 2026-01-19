@@ -265,8 +265,6 @@
                     <a class="text-sm font-medium text-gray-600 hover:text-primary transition-colors" href="#ecosystem">Soluciones</a>
                     <a class="text-sm font-medium text-gray-600 hover:text-primary transition-colors" href="#capacidades">Capacidades</a>
                     <a class="text-sm font-medium text-gray-600 hover:text-primary transition-colors" href="#consultoria">Consultoría</a>
-                    <a class="text-sm font-medium text-gray-600 hover:text-primary transition-colors" href="#wim">WIM</a>
-                    <a class="text-sm font-medium text-gray-600 hover:text-primary transition-colors" href="#lpr">Telepeaje</a>
                     <a class="text-sm font-medium text-gray-600 hover:text-primary transition-colors" href="#nosotros">Nosotros</a>
                 </div>
                 <div class="flex items-center gap-4">
@@ -792,28 +790,34 @@
                         <li class="flex items-center gap-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Integración con centros de control</li>
                     </ul>
                 </div>
+                <!-- Visual: Nodos conectados -->
+                <div class="relative h-80 bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center">
+                    <svg viewBox="0 0 200 200" class="w-64 h-64">
+                        <!-- Conexiones -->
+                        <line x1="100" y1="40" x2="40" y2="100" stroke="#0066FF" stroke-width="2" opacity="0.3"/>
+                        <line x1="100" y1="40" x2="160" y2="100" stroke="#0066FF" stroke-width="2" opacity="0.3"/>
+                        <line x1="40" y1="100" x2="100" y2="160" stroke="#0066FF" stroke-width="2" opacity="0.3"/>
+                        <line x1="160" y1="100" x2="100" y2="160" stroke="#0066FF" stroke-width="2" opacity="0.3"/>
+                        <line x1="40" y1="100" x2="160" y2="100" stroke="#0066FF" stroke-width="1" opacity="0.2"/>
+                        <!-- Nodos -->
+                        <circle cx="100" cy="40" r="14" fill="#0066FF" class="animate-pulse"/>
+                        <circle cx="40" cy="100" r="12" fill="#3B82F6"/>
+                        <circle cx="160" cy="100" r="12" fill="#3B82F6"/>
+                        <circle cx="100" cy="160" r="14" fill="#0066FF" class="animate-pulse"/>
+                        <circle cx="100" cy="100" r="10" fill="#60A5FA"/>
+                        <!-- Labels -->
+                        <text x="100" y="18" fill="#64748B" font-size="9" text-anchor="middle" font-weight="600">SENSOR</text>
+                        <text x="15" y="105" fill="#64748B" font-size="9" text-anchor="middle" font-weight="600">LPR</text>
+                        <text x="185" y="105" fill="#64748B" font-size="9" text-anchor="middle" font-weight="600">WIM</text>
+                        <text x="100" y="188" fill="#64748B" font-size="9" text-anchor="middle" font-weight="600">CENTRAL</text>
+                    </svg>
+                </div>
             </div>
 
-            <!-- Bloque 6: Video Analytics - Texto Izq / Visual Der -->
+            <!-- Bloque 6: Video Analytics - Visual Izq / Texto Der -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-red-500/10 text-red-600 px-4 py-2 rounded-full text-sm font-semibold">
-                        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                        Video Analytics
-                    </span>
-                    <h3 class="text-3xl font-bold text-navy-deep">Análisis de Video Inteligente</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Análisis de video con algoritmos de visión computacional. Detección automática de eventos, reconocimiento de patentes y monitoreo en tiempo real de infraestructura crítica.
-                    </p>
-                    <ul class="space-y-3 text-sm text-gray-600">
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Reconocimiento de patentes (LPR)</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Detección de incidentes viales</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Conteo vehicular inteligente</li>
-                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Alertas en tiempo real 24/7</li>
-                    </ul>
-                </div>
                 <!-- Visual: Video Wall Grid -->
-                <div class="relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden p-4 shadow-xl">
+                <div class="order-2 lg:order-1 relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden p-4 shadow-xl">
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex items-center gap-2">
                             <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
@@ -891,6 +895,23 @@
                         </div>
                     </div>
                 </div>
+                <!-- Texto -->
+                <div class="order-1 lg:order-2 space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-red-500/10 text-red-600 px-4 py-2 rounded-full text-sm font-semibold">
+                        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                        Video Analytics
+                    </span>
+                    <h3 class="text-3xl font-bold text-navy-deep">Análisis de Video Inteligente</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Análisis de video con algoritmos de visión computacional. Detección automática de eventos, reconocimiento de patentes y monitoreo en tiempo real de infraestructura crítica.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Reconocimiento de patentes (LPR)</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Detección de incidentes viales</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Conteo vehicular inteligente</li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> Alertas en tiempo real 24/7</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -949,12 +970,12 @@
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent"></div>
         <div class="max-w-screen-xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Tecnología Flagship</span>
+                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Soluciones IoT</span>
                 <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">
-                    Pesaje Dinámico <span class="text-primary">WIM</span>
+                    Pesaje Dinámico Vehicular
                 </h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-8">
-                    Weigh-In-Motion: Sistema de pesaje inteligente que detecta sobrecarga a velocidad de autopista sin interrumpir el flujo vehicular.
+                    Sistema de pesaje inteligente que detecta sobrecarga a velocidad de autopista sin interrumpir el flujo vehicular.
                 </p>
             </div>
 
