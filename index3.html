@@ -53,6 +53,22 @@
                         gradient: {
                             '0%, 100%': { backgroundPosition: '0% 50%' },
                             '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        'orbit-y': {
+                            '0%': { transform: 'rotateY(0deg)' },
+                            '100%': { transform: 'rotateY(360deg)' },
+                        },
+                        'orbit-x': {
+                            '0%': { transform: 'rotateX(0deg)' },
+                            '100%': { transform: 'rotateX(360deg)' },
+                        },
+                        'orbit-diagonal': {
+                            '0%': { transform: 'rotate3d(1, 1, 0, 0deg)' },
+                            '100%': { transform: 'rotate3d(1, 1, 0, 360deg)' },
+                        },
+                        'breathe': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.1)', opacity: '0.8' },
                         }
                     }
                 }
@@ -69,6 +85,39 @@
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Neural Core Animations */
+        .orbit-y {
+            animation: orbit-y 20s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .orbit-x {
+            animation: orbit-x 25s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .orbit-diagonal {
+            animation: orbit-diagonal 30s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .breathe {
+            animation: breathe 3s ease-in-out infinite;
+        }
+        @keyframes orbit-y {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        @keyframes orbit-x {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(360deg); }
+        }
+        @keyframes orbit-diagonal {
+            0% { transform: rotate3d(1, 1, 0, 0deg); }
+            100% { transform: rotate3d(1, 1, 0, 360deg); }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
 
         /* Gradient Text - Industrial Blue */
@@ -228,27 +277,49 @@
                 </div>
             </div>
 
-            <!-- Right Side - Stats Circle -->
-            <div class="lg:col-span-5 hidden lg:flex justify-center relative">
-                <div class="relative w-72 h-72">
-                    <!-- Outer ring - Industrial Style -->
-                    <div class="absolute inset-0 rounded-full border border-white/10"></div>
-                    <div class="absolute inset-4 rounded-full border border-dashed border-primary/30 orbit"></div>
-                    <div class="absolute inset-8 rounded-full bg-gradient-to-br from-primary/10 to-steel/10 backdrop-blur-sm border border-white/10"></div>
-                    
-                    <!-- Orbital dots -->
-                    <div class="absolute inset-0 orbit" style="animation-duration: 15s;">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full"></div>
-                    </div>
-                    <div class="absolute inset-0 orbit" style="animation-duration: 20s; animation-direction: reverse;">
-                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-steel-light rounded-full"></div>
+            <!-- Right Side - The Neural Core -->
+            <div class="lg:col-span-5 hidden lg:flex justify-center relative" style="perspective: 1000px;">
+                <div class="relative w-96 h-96">
+                    <!-- Orbit 1 - Y Axis -->
+                    <div class="absolute inset-0 rounded-full border border-white/10 orbit-y" style="transform-style: preserve-3d;">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-[0_0_10px_rgba(0,102,255,0.8)]"></div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-primary/60 rounded-full"></div>
                     </div>
                     
-                    <!-- Center content -->
-                    <div class="absolute inset-0 flex items-center justify-center flex-col text-center">
-                        <span class="text-5xl font-extrabold text-white tracking-tight counter" data-target="99.8">0</span>
-                        <span class="text-xl text-white font-bold">%</span>
-                        <span class="text-sm font-medium text-primary mt-2">Precisión LPR</span>
+                    <!-- Orbit 2 - X Axis -->
+                    <div class="absolute inset-8 rounded-full border border-white/10 orbit-x" style="transform-style: preserve-3d;">
+                        <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-emerald-400 rounded-full shadow-[0_0_10px_rgba(52,211,153,0.8)]"></div>
+                        <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400/60 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Orbit 3 - Diagonal -->
+                    <div class="absolute inset-16 rounded-full border border-white/10 orbit-diagonal" style="transform-style: preserve-3d;">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-violet-400 rounded-full shadow-[0_0_10px_rgba(167,139,250,0.8)]"></div>
+                    </div>
+                    
+                    <!-- Floating Labels -->
+                    <div class="absolute top-4 right-4 bg-slate-800/80 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-1.5 text-[10px] font-mono text-primary animate-pulse">
+                        AI LOGIC
+                    </div>
+                    <div class="absolute bottom-12 left-0 bg-slate-800/80 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-1.5 text-[10px] font-mono text-emerald-400" style="animation: float 4s ease-in-out infinite;">
+                        WIM SENSOR
+                    </div>
+                    <div class="absolute top-1/3 -right-4 bg-slate-800/80 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-1.5 text-[10px] font-mono text-violet-400" style="animation: float 5s ease-in-out infinite 1s;">
+                        LPR NODE
+                    </div>
+                    
+                    <!-- Connection Lines -->
+                    <svg class="absolute inset-0 w-full h-full" style="overflow: visible;">
+                        <line x1="50%" y1="50%" x2="85%" y2="15%" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50%" y1="50%" x2="5%" y2="75%" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50%" y1="50%" x2="105%" y2="33%" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+                    </svg>
+                    
+                    <!-- Core Center - Breathing Chip Icon -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-24 h-24 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-white/20 flex items-center justify-center breathe shadow-[0_0_40px_rgba(0,102,255,0.3)]">
+                            <span class="material-symbols-outlined text-primary text-5xl">memory</span>
+                        </div>
                     </div>
                 </div>
             </div>

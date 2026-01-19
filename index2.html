@@ -62,6 +62,22 @@
             color: white;
         }
 
+        /* Global Connectivity Animations */
+        .globe-rotate {
+            animation: globe-rotate 30s linear infinite;
+        }
+        .node-pulse {
+            animation: node-pulse 2s ease-in-out infinite;
+        }
+        @keyframes globe-rotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        @keyframes node-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
@@ -228,7 +244,7 @@
                 <div class="flex items-center gap-4">
                     <span class="text-xs font-medium text-green-600 flex items-center gap-2">
                         <span class="status-dot"></span>
-                        Sistema Activo
+                        Online
                     </span>
                     <a onclick="openContactModal()" class="hidden sm:block btn-primary px-5 py-2.5 text-sm font-semibold rounded-lg cursor-pointer">
                         Contacto
@@ -267,15 +283,44 @@
                 </div>
             </div>
 
-            <!-- Right Side - Stats Circle -->
-            <div class="lg:col-span-5 hidden lg:flex justify-center relative">
-                <div class="relative w-72 h-72">
-                    <div class="absolute inset-0 bg-white/10 backdrop-blur-md rounded-full border border-white/20"></div>
-                    <div class="absolute inset-4 bg-white/5 rounded-full border border-white/10"></div>
-                    <div class="absolute inset-0 flex items-center justify-center flex-col text-center">
-                        <span class="text-6xl font-black text-white tracking-tight counter" data-target="99.8">0</span>
-                        <span class="text-2xl text-white font-bold">%</span>
-                        <span class="text-sm font-semibold text-primary mt-2">Precisión LPR</span>
+            <!-- Right Side - Global Connectivity -->
+            <div class="lg:col-span-5 hidden lg:flex justify-center relative" style="perspective: 800px;">
+                <div class="relative w-80 h-80">
+                    <!-- Globe Container -->
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50/20 to-white/10 backdrop-blur-md border border-white/30 shadow-[0_20px_60px_rgba(0,102,255,0.15)]"></div>
+                    
+                    <!-- Latitude Lines -->
+                    <div class="absolute inset-4 rounded-full border border-white/20"></div>
+                    <div class="absolute inset-10 rounded-full border border-white/15"></div>
+                    <div class="absolute inset-16 rounded-full border border-white/10"></div>
+                    
+                    <!-- Longitude Lines (Rotating) -->
+                    <div class="absolute inset-4 globe-rotate" style="transform-style: preserve-3d;">
+                        <div class="absolute inset-0 rounded-full border border-primary/20" style="transform: rotateY(60deg);"></div>
+                        <div class="absolute inset-0 rounded-full border border-primary/15" style="transform: rotateY(120deg);"></div>
+                    </div>
+                    
+                    <!-- Connection Nodes -->
+                    <div class="absolute top-8 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-primary rounded-full node-pulse shadow-[0_0_10px_rgba(0,102,255,0.5)]"></div>
+                    <div class="absolute bottom-12 left-8 w-2 h-2 bg-primary rounded-full node-pulse shadow-[0_0_8px_rgba(0,102,255,0.5)]" style="animation-delay: 0.3s;"></div>
+                    <div class="absolute top-1/3 right-6 w-2.5 h-2.5 bg-primary rounded-full node-pulse shadow-[0_0_10px_rgba(0,102,255,0.5)]" style="animation-delay: 0.6s;"></div>
+                    <div class="absolute bottom-1/4 right-12 w-2 h-2 bg-primary rounded-full node-pulse shadow-[0_0_8px_rgba(0,102,255,0.5)]" style="animation-delay: 0.9s;"></div>
+                    <div class="absolute top-1/2 left-6 w-2 h-2 bg-primary rounded-full node-pulse shadow-[0_0_8px_rgba(0,102,255,0.5)]" style="animation-delay: 1.2s;"></div>
+                    
+                    <!-- Subtle Connection Lines (SVG) -->
+                    <svg class="absolute inset-0 w-full h-full" viewBox="0 0 320 320">
+                        <line x1="160" y1="32" x2="32" y2="220" stroke="rgba(0,102,255,0.2)" stroke-width="1"/>
+                        <line x1="160" y1="32" x2="280" y2="107" stroke="rgba(0,102,255,0.2)" stroke-width="1"/>
+                        <line x1="32" y1="220" x2="24" y2="160" stroke="rgba(0,102,255,0.15)" stroke-width="1"/>
+                        <line x1="280" y1="107" x2="260" y2="240" stroke="rgba(0,102,255,0.15)" stroke-width="1"/>
+                        <line x1="260" y1="240" x2="160" y2="160" stroke="rgba(0,102,255,0.1)" stroke-width="1"/>
+                    </svg>
+                    
+                    <!-- Core Center - Hub Logo -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-20 h-20 bg-white rounded-full shadow-elevated flex items-center justify-center border border-gray-100">
+                            <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">hub</span>
+                        </div>
                     </div>
                 </div>
             </div>
