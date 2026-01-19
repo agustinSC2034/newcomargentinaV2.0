@@ -673,7 +673,78 @@
                 </div>
             </div>
 
-            <!-- Bloque 4: Data - Visual Izq / Texto Der -->
+            <!-- Bloque 4: Cloud Computing & DevOps - Visual Izq / Texto Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <!-- Visual: Cloud Architecture Diagram -->
+                <div class="order-2 lg:order-1 relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden flex items-center justify-center">
+                    <svg viewBox="0 0 240 200" class="w-72 h-60">
+                        <!-- Cloud Shape -->
+                        <defs>
+                            <linearGradient id="cloudGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F97316;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#EA580C;stop-opacity:0.1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Main Cloud -->
+                        <path d="M180,80 a30,30 0 0,0 -50,-25 a40,40 0 0,0 -75,20 a25,25 0 0,0 0,50 h120 a25,25 0 0,0 5,-45z" 
+                              fill="url(#cloudGrad1)" stroke="#F97316" stroke-width="1.5"/>
+                        <!-- AWS/Azure Icons inside cloud -->
+                        <text x="95" y="75" fill="#F97316" font-size="9" font-weight="600" text-anchor="middle" font-family="monospace">AWS</text>
+                        <text x="145" y="75" fill="#0066FF" font-size="9" font-weight="600" text-anchor="middle" font-family="monospace">Azure</text>
+                        
+                        <!-- Connection lines -->
+                        <line x1="80" y1="125" x2="80" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        <line x1="120" y1="125" x2="120" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        <line x1="160" y1="125" x2="160" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        
+                        <!-- Servers/Containers -->
+                        <rect x="65" y="150" width="30" height="35" rx="2" fill="transparent" stroke="#F97316" stroke-width="1"/>
+                        <rect x="69" y="158" width="8" height="2" fill="#F97316" rx="1"/>
+                        <rect x="69" y="163" width="8" height="2" fill="#F97316" rx="1"/>
+                        <rect x="69" y="168" width="8" height="2" fill="#F97316" rx="1"/>
+                        <text x="80" y="195" fill="#888" font-size="7" text-anchor="middle" font-family="monospace">SERVER</text>
+                        
+                        <rect x="105" y="150" width="30" height="35" rx="2" fill="transparent" stroke="#0066FF" stroke-width="1"/>
+                        <circle cx="120" cy="163" r="5" fill="none" stroke="#0066FF" stroke-width="1"/>
+                        <circle cx="120" cy="163" r="2" fill="#0066FF"/>
+                        <text x="120" y="195" fill="#888" font-size="7" text-anchor="middle" font-family="monospace">K8S</text>
+                        
+                        <rect x="145" y="150" width="30" height="35" rx="2" fill="transparent" stroke="#F97316" stroke-width="1"/>
+                        <rect x="149" y="156" width="22" height="5" rx="1" fill="#F97316" opacity="0.3"/>
+                        <rect x="149" y="163" width="22" height="5" rx="1" fill="#F97316" opacity="0.5"/>
+                        <rect x="149" y="170" width="22" height="5" rx="1" fill="#F97316" opacity="0.7"/>
+                        <text x="160" y="195" fill="#888" font-size="7" text-anchor="middle" font-family="monospace">DB</text>
+                        
+                        <!-- CI/CD Arrow -->
+                        <path d="M30,100 L50,100" stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrowhead1)"/>
+                        <defs>
+                            <marker id="arrowhead1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#22C55E"/>
+                            </marker>
+                        </defs>
+                        <text x="20" y="95" fill="#22C55E" font-size="7" font-weight="600" font-family="monospace">CI/CD</text>
+                    </svg>
+                    <div class="absolute bottom-4 left-4 font-mono text-[10px] text-gray-500">CLOUD ARCHITECTURE</div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-orange-500/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                        <span class="text-orange-400 font-mono text-[10px] uppercase tracking-widest">Pilar 04</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Cloud Computing & DevOps</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Diseño, migración y gestión de arquitecturas en la nube (AWS, Azure). Transformamos infraestructura estática en entornos elásticos y de alta disponibilidad.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Arquitecturas Híbridas & Multi-Cloud</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Kubernetes & Containerización</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Automatización CI/CD</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Optimización de Costos (FinOps)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 5: Data - Texto Izq / Visual Der -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Visual: Gráfico de barras animado -->
                 <div class="order-2 lg:order-1 relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden p-6">
@@ -708,7 +779,7 @@
                 <div class="order-1 lg:order-2 space-y-6">
                     <div class="inline-flex items-center gap-2 border border-purple-500/30 px-3 py-1 bg-black/50">
                         <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
-                        <span class="text-purple-400 font-mono text-[10px] uppercase tracking-widest">Pilar 04</span>
+                        <span class="text-purple-400 font-mono text-[10px] uppercase tracking-widest">Pilar 05</span>
                     </div>
                     <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Data & QA</h3>
                     <p class="text-gray-400 leading-relaxed">
@@ -720,6 +791,105 @@
                         <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-purple-500"></span> Machine Learning predictivo</li>
                         <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-purple-500"></span> Reportes automatizados</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 6: Video Analytics - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-red-500/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                        <span class="text-red-400 font-mono text-[10px] uppercase tracking-widest">Pilar 06</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Video Analytics</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Análisis de video inteligente con algoritmos de visión computacional. Detección automática de eventos, reconocimiento de patentes y monitoreo en tiempo real de infraestructura crítica.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Reconocimiento de patentes (LPR)</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Detección de incidentes viales</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Conteo vehicular inteligente</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Alertas en tiempo real 24/7</li>
+                    </ul>
+                </div>
+                <!-- Visual: Video Wall Grid -->
+                <div class="relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            <span class="font-mono text-[10px] text-red-400 uppercase">REC • LIVE</span>
+                        </div>
+                        <span class="font-mono text-[9px] text-gray-500">6 CAMERAS ACTIVE</span>
+                    </div>
+                    
+                    <!-- Camera Grid 2x3 -->
+                    <div class="grid grid-cols-3 gap-2 h-[calc(100%-2.5rem)]">
+                        <!-- Camera 1 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-001</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">videocam</span>
+                        </div>
+                        
+                        <!-- Camera 2 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-002</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">traffic</span>
+                        </div>
+                        
+                        <!-- Camera 3 - LPR -->
+                        <div class="relative bg-zinc-800 border border-primary/30 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                <span class="text-[7px] font-mono text-primary">LPR</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-003</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary/30 text-xl">directions_car</span>
+                        </div>
+                        
+                        <!-- Camera 4 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-004</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">storefront</span>
+                        </div>
+                        
+                        <!-- Camera 5 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-005</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">location_city</span>
+                        </div>
+                        
+                        <!-- Camera 6 - Alert -->
+                        <div class="relative bg-zinc-800 border border-amber-500/30 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-amber-500/15 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-amber-400">ALERT</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-006</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-amber-500/30 text-xl">warning</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
