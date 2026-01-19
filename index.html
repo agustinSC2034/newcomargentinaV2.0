@@ -1187,6 +1187,20 @@
                         referrerpolicy="no-referrer-when-downgrade"
                         class="grayscale invert hue-rotate-180 brightness-90 contrast-125 opacity-70">
                     </iframe>
+                    <!-- GPS Overlay - Tactical Crosshair / Mira Táctica (Alta Visibilidad) -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none z-10">
+                        <!-- Crosshair Lines / Cruz (más gruesas y visibles) -->
+                        <div class="absolute w-[300px] h-[2px] bg-blue-500/50"></div>
+                        <div class="absolute h-[300px] w-[2px] bg-blue-500/50"></div>
+                        <!-- Outer Ring / Anillo Exterior -->
+                        <div class="absolute w-[200px] h-[200px] border border-blue-500/30 rounded-full"></div>
+                        <!-- Inner Ring / Anillo Interior -->
+                        <div class="absolute w-[100px] h-[100px] border border-blue-500/50 rounded-full"></div>
+                        <!-- Ping Animation / Onda Expansiva (más grande) -->
+                        <div class="absolute w-8 h-8 bg-blue-500 rounded-full animate-ping opacity-75"></div>
+                        <!-- Center Point / Punto Central (más grande con glow intenso) -->
+                        <div class="relative w-5 h-5 bg-[#0066FF] rounded-full border-2 border-white shadow-[0_0_20px_#0066FF]"></div>
+                    </div>
                 </div>
             </div>
         </div>
