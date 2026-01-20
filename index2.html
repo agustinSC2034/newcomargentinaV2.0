@@ -245,62 +245,99 @@
             border-radius: 2px;
         }
 
-        /* Digital Circuit Grid Background */
-        .circuit-grid-bg {
+        /* Video Background Styles */
+        .video-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
-            pointer-events: none;
             overflow: hidden;
         }
 
-        /* Static circuit pattern layer */
-        .circuit-pattern {
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-overlay {
             position: absolute;
             inset: 0;
-            background-image:
-                /* Vertical lines */
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 80px,
-                    rgba(0, 102, 255, 0.03) 80px,
-                    rgba(0, 102, 255, 0.03) 81px
-                ),
-                /* Horizontal lines */
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 80px,
-                    rgba(0, 102, 255, 0.03) 80px,
-                    rgba(0, 102, 255, 0.03) 81px
-                );
+            background: rgba(255, 255, 255, 0.75);
+            z-index: 1;
         }
 
-        /* Circuit nodes at intersections */
-        .circuit-nodes {
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle, rgba(0, 102, 255, 0.08) 2px, transparent 2px);
-            background-size: 80px 80px;
-        }
-
-        /* Animated data lines canvas */
-        #circuit-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Ensure hero content is above canvas */
+        /* Ensure hero content is above video */
         .hero-content {
             position: relative;
             z-index: 10;
+        }
+
+        /* Service Card Styles */
+        .service-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #0066FF, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 102, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+            border-color: rgba(0, 102, 255, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card-large {
+            padding: 2rem;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.05);
+        }
+
+        .service-icon-sm {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
         }
 
         /* Infinite Logo Slider */
@@ -401,26 +438,27 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center overflow-hidden hero-gradient pt-16">
-        <!-- Digital Circuit Grid Background -->
-        <div class="circuit-grid-bg">
-            <div class="circuit-pattern"></div>
-            <div class="circuit-nodes"></div>
-            <canvas id="circuit-canvas"></canvas>
+    <header class="relative min-h-screen flex items-center overflow-hidden pt-16">
+        <!-- Video Background -->
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="vid/servidores.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
         </div>
 
         <div class="hero-content max-w-screen-xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
             <div class="lg:col-span-7">
-                <div class="inline-flex items-center gap-3 mb-8 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+                <div class="inline-flex items-center gap-3 mb-8 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-navy-deep/10 shadow-sm">
                     <span class="text-primary font-semibold text-sm">Integrador Tecnológico</span>
-                    <span class="w-1 h-1 bg-white/50 rounded-full"></span>
-                    <span class="text-white/70 text-sm">Hardware + Software</span>
+                    <span class="w-1 h-1 bg-navy-deep/50 rounded-full"></span>
+                    <span class="text-navy-deep font-medium text-sm">Hardware + Software</span>
                 </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-navy-deep mb-8 leading-tight drop-shadow-sm">
                     Integración de<br/>
                     <span class="text-primary">Software Complejo</span>
                 </h1>
-                <p class="mt-8 max-w-xl text-lg text-white/80 font-light leading-relaxed">
+                <p class="mt-8 max-w-xl text-lg text-navy-deep/80 font-normal leading-relaxed">
                     Desarrollo de soluciones tecnológicas, consultoría IT y modernización digital para el sector público y privado.
                 </p>
                 <div class="mt-12">
@@ -435,19 +473,19 @@
             <div class="lg:col-span-5 hidden lg:flex justify-center relative" style="perspective: 1000px;">
                 <div class="relative w-96 h-96">
                     <!-- Orbit 1 - Y Axis -->
-                    <div class="absolute inset-0 rounded-full border-2 border-gray-300/50 orbit-y" style="transform-style: preserve-3d; animation: orbit-y 20s linear infinite;">
+                    <div class="absolute inset-0 rounded-full border-2 border-primary/30 orbit-y" style="transform-style: preserve-3d; animation: orbit-y 20s linear infinite;">
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(0,102,255,0.6)]"></div>
                         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-primary/60 rounded-full"></div>
                     </div>
                     
                     <!-- Orbit 2 - X Axis -->
-                    <div class="absolute inset-10 rounded-full border-2 border-gray-300/40 orbit-x" style="transform-style: preserve-3d; animation: orbit-x 25s linear infinite;">
+                    <div class="absolute inset-10 rounded-full border-2 border-emerald-500/30 orbit-x" style="transform-style: preserve-3d; animation: orbit-x 25s linear infinite;">
                         <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-emerald-500 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.6)]"></div>
                         <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-emerald-500/60 rounded-full"></div>
                     </div>
                     
                     <!-- Orbit 3 - Diagonal -->
-                    <div class="absolute inset-20 rounded-full border-2 border-gray-300/30 orbit-diagonal" style="transform-style: preserve-3d; animation: orbit-diagonal 30s linear infinite;">
+                    <div class="absolute inset-20 rounded-full border-2 border-violet-500/30 orbit-diagonal" style="transform-style: preserve-3d; animation: orbit-diagonal 30s linear infinite;">
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-violet-500 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.6)]"></div>
                     </div>
                     
@@ -474,7 +512,7 @@
 
         <!-- Subtle Scroll Indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-            <span class="material-symbols-outlined text-white/40 text-3xl animate-bounce">keyboard_arrow_down</span>
+            <span class="material-symbols-outlined text-navy-deep/30 text-3xl animate-bounce">keyboard_arrow_down</span>
         </div>
     </header>
 
@@ -580,132 +618,117 @@
         </div>
     </section>
 
-    <!-- Ecosystem Section - Bento Grid -->
-    <section class="py-24 bg-pearl relative" id="ecosystem">
-        <!-- Subtle background pattern -->
-        <div class="absolute inset-0 bg-dots-pattern"></div>
-        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Nuestras Soluciones</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep inline-block accent-line">Lo Que Hacemos</h2>
-                <p class="text-gray-600 mt-8 max-w-2xl mx-auto">
-                    Combinamos desarrollo de software, aplicaciones móviles, análisis de datos y tecnología para ciudades inteligentes.
+    <!-- Soluciones Section - Panel de Servicios Unificado -->
+    <section class="py-20 bg-pearl relative" id="ecosystem">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="text-center mb-14">
+                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-3 block">Nuestros Servicios</span>
+                <h2 class="text-4xl md:text-5xl font-black text-navy-deep">Lo Que Hacemos</h2>
+                <p class="text-gray-500 mt-4 max-w-xl mx-auto">
+                    Soluciones tecnológicas integrales para impulsar su transformación digital
                 </p>
             </div>
 
-            <!-- Bento Grid - 4 Pilares Tecnológicos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- PILAR 1: Software Factory (Ahora primero) -->
-                <div class="card-corporate p-8 group">
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:shadow-blue-glow transition-all duration-300">
-                            <span class="material-symbols-outlined text-primary group-hover:text-white text-2xl transition-colors">terminal</span>
-                        </div>
-                        <span class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">SOFTWARE</span>
+            <!-- Bento Grid 3+4 -->
+            <!-- Fila Superior: 3 Tarjetas Destacadas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+                <!-- Software a Medida -->
+                <div class="service-card service-card-large group">
+                    <div class="service-icon bg-primary/10 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white text-2xl transition-colors">code</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Desarrollo de Software</h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                        Creamos aplicaciones a medida usando tecnologías como Java, .Net y PHP. Modernizamos sistemas antiguos y los adaptamos a las necesidades actuales.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Java</span>
-                        <span class="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full">.Net</span>
-                        <span class="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full">PHP</span>
-                        <span class="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Python</span>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span class="text-sm font-semibold text-primary">Soluciones a Medida</span>
-                        <span class="text-xs text-gray-500">Cloud Ready</span>
+                    <h3 class="text-lg font-bold text-navy-deep mb-2">Software a Medida</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Desarrollo de aplicaciones personalizadas con Java, .Net, PHP y Python.</p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Java</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">.Net</span>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">Python</span>
                     </div>
                 </div>
 
-                <!-- PILAR 2: Apps Móviles -->
-                <div class="card-corporate p-8 group">
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center group-hover:bg-cyan-500 group-hover:shadow-lg transition-all duration-300">
-                            <span class="material-symbols-outlined text-cyan-600 group-hover:text-white text-2xl transition-colors">smartphone</span>
-                        </div>
-                        <span class="text-xs font-semibold text-cyan-600 bg-cyan-500/10 px-3 py-1.5 rounded-full border border-cyan-500/20">APPS</span>
+                <!-- Desarrollo de Apps Móviles -->
+                <div class="service-card service-card-large group">
+                    <div class="service-icon bg-cyan-500/10 group-hover:bg-cyan-500 transition-colors">
+                        <span class="material-symbols-outlined text-cyan-600 group-hover:text-white text-2xl transition-colors">smartphone</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Aplicaciones Móviles</h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                        Diseñamos y desarrollamos Desarrollo de Apps Moviles, tanto nativas como híbridas. Perfectas para equipos en campo y usuarios finales.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full">iOS</span>
-                        <span class="text-xs bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full">Android</span>
-                        <span class="text-xs bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full">Multiplataforma</span>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span class="text-sm font-semibold text-cyan-600">Nativas e Híbridas</span>
-                        <span class="text-xs text-gray-500">Modo Offline</span>
+                    <h3 class="text-lg font-bold text-navy-deep mb-2">Apps Móviles</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Aplicaciones nativas e híbridas para iOS y Android con modo offline.</p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="text-xs bg-cyan-50 text-cyan-600 px-2.5 py-1 rounded-full">iOS</span>
+                        <span class="text-xs bg-cyan-50 text-cyan-600 px-2.5 py-1 rounded-full">Android</span>
+                        <span class="text-xs bg-cyan-50 text-cyan-600 px-2.5 py-1 rounded-full">React Native</span>
                     </div>
                 </div>
 
-                <!-- PILAR 3: Testing & Análisis de Datos -->
-                <div class="card-corporate p-8 group">
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center group-hover:bg-purple-500 group-hover:shadow-lg transition-all duration-300">
-                            <span class="material-symbols-outlined text-purple-600 group-hover:text-white text-2xl transition-colors">analytics</span>
-                        </div>
-                        <span class="text-xs font-semibold text-purple-600 bg-purple-500/10 px-3 py-1.5 rounded-full border border-purple-500/20">DATOS</span>
+                <!-- Cloud Computing & DevOps -->
+                <div class="service-card service-card-large group">
+                    <div class="service-icon bg-violet-500/10 group-hover:bg-violet-500 transition-colors">
+                        <span class="material-symbols-outlined text-violet-600 group-hover:text-white text-2xl transition-colors">cloud</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Testing & Análisis de Datos</h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                        Aseguramos la calidad de su software con pruebas exhaustivas. Analizamos grandes volúmenes de datos para ayudarle a tomar mejores decisiones.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Testing</span>
-                        <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Big Data</span>
-                        <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Reportes</span>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span class="text-sm font-semibold text-purple-600">Decisiones Informadas</span>
-                        <span class="text-xs text-gray-500">Automatizado</span>
+                    <h3 class="text-lg font-bold text-navy-deep mb-2">Cloud & DevOps</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Infraestructura en la nube, CI/CD y automatización de despliegues.</p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="text-xs bg-violet-50 text-violet-600 px-2.5 py-1 rounded-full">AWS</span>
+                        <span class="text-xs bg-violet-50 text-violet-600 px-2.5 py-1 rounded-full">Azure</span>
+                        <span class="text-xs bg-violet-50 text-violet-600 px-2.5 py-1 rounded-full">Docker</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- PILAR 4: Smart Cities & IoT (Ahora último) -->
-                <div class="card-corporate p-8 group">
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center group-hover:bg-green-500 group-hover:shadow-lg transition-all duration-300">
-                            <span class="material-symbols-outlined text-green-600 group-hover:text-white text-2xl transition-colors">location_city</span>
-                        </div>
-                        <span class="text-xs font-semibold text-green-600 bg-green-500/10 px-3 py-1.5 rounded-full border border-green-500/20">IoT</span>
+            <!-- Fila Inferior: 4 Tarjetas Compactas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+                <!-- Testing de Software -->
+                <div class="service-card group">
+                    <div class="service-icon service-icon-sm bg-amber-500/10 group-hover:bg-amber-500 transition-colors">
+                        <span class="material-symbols-outlined text-amber-600 group-hover:text-white text-xl transition-colors">bug_report</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Ciudades Inteligentes & IoT</h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                        Infraestructura inteligente para la gestión urbana. Integramos sensores, lectura de patentes (LPR) y sistemas de pesaje dinámico.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full">Sensores</span>
-                        <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full">LPR</span>
-                        <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full">Pesaje WIM</span>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span class="text-sm font-semibold text-green-600">Hardware + Software</span>
-                        <span class="text-xs text-gray-500">AUSA/AUBASA</span>
-                    </div>
+                    <h3 class="text-base font-bold text-navy-deep mb-1">Testing de Software</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">QA, pruebas automatizadas y aseguramiento de calidad.</p>
                 </div>
 
+                <!-- IoT y Gestión Urbana -->
+                <div class="service-card group">
+                    <div class="service-icon service-icon-sm bg-emerald-500/10 group-hover:bg-emerald-500 transition-colors">
+                        <span class="material-symbols-outlined text-emerald-600 group-hover:text-white text-xl transition-colors">sensors</span>
+                    </div>
+                    <h3 class="text-base font-bold text-navy-deep mb-1">IoT & Smart Cities</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">Sensores, LPR y pesaje dinámico WIM.</p>
+                </div>
+
+                <!-- Análisis de Video Inteligente -->
+                <div class="service-card group">
+                    <div class="service-icon service-icon-sm bg-rose-500/10 group-hover:bg-rose-500 transition-colors">
+                        <span class="material-symbols-outlined text-rose-600 group-hover:text-white text-xl transition-colors">videocam</span>
+                    </div>
+                    <h3 class="text-base font-bold text-navy-deep mb-1">Video Inteligente</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">Analítica de video y reconocimiento de patentes.</p>
+                </div>
+
+                <!-- Consultoría IT & Outsourcing -->
+                <div class="service-card group">
+                    <div class="service-icon service-icon-sm bg-indigo-500/10 group-hover:bg-indigo-500 transition-colors">
+                        <span class="material-symbols-outlined text-indigo-600 group-hover:text-white text-xl transition-colors">support_agent</span>
+                    </div>
+                    <h3 class="text-base font-bold text-navy-deep mb-1">Consultoría IT</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">Outsourcing y asesoría tecnológica.</p>
+                </div>
             </div>
 
             <!-- Metrics Row compacto -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-                <div class="card-corporate p-5 text-center">
+                <div class="bg-white rounded-xl p-5 text-center border border-gray-100 shadow-sm">
                     <div class="text-2xl font-bold text-navy-deep">25+</div>
                     <div class="text-xs text-gray-500 mt-1">Ciudades Digitalizadas</div>
                 </div>
-                <div class="card-corporate p-5 text-center">
+                <div class="bg-white rounded-xl p-5 text-center border border-gray-100 shadow-sm">
                     <div class="text-2xl font-bold text-navy-deep">10K+</div>
                     <div class="text-xs text-gray-500 mt-1">Usuarios Activos/Día</div>
                 </div>
-                <div class="card-corporate p-5 text-center">
+                <div class="bg-white rounded-xl p-5 text-center border border-gray-100 shadow-sm">
                     <div class="text-2xl font-bold text-primary">99.97%</div>
                     <div class="text-xs text-gray-500 mt-1">SLA Garantizado</div>
                 </div>
-                <div class="card-corporate p-5 text-center">
+                <div class="bg-white rounded-xl p-5 text-center border border-gray-100 shadow-sm">
                     <div class="text-2xl font-bold text-navy-deep flex items-center justify-center gap-1">
                         <span class="material-symbols-outlined text-amber-500 text-lg">emoji_events</span>
                         8
@@ -746,7 +769,8 @@
                     </ul>
                 </div>
                 <!-- Visual: Terminal/Código -->
-                <div class="relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden font-mono text-xs shadow-xl">
+                <div class="relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden font-mono text-xs shadow-xl transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="absolute top-0 left-0 right-0 h-10 bg-slate-800 border-b border-slate-700 flex items-center px-4 gap-2">
                         <span class="w-3 h-3 rounded-full bg-red-500"></span>
                         <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
@@ -773,7 +797,8 @@
             <!-- Bloque 2: Apps Móviles - Visual Izq / Texto Der -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
                 <!-- Visual: Phone Frame -->
-                <div class="order-2 lg:order-1 relative h-80 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl">
+                <div class="order-2 lg:order-1 relative h-80 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border border-gray-200 transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative w-48 h-80 bg-white border-[6px] border-gray-800 rounded-[2.5rem] overflow-hidden shadow-2xl">
                         <div class="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-gray-800 rounded-full"></div>
                         <div class="h-full pt-8 pb-4 px-3 flex flex-col bg-gray-50">
@@ -833,7 +858,8 @@
                     </ul>
                 </div>
                 <!-- Visual: Cloud Architecture Diagram -->
-                <div class="relative h-80 bg-gradient-to-br from-orange-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center shadow-lg">
+                <div class="relative h-80 bg-gradient-to-br from-orange-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center shadow-lg transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     <svg viewBox="0 0 240 200" class="w-72 h-60">
                         <!-- Cloud Shape -->
                         <defs>
@@ -885,7 +911,8 @@
             <!-- Bloque 4: Testing & Análisis - Visual Izq / Texto Der -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
                 <!-- Visual: Testing Dashboard -->
-                <div class="order-2 lg:order-1 relative h-80 bg-gradient-to-br from-purple-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden p-6 shadow-lg">
+                <div class="order-2 lg:order-1 relative h-80 bg-gradient-to-br from-purple-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden p-6 shadow-lg transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     <div class="absolute top-4 left-6 flex items-center gap-2">
                         <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                         <span class="text-sm font-semibold text-navy-deep">Testing Suite</span>
@@ -981,7 +1008,8 @@
                     </ul>
                 </div>
                 <!-- Visual: Nodos conectados -->
-                <div class="relative h-80 bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center">
+                <div class="relative h-80 bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     <svg viewBox="0 0 200 200" class="w-64 h-64">
                         <!-- Conexiones -->
                         <line x1="100" y1="40" x2="40" y2="100" stroke="#0066FF" stroke-width="2" opacity="0.3"/>
@@ -1007,7 +1035,8 @@
             <!-- Bloque 6: Video Analytics - Visual Izq / Texto Der -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Visual: Video Wall Grid -->
-                <div class="order-2 lg:order-1 relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden p-4 shadow-xl">
+                <div class="order-2 lg:order-1 relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden p-4 shadow-xl transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     <div class="flex justify-between items-center mb-4">
                         <div class="flex items-center gap-2">
                             <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
@@ -1111,8 +1140,8 @@
         <div class="max-w-screen-xl mx-auto px-4">
             <div class="text-center mb-16">
                 <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Servicios Profesionales</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 accent-line">Consultoría IT & Outsourcing</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">Consultoría IT & Outsourcing</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-8">
                     Asesoramos en la implementación de procesos tecnológicos, monitoreo de infraestructura y tercerización de administración IT.
                 </p>
             </div>
@@ -1838,6 +1867,11 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-primary to-[#3385FF] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center opacity-0 pointer-events-none translate-y-4 group">
+        <span class="material-symbols-outlined text-2xl group-hover:-translate-y-1 transition-transform duration-300">keyboard_arrow_up</span>
+    </button>
+
     <!-- Contact Modal (Light/Corporate) -->
     <div id="contactModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-2 sm:p-4 overflow-y-auto">
         <!-- Backdrop -->
@@ -2025,232 +2059,26 @@
         });
 
         // ========================================
-        // DIGITAL CIRCUIT GRID ANIMATION
+        // SCROLL TO TOP BUTTON
         // ========================================
-        (function() {
-            const canvas = document.getElementById('circuit-canvas');
-            if (!canvas) return;
-            
-            const ctx = canvas.getContext('2d');
-            let animationId;
-            let dataSignals = [];
-            let circuitPaths = [];
-            
-            // Configuration
-            const config = {
-                gridSize: 80,
-                signalCount: 12,
-                signalSpeed: 1.5,
-                lineColor: 'rgba(0, 102, 255, 0.06)',
-                signalColor: 'rgba(0, 102, 255, 0.4)',
-                signalGlow: 'rgba(0, 102, 255, 0.15)',
-                signalLength: 60
-            };
-            
-            // Generate circuit paths (horizontal and vertical lines with 90° turns)
-            function generateCircuitPaths() {
-                circuitPaths = [];
-                const cols = Math.ceil(canvas.width / config.gridSize) + 1;
-                const rows = Math.ceil(canvas.height / config.gridSize) + 1;
-                
-                // Create horizontal paths with occasional vertical segments
-                for (let row = 1; row < rows - 1; row += 2) {
-                    const y = row * config.gridSize;
-                    const path = [];
-                    let x = 0;
-                    
-                    while (x < canvas.width) {
-                        // Horizontal segment
-                        const segmentLength = config.gridSize * (2 + Math.floor(Math.random() * 3));
-                        path.push({ x: x, y: y, type: 'h' });
-                        x += segmentLength;
-                        
-                        // Occasionally add a vertical jog
-                        if (Math.random() > 0.6 && x < canvas.width - config.gridSize) {
-                            const jogDirection = Math.random() > 0.5 ? 1 : -1;
-                            const jogLength = config.gridSize * jogDirection;
-                            path.push({ x: x, y: y, type: 'v', length: jogLength });
-                            path.push({ x: x, y: y + jogLength, type: 'h' });
-                        }
-                    }
-                    path.push({ x: canvas.width + 50, y: path[path.length - 1]?.y || y, type: 'end' });
-                    circuitPaths.push(path);
-                }
-            }
-            
-            // Data Signal class - travels along circuit paths
-            class DataSignal {
-                constructor() {
-                    this.reset();
-                }
-                
-                reset() {
-                    // Pick a random path
-                    this.pathIndex = Math.floor(Math.random() * circuitPaths.length);
-                    this.path = circuitPaths[this.pathIndex];
-                    if (!this.path || this.path.length < 2) {
-                        this.pathIndex = 0;
-                        this.path = circuitPaths[0] || [];
-                    }
-                    
-                    this.progress = 0;
-                    this.speed = config.signalSpeed * (0.5 + Math.random() * 0.8);
-                    this.x = -config.signalLength;
-                    this.y = this.path[0]?.y || config.gridSize;
-                    this.length = config.signalLength * (0.5 + Math.random() * 0.5);
-                    this.brightness = 0.3 + Math.random() * 0.4;
-                }
-                
-                update() {
-                    this.x += this.speed;
-                    
-                    // Find current segment based on x position
-                    if (this.path && this.path.length > 0) {
-                        for (let i = 0; i < this.path.length - 1; i++) {
-                            const segment = this.path[i];
-                            const nextSegment = this.path[i + 1];
-                            
-                            if (this.x >= segment.x && this.x < nextSegment.x) {
-                                // Handle vertical jogs
-                                if (segment.type === 'v' && segment.length) {
-                                    const jogProgress = (this.x - segment.x) / config.gridSize;
-                                    this.y = segment.y + (segment.length * Math.min(jogProgress, 1));
-                                } else {
-                                    this.y = segment.y;
-                                }
-                                break;
-                            }
-                        }
-                    }
-                    
-                    // Reset when off screen
-                    if (this.x > canvas.width + config.signalLength) {
-                        this.reset();
-                    }
-                }
-                
-                draw() {
-                    // Draw signal glow
-                    const gradient = ctx.createLinearGradient(
-                        this.x - this.length, this.y,
-                        this.x, this.y
-                    );
-                    gradient.addColorStop(0, 'transparent');
-                    gradient.addColorStop(0.5, `rgba(0, 102, 255, ${this.brightness * 0.3})`);
-                    gradient.addColorStop(1, `rgba(0, 102, 255, ${this.brightness})`);
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(this.x - this.length, this.y);
-                    ctx.lineTo(this.x, this.y);
-                    ctx.strokeStyle = gradient;
-                    ctx.lineWidth = 2;
-                    ctx.lineCap = 'round';
-                    ctx.stroke();
-                    
-                    // Draw bright head
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(100, 180, 255, ${this.brightness})`;
-                    ctx.fill();
-                    
-                    // Glow effect
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, 6, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(0, 102, 255, ${this.brightness * 0.3})`;
-                    ctx.fill();
-                }
-            }
-            
-            // Draw static circuit lines
-            function drawCircuitLines() {
-                ctx.strokeStyle = config.lineColor;
-                ctx.lineWidth = 1;
-                
-                circuitPaths.forEach(path => {
-                    if (!path || path.length < 2) return;
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(path[0].x, path[0].y);
-                    
-                    for (let i = 1; i < path.length; i++) {
-                        const segment = path[i - 1];
-                        const point = path[i];
-                        
-                        if (segment.type === 'v' && segment.length) {
-                            // Draw vertical segment
-                            ctx.lineTo(segment.x, segment.y + segment.length);
-                        }
-                        ctx.lineTo(point.x, point.y);
-                    }
-                    
-                    ctx.stroke();
-                });
-            }
-            
-            // Resize canvas
-            function resizeCanvas() {
-                const header = canvas.parentElement.parentElement;
-                canvas.width = header.offsetWidth;
-                canvas.height = header.offsetHeight;
-                generateCircuitPaths();
-                initSignals();
-            }
-            
-            // Initialize signals
-            function initSignals() {
-                dataSignals = [];
-                for (let i = 0; i < config.signalCount; i++) {
-                    const signal = new DataSignal();
-                    signal.x = Math.random() * canvas.width; // Spread initially
-                    dataSignals.push(signal);
-                }
-            }
-            
-            // Animation loop
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Draw static circuit lines
-                drawCircuitLines();
-                
-                // Update and draw signals
-                dataSignals.forEach(signal => {
-                    signal.update();
-                    signal.draw();
-                });
-                
-                animationId = requestAnimationFrame(animate);
-            }
-            
-            // Initialize
-            function init() {
-                resizeCanvas();
-                animate();
-            }
-            
-            // Handle resize
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(resizeCanvas, 250);
-            });
-            
-            // Start
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', init);
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollTopBtn.classList.add('opacity-100', 'translate-y-0');
             } else {
-                init();
+                scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollTopBtn.classList.remove('opacity-100', 'translate-y-0');
             }
-            
-            // Performance optimization
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    cancelAnimationFrame(animationId);
-                } else {
-                    animate();
-                }
+        });
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-        })();
+        }
     </script>
 </body>
 </html>
