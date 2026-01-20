@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="icon" type="image/png" href="img/logoNewcom.png"/>
+    <title>Newcom Argentina - Integrador Tecnológico IT & Sistemas Complejos</title>
+    <meta content="Integramos Hardware de precisión y Software de alto nivel para resolver problemas complejos. ITS, Desarrollo de Software, Apps Móviles, IoT y Big Data." name="description"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0066FF",
+                        "primary-light": "#3385FF",
+                        accent: "#0052CC",
+                        "surface-dark": "#0A0A0F",
+                        "surface": "#141419",
+                        "surface-light": "#1E1E26",
+                        "steel": "#6B7280",
+                        "steel-light": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                        'hero-gradient': 'linear-gradient(135deg, #0A0A0F 0%, #141419 50%, #0A0A0F 100%)',
+                    },
+                    boxShadow: {
+                        'glow': '0 4px 20px rgba(0, 0, 0, 0.4)',
+                        'glow-lg': '0 8px 40px rgba(0, 0, 0, 0.5)',
+                        'card': '0 4px 24px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.05) inset',
+                        'metallic': '0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 20px rgba(0, 0, 0, 0.4)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        'orbit-y': {
+                            '0%': { transform: 'rotateY(0deg)' },
+                            '100%': { transform: 'rotateY(360deg)' },
+                        },
+                        'orbit-x': {
+                            '0%': { transform: 'rotateX(0deg)' },
+                            '100%': { transform: 'rotateX(360deg)' },
+                        },
+                        'orbit-diagonal': {
+                            '0%': { transform: 'rotate3d(1, 1, 0, 0deg)' },
+                            '100%': { transform: 'rotate3d(1, 1, 0, 360deg)' },
+                        },
+                        'breathe': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.1)', opacity: '0.8' },
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        /* Selection */
+        ::selection {
+            background: #0066FF;
+            color: white;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Neural Core Animations */
+        .orbit-y {
+            animation: orbit-y 20s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .orbit-x {
+            animation: orbit-x 25s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .orbit-diagonal {
+            animation: orbit-diagonal 30s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .breathe {
+            animation: breathe 3s ease-in-out infinite;
+        }
+        @keyframes orbit-y {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        @keyframes orbit-x {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(360deg); }
+        }
+        @keyframes orbit-diagonal {
+            0% { transform: rotate3d(1, 1, 0, 0deg); }
+            100% { transform: rotate3d(1, 1, 0, 360deg); }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* Gradient Text - Industrial Blue */
+        .gradient-text {
+            background: linear-gradient(135deg, #0066FF 0%, #3385FF 50%, #66A3FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Card Styles - Industrial/Metallic */
+        .card-v3 {
+            background: linear-gradient(180deg, rgba(30, 30, 38, 0.95) 0%, rgba(20, 20, 25, 0.98) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-v3:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 8px 32px rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Industrial Button */
+        .btn-glow {
+            background: linear-gradient(180deg, #0066FF 0%, #0052CC 100%);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-glow:hover {
+            background: linear-gradient(180deg, #3385FF 0%, #0066FF 100%);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 6px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* Subtle Gradient Background - More Neutral */
+        .bg-gradient-subtle {
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 102, 255, 0.08), transparent);
+        }
+
+        /* Counter */
+        .counter {
+            display: inline-block;
+        }
+
+        /* Grid pattern - Industrial */
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Orbit animation */
+        .orbit {
+            animation: orbit 20s linear infinite;
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Status dot */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22C55E;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Progress Bar Animation */
+        .progress-animate {
+            animation: progress-fill 2s ease-out forwards;
+            width: 0;
+        }
+        @keyframes progress-fill {
+            to { width: var(--progress-width); }
+        }
+
+        /* Wave bars */
+        .wave-bar {
+            transition: height 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-[#0A0A0F] text-slate-200 font-display antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-[60] bg-[#0A0A0F]/90 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 flex items-center justify-center">
+                        <img src="img/logoNewcom.png" alt="Newcom" class="w-full h-full object-contain"/>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-base tracking-tight text-white">NEWCOM</span>
+                        <span class="text-[9px] text-primary font-medium tracking-widest">ARGENTINA</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#ecosystem">Soluciones</a>
+                    <a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#capacidades">Capacidades</a>
+                    <a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#wim">Pesaje Dinámico</a>
+                    <a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#monitoreo">Monitoreo</a>
+                    <a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#nosotros">Nosotros</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-xs font-medium text-emerald-400 flex items-center gap-2">
+                        <span class="status-dot"></span>
+                        Online
+                    </span>
+                    <button onclick="openContactModal()" class="hidden sm:block btn-glow text-white px-5 py-2 text-sm font-semibold rounded-lg">
+                        Contacto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center overflow-hidden pt-16">
+        <!-- Gradient Background -->
+        <div class="absolute inset-0 bg-gradient-subtle"></div>
+        <div class="absolute inset-0 grid-pattern"></div>
+        
+        <!-- Floating Orbs - Subtle Industrial -->
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-steel/5 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-3 mb-8 bg-white/5 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
+                    <span class="text-primary font-medium text-sm">Integrador Tecnológico</span>
+                    <span class="w-1 h-1 bg-slate-500 rounded-full"></span>
+                    <span class="text-slate-400 text-sm">Hardware + Software</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
+                    Soluciones<br/>
+                    <span class="gradient-text">IT</span>
+                </h1>
+                <p class="mt-6 max-w-xl text-lg text-slate-400 leading-relaxed">
+                    Líderes en Sistemas Inteligentes de Transporte (ITS), Desarrollo de Software a Medida y Soluciones de Misión Crítica.
+                </p>
+                <div class="mt-10">
+                    <button onclick="openContactModal()" class="btn-glow px-10 py-4 text-white font-semibold text-sm rounded-xl flex items-center gap-3">
+                        <span class="material-symbols-outlined text-lg">mail</span>
+                        Contactanos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side - The Neural Core -->
+            <div class="lg:col-span-5 hidden lg:flex justify-center relative" style="perspective: 1000px;">
+                <div class="relative w-96 h-96">
+                    <!-- Orbit 1 - Y Axis -->
+                    <div class="absolute inset-0 rounded-full border border-white/10 orbit-y" style="transform-style: preserve-3d;">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-[0_0_10px_rgba(0,102,255,0.8)]"></div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-primary/60 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Orbit 2 - X Axis -->
+                    <div class="absolute inset-8 rounded-full border border-white/10 orbit-x" style="transform-style: preserve-3d;">
+                        <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-emerald-400 rounded-full shadow-[0_0_10px_rgba(52,211,153,0.8)]"></div>
+                        <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-400/60 rounded-full"></div>
+                    </div>
+                    
+                    <!-- Orbit 3 - Diagonal -->
+                    <div class="absolute inset-16 rounded-full border border-white/10 orbit-diagonal" style="transform-style: preserve-3d;">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-violet-400 rounded-full shadow-[0_0_10px_rgba(167,139,250,0.8)]"></div>
+                    </div>
+                    
+                    <!-- Floating Labels -->
+                    <div class="absolute top-4 right-4 bg-slate-800/80 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-1.5 text-[10px] font-mono text-primary animate-pulse">
+                        AI LOGIC
+                    </div>
+                    <div class="absolute bottom-12 left-0 bg-slate-800/80 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-1.5 text-[10px] font-mono text-emerald-400" style="animation: float 4s ease-in-out infinite;">
+                        WIM SENSOR
+                    </div>
+                    <div class="absolute top-1/3 -right-4 bg-slate-800/80 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-1.5 text-[10px] font-mono text-violet-400" style="animation: float 5s ease-in-out infinite 1s;">
+                        LPR NODE
+                    </div>
+                    
+                    <!-- Connection Lines -->
+                    <svg class="absolute inset-0 w-full h-full" style="overflow: visible;">
+                        <line x1="50%" y1="50%" x2="85%" y2="15%" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50%" y1="50%" x2="5%" y2="75%" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50%" y1="50%" x2="105%" y2="33%" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4,4"/>
+                    </svg>
+                    
+                    <!-- Core Center - Breathing Chip Icon -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-24 h-24 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-white/20 flex items-center justify-center breathe shadow-[0_0_40px_rgba(0,102,255,0.3)]">
+                            <span class="material-symbols-outlined text-primary text-5xl">memory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="absolute bottom-0 w-full border-t border-white/5 bg-slate-950/50 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center text-sm text-slate-500">
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+                    Scroll para explorar
+                </span>
+                <span class="flex items-center gap-2">
+                    <span class="status-dot"></span>
+                    <span class="text-slate-400">Feed en vivo</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trusted By Section -->
+    <div class="bg-[#0A0A0F] py-12 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-sm text-slate-500 mb-8 font-medium">Infraestructura de Confianza para Organizaciones Líderes</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <div class="text-sm font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-lg">security</span> AUSA
+                </div>
+                <div class="text-sm font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-lg">toll</span> AUBASA
+                </div>
+                <div class="text-sm font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-lg">local_police</span> POLICÍA CABA
+                </div>
+                <div class="text-sm font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-lg">traffic</span> VIALIDAD
+                </div>
+                <div class="text-sm font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-lg">public</span> MIN. TRANSPORTE
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ecosystem Section - Bento Grid -->
+    <section class="py-24 bg-[#0A0A0F] relative" id="ecosystem">
+        <div class="absolute inset-0 bg-gradient-subtle"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary font-medium text-sm tracking-wider uppercase mb-4 block">Ecosistema Tecnológico</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Pilares de Integración</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Cuatro verticales tecnológicas que combinan hardware especializado y software de alto rendimiento.
+                </p>
+            </div>
+
+            <!-- Bento Grid - 4 Pilares -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- PILAR 1: ITS & Infraestructura Crítica -->
+                <div class="card-v3 p-8 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center border border-white/10">
+                            <span class="material-symbols-outlined text-primary text-2xl">filter_center_focus</span>
+                        </div>
+                        <span class="text-xs font-mono text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">PILAR 01</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">ITS & Infraestructura Crítica</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        Gestión de movilidad y fiscalización electrónica mediante hardware de precisión. LPR, Anillo Digital y Pesaje Dinámico (WIM).
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-white/5">LPR</span>
+                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-white/5">WIM</span>
+                        <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-white/5">Anillo Digital</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-sm font-semibold text-primary">99.8% Accuracy</span>
+                        <span class="text-xs text-slate-500">AUSA/AUBASA</span>
+                    </div>
+                </div>
+
+                <!-- PILAR 2: Software Factory & Cloud -->
+                <div class="card-v3 p-8 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-2xl flex items-center justify-center border border-white/10">
+                            <span class="material-symbols-outlined text-emerald-400 text-2xl">terminal</span>
+                        </div>
+                        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">PILAR 02</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Software Factory & Cloud</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        Arquitecturas escalables, microservicios y refactorización de sistemas legacy. Desarrollo backend de alto rendimiento.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">Java</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">.Net</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">PHP</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">Python</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-sm font-semibold text-emerald-400">Full Stack</span>
+                        <span class="text-xs text-slate-500">Cloud Native</span>
+                    </div>
+                </div>
+
+                <!-- PILAR 3: Apps & Movilidad -->
+                <div class="card-v3 p-8 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center border border-white/10">
+                            <span class="material-symbols-outlined text-cyan-400 text-2xl">smartphone</span>
+                        </div>
+                        <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">PILAR 03</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Apps & Movilidad</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        Soluciones multiplataforma para fuerza de trabajo en campo y usuario final. Experiencia móvil nativa e híbrida.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">iOS</span>
+                        <span class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">Android</span>
+                        <span class="text-xs bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/20">React Native</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-sm font-semibold text-cyan-400">Multiplataforma</span>
+                        <span class="text-xs text-slate-500">Field & Consumer</span>
+                    </div>
+                </div>
+
+                <!-- PILAR 4: QA, IoT & Big Analytics -->
+                <div class="card-v3 p-8 group">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-steel/20 to-gray-500/20 rounded-2xl flex items-center justify-center border border-white/10">
+                            <span class="material-symbols-outlined text-steel-light text-2xl">analytics</span>
+                        </div>
+                        <span class="text-xs font-mono text-steel-light bg-steel/10 px-3 py-1 rounded-full border border-steel/20">PILAR 04</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">QA, IoT & Big Analytics</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        Testing funcional/no funcional, integración de sensores IoT y análisis de Big Data para decisiones basadas en evidencia.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="text-xs bg-steel/10 text-steel-light px-3 py-1 rounded-full border border-steel/20">Testing</span>
+                        <span class="text-xs bg-steel/10 text-steel-light px-3 py-1 rounded-full border border-steel/20">IoT</span>
+                        <span class="text-xs bg-steel/10 text-steel-light px-3 py-1 rounded-full border border-steel/20">Big Data</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-sm font-semibold text-steel-light">Data-Driven</span>
+                        <span class="text-xs text-slate-500">QA Automatizado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                <div class="card-v3 p-5 text-center">
+                    <div class="text-2xl font-bold text-white">25+</div>
+                    <div class="text-xs text-slate-500 mt-1">Ciudades Digitalizadas</div>
+                </div>
+                <div class="card-v3 p-5 text-center">
+                    <div class="text-2xl font-bold text-white">10K+</div>
+                    <div class="text-xs text-slate-500 mt-1">Usuarios Activos/Día</div>
+                </div>
+                <div class="card-v3 p-5 text-center">
+                    <div class="text-2xl font-bold gradient-text">99.97%</div>
+                    <div class="text-xs text-slate-500 mt-1">SLA Garantizado</div>
+                </div>
+                <div class="card-v3 p-5 text-center">
+                    <div class="text-2xl font-bold text-white flex items-center justify-center gap-1">
+                        <span class="material-symbols-outlined text-amber-400 text-lg">emoji_events</span>
+                        8
+                    </div>
+                    <div class="text-xs text-slate-500 mt-1">Reconocimientos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive: Capacidades Verticales -->
+    <section class="py-24 bg-[#0D0D12] border-y border-white/10 relative" id="capacidades">
+        <div class="absolute inset-0 grid-pattern opacity-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-primary font-medium text-sm tracking-wider uppercase mb-4 block">Profundización Técnica</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Capacidades Verticales</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Conoce en detalle cada vertical de integración tecnológica.</p>
+            </div>
+
+            <!-- Bloque 1: ITS - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <div class="space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium border border-primary/20">
+                        <span class="w-2 h-2 bg-primary rounded-full"></span>
+                        Pilar 01
+                    </span>
+                    <h3 class="text-3xl font-bold text-white">ITS / Smart Cities</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Utilizamos herramientas tecnológicas para aumentar la eficiencia de los servicios públicos. Integramos toda la cadena de valor IoT: desde la definición del modelo de negocio hasta la infraestructura de sensores y casos de uso en prevención.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Sensores piezoeléctricos WIM</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Cámaras LPR multibanda</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Controladores de semáforos inteligentes</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Gateways IoT industriales</li>
+                    </ul>
+                </div>
+                <!-- Visual: Nodos conectados -->
+                <div class="relative h-80 card-v3 overflow-hidden flex items-center justify-center">
+                    <svg viewBox="0 0 200 200" class="w-64 h-64">
+                        <!-- Conexiones con gradiente - Industrial Blue -->
+                        <defs>
+                            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0066FF;stop-opacity:0.6" />
+                                <stop offset="100%" style="stop-color:#3385FF;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+                        <line x1="100" y1="40" x2="40" y2="100" stroke="url(#lineGrad)" stroke-width="2"/>
+                        <line x1="100" y1="40" x2="160" y2="100" stroke="url(#lineGrad)" stroke-width="2"/>
+                        <line x1="40" y1="100" x2="100" y2="160" stroke="url(#lineGrad)" stroke-width="2"/>
+                        <line x1="160" y1="100" x2="100" y2="160" stroke="url(#lineGrad)" stroke-width="2"/>
+                        <line x1="40" y1="100" x2="160" y2="100" stroke="url(#lineGrad)" stroke-width="1" opacity="0.5"/>
+                        <!-- Nodos - Industrial -->
+                        <circle cx="100" cy="40" r="14" fill="#0066FF" class="animate-pulse"/>
+                        <circle cx="40" cy="100" r="12" fill="#3385FF"/>
+                        <circle cx="160" cy="100" r="12" fill="#3385FF"/>
+                        <circle cx="100" cy="160" r="14" fill="#0052CC" class="animate-pulse"/>
+                        <circle cx="100" cy="100" r="10" fill="#66A3FF"/>
+                        <!-- Labels -->
+                        <text x="100" y="18" fill="#9CA3AF" font-size="9" text-anchor="middle" font-weight="500">SENSOR</text>
+                        <text x="15" y="105" fill="#9CA3AF" font-size="9" text-anchor="middle" font-weight="500">LPR</text>
+                        <text x="185" y="105" fill="#9CA3AF" font-size="9" text-anchor="middle" font-weight="500">WIM</text>
+                        <text x="100" y="188" fill="#9CA3AF" font-size="9" text-anchor="middle" font-weight="500">GATEWAY</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Bloque 2: Software Factory - Visual Izq / Texto Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <!-- Visual: Terminal/Código -->
+                <div class="order-2 lg:order-1 relative h-80 bg-slate-900 border border-white/10 rounded-2xl overflow-hidden font-mono text-xs shadow-card">
+                    <div class="absolute top-0 left-0 right-0 h-10 bg-slate-800/80 border-b border-white/5 flex items-center px-4 gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                        <span class="ml-4 text-slate-500 text-xs font-mono">NewcomBackend.java</span>
+                    </div>
+                    <div class="p-5 pt-14 text-[12px] leading-relaxed">
+                        <div class="text-slate-500">// Microservicio de procesamiento</div>
+                        <div><span class="text-violet-400">@Service</span></div>
+                        <div><span class="text-cyan-400">public class</span> <span class="text-emerald-400">TransactionProcessor</span> {</div>
+                        <div class="pl-4"><span class="text-violet-400">@Autowired</span></div>
+                        <div class="pl-4"><span class="text-cyan-400">private</span> <span class="text-slate-300">LPRService lprService;</span></div>
+                        <div class="pl-4 mt-3"><span class="text-cyan-400">public</span> Response <span class="text-amber-400">process</span>() {</div>
+                        <div class="pl-8"><span class="text-cyan-400">return</span> <span class="text-slate-300">lprService</span></div>
+                        <div class="pl-12 text-slate-400">.validate()</div>
+                        <div class="pl-12 text-slate-400">.enrich()</div>
+                        <div class="pl-12 text-slate-400">.persist();</div>
+                        <div class="pl-4">}</div>
+                        <div>}</div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-2 rounded-full text-sm font-medium border border-emerald-500/20">
+                        <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                        Pilar 02
+                    </span>
+                    <h3 class="text-3xl font-bold text-white">Software Factory</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Desarrollamos software sobre tecnologías JAVA, .Net y PHP bajo metodologías ágiles. Realizamos aplicaciones a medida, mantenimiento evolutivo y refactorización de sistemas existentes.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Arquitectura de microservicios</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> APIs RESTful & GraphQL</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Integración con sistemas legacy</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> DevOps & CI/CD pipelines</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 3: Apps - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <div class="space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-400 px-4 py-2 rounded-full text-sm font-medium border border-cyan-500/20">
+                        <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                        Pilar 03
+                    </span>
+                    <h3 class="text-3xl font-bold text-white">Apps Móviles</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Diseño y desarrollo multiplataforma híbridas y nativas (iOS, Android, Windows Mobile). Soluciones de campo integradas con sistemas centrales.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> Apps nativas iOS & Android</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> React Native cross-platform</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> Modo offline con sync</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span> Push notifications & geofencing</li>
+                    </ul>
+                </div>
+                <!-- Visual: Phone Frame -->
+                <div class="relative h-80 flex items-center justify-center">
+                    <div class="relative w-48 h-80 bg-gradient-to-b from-slate-800 to-slate-900 border-[5px] border-slate-700 rounded-[2.5rem] overflow-hidden shadow-card">
+                        <div class="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-slate-700 rounded-full"></div>
+                        <div class="h-full pt-6 pb-4 px-3 flex flex-col">
+                            <div class="bg-primary/20 rounded-xl p-3 mb-3 border border-primary/30">
+                                <div class="text-[10px] text-primary font-semibold mb-1">🔔 ALERTA</div>
+                                <div class="text-[9px] text-slate-400">Nueva infracción detectada</div>
+                            </div>
+                            <div class="bg-slate-800 rounded-xl p-3 mb-3 flex items-center gap-2 border border-white/5">
+                                <span class="material-symbols-outlined text-emerald-400 text-base">check_circle</span>
+                                <div class="text-[10px] text-slate-300 font-medium">Sincronizado</div>
+                            </div>
+                            <div class="flex-1 bg-slate-800 rounded-xl p-3 border border-white/5">
+                                <div class="text-[9px] text-slate-500 mb-1">PATENTES HOY</div>
+                                <div class="text-2xl font-bold text-white">1,247</div>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <button class="flex-1 btn-glow rounded-xl py-2.5 text-center text-[10px] text-white font-bold">ESCANEAR</button>
+                                <button class="flex-1 bg-slate-800 rounded-xl py-2.5 text-center text-[10px] text-slate-400 font-medium border border-white/5">HISTORIAL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque 4: Cloud Computing & DevOps - Visual Izq / Texto Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <!-- Visual: Cloud Architecture Diagram -->
+                <div class="order-2 lg:order-1 relative h-80 card-v3 overflow-hidden flex items-center justify-center">
+                    <svg viewBox="0 0 240 200" class="w-72 h-60">
+                        <!-- Cloud Shape -->
+                        <defs>
+                            <linearGradient id="cloudGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F97316;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#EA580C;stop-opacity:0.15" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Main Cloud -->
+                        <path d="M180,80 a30,30 0 0,0 -50,-25 a40,40 0 0,0 -75,20 a25,25 0 0,0 0,50 h120 a25,25 0 0,0 5,-45z" 
+                              fill="url(#cloudGrad3)" stroke="#F97316" stroke-width="1.5"/>
+                        <!-- AWS/Azure Icons inside cloud -->
+                        <text x="95" y="75" fill="#F97316" font-size="9" font-weight="600" text-anchor="middle">AWS</text>
+                        <text x="145" y="75" fill="#0066FF" font-size="9" font-weight="600" text-anchor="middle">Azure</text>
+                        
+                        <!-- Connection lines -->
+                        <line x1="80" y1="125" x2="80" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        <line x1="120" y1="125" x2="120" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        <line x1="160" y1="125" x2="160" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        
+                        <!-- Servers/Containers -->
+                        <rect x="65" y="150" width="30" height="35" rx="3" fill="rgba(249,115,22,0.1)" stroke="#F97316" stroke-width="1"/>
+                        <rect x="69" y="158" width="8" height="3" fill="#F97316" rx="1"/>
+                        <rect x="69" y="164" width="8" height="3" fill="#F97316" rx="1"/>
+                        <rect x="69" y="170" width="8" height="3" fill="#F97316" rx="1"/>
+                        <text x="80" y="195" fill="#94A3B8" font-size="7" text-anchor="middle">Server</text>
+                        
+                        <rect x="105" y="150" width="30" height="35" rx="3" fill="rgba(0,102,255,0.1)" stroke="#0066FF" stroke-width="1"/>
+                        <circle cx="120" cy="163" r="6" fill="none" stroke="#0066FF" stroke-width="1.5"/>
+                        <circle cx="120" cy="163" r="3" fill="#0066FF"/>
+                        <text x="120" y="195" fill="#94A3B8" font-size="7" text-anchor="middle">K8s</text>
+                        
+                        <rect x="145" y="150" width="30" height="35" rx="3" fill="rgba(249,115,22,0.1)" stroke="#F97316" stroke-width="1"/>
+                        <rect x="149" y="156" width="22" height="6" rx="1" fill="#F97316" opacity="0.3"/>
+                        <rect x="149" y="164" width="22" height="6" rx="1" fill="#F97316" opacity="0.5"/>
+                        <rect x="149" y="172" width="22" height="6" rx="1" fill="#F97316" opacity="0.7"/>
+                        <text x="160" y="195" fill="#94A3B8" font-size="7" text-anchor="middle">DB</text>
+                        
+                        <!-- CI/CD Arrow -->
+                        <path d="M30,100 L50,100" stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrowhead3)"/>
+                        <defs>
+                            <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#22C55E"/>
+                            </marker>
+                        </defs>
+                        <text x="20" y="95" fill="#22C55E" font-size="7" font-weight="600">CI/CD</text>
+                    </svg>
+                    <div class="absolute bottom-3 right-3 text-xs font-medium text-slate-500">Cloud Architecture</div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-400 px-4 py-2 rounded-full text-sm font-medium border border-orange-500/20">
+                        <span class="w-2 h-2 bg-orange-400 rounded-full"></span>
+                        Pilar 04
+                    </span>
+                    <h3 class="text-3xl font-bold text-white">Cloud Computing & DevOps</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Diseño, migración y gestión de arquitecturas en la nube (AWS, Azure). Transformamos infraestructura estática en entornos elásticos y de alta disponibilidad.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full"></span> Arquitecturas Híbridas & Multi-Cloud</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full"></span> Kubernetes & Containerización</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full"></span> Automatización CI/CD</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full"></span> Optimización de Costos (FinOps)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 5: Data - Visual Izq / Texto Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <!-- Visual: Gráfico de barras animado -->
+                <div class="order-2 lg:order-1 relative h-80 card-v3 overflow-hidden p-6">
+                    <div class="absolute top-4 left-6 text-sm font-semibold text-white">Analytics Dashboard</div>
+                    <div class="h-full flex items-end justify-center gap-5 pt-10 pb-6">
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg animate-[pulse_2s_ease-in-out_infinite]" style="height: 55%"></div>
+                            <span class="text-xs text-slate-500 font-medium">LUN</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg animate-[pulse_2s_ease-in-out_infinite_0.2s]" style="height: 75%"></div>
+                            <span class="text-xs text-slate-500 font-medium">MAR</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg animate-[pulse_2s_ease-in-out_infinite_0.4s]" style="height: 40%"></div>
+                            <span class="text-xs text-slate-500 font-medium">MIE</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg animate-[pulse_2s_ease-in-out_infinite_0.6s]" style="height: 85%"></div>
+                            <span class="text-xs text-slate-500 font-medium">JUE</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg animate-[pulse_2s_ease-in-out_infinite_0.8s]" style="height: 65%"></div>
+                            <span class="text-xs text-slate-500 font-medium">VIE</span>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 right-6 text-right">
+                        <div class="text-2xl font-bold text-white">+23%</div>
+                        <div class="text-xs text-emerald-400 font-medium">vs semana anterior</div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-steel/10 text-steel-light px-4 py-2 rounded-full text-sm font-medium border border-steel/20">
+                        <span class="w-2 h-2 bg-steel-light rounded-full"></span>
+                        Pilar 05
+                    </span>
+                    <h3 class="text-3xl font-bold text-white">Data & QA</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Cubrimos pruebas funcionales y no funcionales con herramientas de gestión. Realizamos Big Analytics sobre datos generados por clientes para detectar necesidades y preferencias.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-steel-light rounded-full"></span> Dashboards en tiempo real</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-steel-light rounded-full"></span> ETL & Data Pipelines</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-steel-light rounded-full"></span> Machine Learning predictivo</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-steel-light rounded-full"></span> Reportes automatizados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 5: Video Analytics - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-medium border border-red-500/20">
+                        <span class="w-2 h-2 bg-red-400 rounded-full animate-pulse"></span>
+                        Pilar 06
+                    </span>
+                    <h3 class="text-3xl font-bold text-white">Video Analytics</h3>
+                    <p class="text-slate-400 leading-relaxed">
+                        Análisis de video inteligente con algoritmos de visión computacional. Detección automática de eventos, reconocimiento de patentes y monitoreo en tiempo real de infraestructura crítica.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span> Reconocimiento de patentes (LPR)</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span> Detección de incidentes viales</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span> Conteo vehicular inteligente</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-400 rounded-full"></span> Alertas en tiempo real 24/7</li>
+                    </ul>
+                </div>
+                <!-- Visual: Video Wall Mini con AI Overlay -->
+                <div class="relative h-80 card-v3 overflow-hidden p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            <span class="text-xs font-semibold text-white">AI Video Analysis</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded-full">4 FEEDS</span>
+                    </div>
+                    
+                    <!-- Camera Grid 2x2 -->
+                    <div class="grid grid-cols-2 gap-2 h-[calc(100%-3rem)]">
+                        <!-- Camera 1 - LPR Detection -->
+                        <div class="relative bg-slate-900 rounded-lg overflow-hidden border border-emerald-500/30">
+                            <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                <span class="text-[9px] text-emerald-400 font-mono font-bold">LPR</span>
+                            </div>
+                            <!-- Detection Box -->
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-6 border-2 border-emerald-400 rounded animate-pulse">
+                                <div class="absolute -bottom-5 left-0 right-0 text-center">
+                                    <span class="text-[8px] text-emerald-400 font-mono bg-emerald-500/20 px-1.5 py-0.5 rounded">AB 123 CD</span>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined absolute bottom-2 right-2 text-emerald-500/40 text-xl">directions_car</span>
+                        </div>
+                        
+                        <!-- Camera 2 - Motion Detection -->
+                        <div class="relative bg-slate-900 rounded-lg overflow-hidden border border-amber-500/30">
+                            <div class="absolute inset-0 bg-gradient-to-br from-amber-900/10 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                                <span class="text-[9px] text-amber-400 font-mono font-bold">MOTION</span>
+                            </div>
+                            <!-- Motion zones -->
+                            <div class="absolute top-1/3 left-1/4 w-8 h-8 border border-amber-400/50 rounded bg-amber-500/10 animate-pulse"></div>
+                            <div class="absolute top-1/2 right-1/4 w-6 h-6 border border-amber-400/50 rounded bg-amber-500/10 animate-pulse" style="animation-delay: 0.3s"></div>
+                            <span class="material-symbols-outlined absolute bottom-2 right-2 text-amber-500/40 text-xl">sensors</span>
+                        </div>
+                        
+                        <!-- Camera 3 - Traffic Count -->
+                        <div class="relative bg-slate-900 rounded-lg overflow-hidden border border-primary/30">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                <span class="text-[9px] text-primary font-mono font-bold">COUNT</span>
+                            </div>
+                            <!-- Counter line -->
+                            <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-primary/50">
+                                <div class="absolute -top-3 right-2 text-[10px] text-primary font-mono font-bold">247</div>
+                            </div>
+                            <span class="material-symbols-outlined absolute bottom-2 right-2 text-primary/40 text-xl">analytics</span>
+                        </div>
+                        
+                        <!-- Camera 4 - Alert Zone -->
+                        <div class="relative bg-slate-900 rounded-lg overflow-hidden border border-red-500/30">
+                            <div class="absolute inset-0 bg-gradient-to-br from-red-900/10 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[9px] text-red-400 font-mono font-bold">ALERT</span>
+                            </div>
+                            <!-- Alert zone polygon -->
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <polygon points="20,30 80,25 85,75 15,80" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.4)" stroke-width="1" class="animate-pulse"/>
+                            </svg>
+                            <span class="material-symbols-outlined absolute bottom-2 right-2 text-red-500/40 text-xl">warning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WIM Section -->
+    <section class="py-24 bg-[#0A0A0F] relative overflow-hidden" id="wim">
+        <div class="absolute inset-0 bg-gradient-subtle"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary font-medium text-sm tracking-wider uppercase mb-4 block">Hardware de Precisión</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                    Pesaje Dinámico <span class="gradient-text">WIM</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Weigh-In-Motion: Sistema de pesaje inteligente que detecta sobrecarga a velocidad de autopista sin interrumpir el flujo vehicular.
+                </p>
+            </div>
+
+            <!-- WIM Visual Component -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Left - Truck Visualization (Clean 3D Style) -->
+                <div class="card-v3 p-8 relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-6 pb-4 border-b border-white/5">
+                        <div class="flex items-center gap-3">
+                            <span class="status-dot"></span>
+                            <span class="font-semibold text-white">Escaneo en Vivo</span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-800 px-3 py-1 rounded-full">WIM-X500</span>
+                    </div>
+
+                    <!-- Truck SVG - Modern Vector Style with Gradients -->
+                    <div class="relative py-8">
+                        <svg viewBox="0 0 400 160" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <!-- Gradientes para el camión - Industrial Style -->
+                                <linearGradient id="truckBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4B5563"/>
+                                    <stop offset="100%" style="stop-color:#374151"/>
+                                </linearGradient>
+                                <linearGradient id="cabinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6B7280"/>
+                                    <stop offset="100%" style="stop-color:#4B5563"/>
+                                </linearGradient>
+                                <linearGradient id="windowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3385FF"/>
+                                    <stop offset="100%" style="stop-color:#0066FF"/>
+                                </linearGradient>
+                                <linearGradient id="sensorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#0066FF"/>
+                                    <stop offset="100%" style="stop-color:#3385FF"/>
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Road surface -->
+                            <rect x="20" y="130" width="360" height="12" rx="2" fill="#1E1E26"/>
+                            <rect x="20" y="132" width="360" height="3" fill="url(#sensorGrad)" opacity="0.3"/>
+                            
+                            <!-- Sensor strips -->
+                            <rect x="60" y="128" width="40" height="4" rx="2" fill="url(#sensorGrad)" filter="url(#glow)"/>
+                            <rect x="140" y="128" width="40" height="4" rx="2" fill="url(#sensorGrad)" filter="url(#glow)"/>
+                            <rect x="245" y="128" width="60" height="4" rx="2" fill="url(#sensorGrad)" filter="url(#glow)"/>
+
+                            <!-- Truck Container -->
+                            <rect x="100" y="45" width="200" height="60" rx="4" fill="url(#truckBodyGrad)" stroke="#6B7280" stroke-width="1"/>
+                            <!-- Container lines -->
+                            <line x1="150" y1="45" x2="150" y2="105" stroke="#6B7280" stroke-width="0.5" opacity="0.5"/>
+                            <line x1="200" y1="45" x2="200" y2="105" stroke="#6B7280" stroke-width="0.5" opacity="0.5"/>
+                            <line x1="250" y1="45" x2="250" y2="105" stroke="#6B7280" stroke-width="0.5" opacity="0.5"/>
+
+                            <!-- Cabin -->
+                            <path d="M 50 60 L 50 105 L 100 105 L 100 75 L 78 60 Z" fill="url(#cabinGrad)" stroke="#6B7280" stroke-width="1"/>
+                            <!-- Cabin Window -->
+                            <path d="M 55 65 L 73 65 L 82 75 L 55 75 Z" fill="url(#windowGrad)" opacity="0.8"/>
+
+                            <!-- Wheels with depth -->
+                            <ellipse cx="70" cy="115" rx="16" ry="14" fill="#1E1E26"/>
+                            <ellipse cx="70" cy="114" rx="12" ry="10" fill="#374151"/>
+                            <ellipse cx="70" cy="114" rx="6" ry="5" fill="#4B5563"/>
+                            
+                            <ellipse cx="150" cy="115" rx="16" ry="14" fill="#1E1E26"/>
+                            <ellipse cx="150" cy="114" rx="12" ry="10" fill="#374151"/>
+                            <ellipse cx="150" cy="114" rx="6" ry="5" fill="#4B5563"/>
+                            
+                            <ellipse cx="255" cy="115" rx="16" ry="14" fill="#1E1E26"/>
+                            <ellipse cx="255" cy="114" rx="12" ry="10" fill="#374151"/>
+                            <ellipse cx="255" cy="114" rx="6" ry="5" fill="#4B5563"/>
+                            
+                            <ellipse cx="290" cy="115" rx="16" ry="14" fill="#1E1E26"/>
+                            <ellipse cx="290" cy="114" rx="12" ry="10" fill="#374151"/>
+                            <ellipse cx="290" cy="114" rx="6" ry="5" fill="#4B5563"/>
+
+                            <!-- Axle labels -->
+                            <text x="70" y="25" fill="#9CA3AF" font-size="10" text-anchor="middle" font-weight="500">EJE 1</text>
+                            <text x="150" y="25" fill="#9CA3AF" font-size="10" text-anchor="middle" font-weight="500">EJE 2</text>
+                            <text x="272" y="25" fill="#9CA3AF" font-size="10" text-anchor="middle" font-weight="500">EJE 3-4</text>
+
+                            <!-- Weight indicators -->
+                            <line x1="70" y1="30" x2="70" y2="45" stroke="#0066FF" stroke-width="1" stroke-dasharray="2,2"/>
+                            <line x1="150" y1="30" x2="150" y2="45" stroke="#0066FF" stroke-width="1" stroke-dasharray="2,2"/>
+                            <line x1="272" y1="30" x2="272" y2="45" stroke="#0066FF" stroke-width="1" stroke-dasharray="2,2"/>
+                        </svg>
+                    </div>
+
+                    <!-- Weight Distribution -->
+                    <div class="bg-[#141419] rounded-xl p-5 border border-white/10">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="font-medium text-white text-sm">Distribución de Peso por Eje</span>
+                            <span class="text-xs text-emerald-400 font-medium bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20">± 0.5% tolerancia</span>
+                        </div>
+                        <div class="flex items-end justify-between gap-3 h-20">
+                            <div class="flex-1 flex flex-col items-center gap-2">
+                                <div class="w-full bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg" style="height: 50%"></div>
+                                <span class="text-xs text-slate-400">6.2t</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2">
+                                <div class="w-full bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg" style="height: 75%"></div>
+                                <span class="text-xs text-slate-400">9.8t</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2">
+                                <div class="w-full bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg" style="height: 90%"></div>
+                                <span class="text-xs text-slate-400">12.1t</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2">
+                                <div class="w-full bg-gradient-to-t from-primary to-[#3385FF] rounded-t-lg" style="height: 85%"></div>
+                                <span class="text-xs text-slate-400">11.4t</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2">
+                                <div class="w-full bg-gradient-to-t from-primary/60 to-[#3385FF]/60 rounded-t-lg" style="height: 30%"></div>
+                                <span class="text-xs text-slate-400">3.3t</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right - Technical Data -->
+                <div class="space-y-6">
+                    <!-- Feature Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="card-v3 p-5 text-center">
+                            <div class="w-12 h-12 mx-auto mb-3 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+                                <span class="material-symbols-outlined text-primary text-xl">sensors</span>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">Detección de Ejes</h4>
+                            <p class="text-slate-500 text-xs">Precisión milimétrica</p>
+                        </div>
+                        <div class="card-v3 p-5 text-center">
+                            <div class="w-12 h-12 mx-auto mb-3 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20">
+                                <span class="material-symbols-outlined text-emerald-400 text-xl">monitoring</span>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">Varianza</h4>
+                            <p class="text-slate-500 text-xs">±0.5% tolerancia</p>
+                        </div>
+                        <div class="card-v3 p-5 text-center">
+                            <div class="w-12 h-12 mx-auto mb-3 bg-steel/10 rounded-xl flex items-center justify-center border border-steel/20">
+                                <span class="material-symbols-outlined text-steel-light text-xl">speed</span>
+                            </div>
+                            <h4 class="font-bold text-white text-sm mb-1">Calibración</h4>
+                            <p class="text-slate-500 text-xs">Auto-ajuste</p>
+                        </div>
+                    </div>
+
+                    <!-- Live Data Panel -->
+                    <div class="card-v3 p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="font-bold text-white">Telemetría en Vivo</h4>
+                            <span class="text-xs font-medium text-emerald-400 flex items-center gap-2 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                                <span class="status-dot"></span>
+                                Transmitiendo
+                            </span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center pb-4 border-b border-white/5">
+                                <span class="text-slate-400 text-sm">Peso Bruto Total</span>
+                                <span class="font-bold text-white font-mono">42.8 <span class="text-slate-500 font-normal">TON</span></span>
+                            </div>
+                            <div class="flex justify-between items-center pb-4 border-b border-white/5">
+                                <span class="text-slate-400 text-sm">Velocidad de Cruce</span>
+                                <span class="font-bold text-white font-mono">67 <span class="text-slate-500 font-normal">KM/H</span></span>
+                            </div>
+                            <div class="flex justify-between items-center pb-4 border-b border-white/5">
+                                <span class="text-slate-400 text-sm">Ejes Detectados</span>
+                                <span class="font-bold text-white font-mono">4</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400 text-sm">Estado</span>
+                                <span class="text-emerald-400 font-semibold text-sm flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm">check_circle</span>
+                                    DENTRO DE NORMA
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Centro de Monitoreo & Videovigilancia -->
+    <section class="py-24 bg-[#0D0D12] border-y border-white/10" id="monitoreo">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-primary font-medium text-sm tracking-wider uppercase mb-4 block">Monitoreo en Tiempo Real</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                    Centro de <span class="gradient-text">Videovigilancia</span>
+                </h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    Supervisión integral de infraestructura crítica. Cámaras de alta definición conectadas 24/7 para gestión urbana y vial.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Video Wall Principal -->
+                <div class="lg:col-span-2 card-v3 p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="status-dot"></span>
+                            <span class="font-semibold text-white">Video Wall — En Vivo</span>
+                        </div>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-800 px-3 py-1 rounded-full">6 CÁMARAS ACTIVAS</span>
+                    </div>
+                    
+                    <!-- Camera Grid 2x3 -->
+                    <div class="grid grid-cols-3 gap-3">
+                        <!-- Camera 1 -->
+                        <div class="relative aspect-video bg-slate-900 rounded-lg overflow-hidden border border-white/10 group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] text-red-400 font-mono font-bold">REC</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">CAM-01</div>
+                            <div class="absolute bottom-2 right-2 text-[9px] text-slate-500">Acceso Norte</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary/40 text-3xl">videocam</span>
+                        </div>
+                        
+                        <!-- Camera 2 -->
+                        <div class="relative aspect-video bg-slate-900 rounded-lg overflow-hidden border border-white/10 group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] text-red-400 font-mono font-bold">REC</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">CAM-02</div>
+                            <div class="absolute bottom-2 right-2 text-[9px] text-slate-500">Peaje Sur</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary/40 text-3xl">videocam</span>
+                        </div>
+                        
+                        <!-- Camera 3 -->
+                        <div class="relative aspect-video bg-slate-900 rounded-lg overflow-hidden border border-emerald-500/30 group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                                <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                                <span class="text-[10px] text-emerald-400 font-mono font-bold">LPR</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">CAM-03</div>
+                            <div class="absolute bottom-2 right-2 text-[9px] text-slate-500">Pórtico WIM</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-emerald-500/40 text-3xl">camera</span>
+                        </div>
+                        
+                        <!-- Camera 4 -->
+                        <div class="relative aspect-video bg-slate-900 rounded-lg overflow-hidden border border-white/10 group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] text-red-400 font-mono font-bold">REC</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">CAM-04</div>
+                            <div class="absolute bottom-2 right-2 text-[9px] text-slate-500">Centro Urbano</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary/40 text-3xl">videocam</span>
+                        </div>
+                        
+                        <!-- Camera 5 -->
+                        <div class="relative aspect-video bg-slate-900 rounded-lg overflow-hidden border border-amber-500/30 group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                                <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] text-amber-400 font-mono font-bold">ALERTA</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">CAM-05</div>
+                            <div class="absolute bottom-2 right-2 text-[9px] text-slate-500">Zona Carga</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-amber-500/40 text-3xl">warning</span>
+                        </div>
+                        
+                        <!-- Camera 6 -->
+                        <div class="relative aspect-video bg-slate-900 rounded-lg overflow-hidden border border-white/10 group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-slate-900"></div>
+                            <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] text-red-400 font-mono font-bold">REC</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">CAM-06</div>
+                            <div class="absolute bottom-2 right-2 text-[9px] text-slate-500">Ruta Provincial</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary/40 text-3xl">videocam</span>
+                        </div>
+                    </div>
+
+                    <!-- Status Bar -->
+                    <div class="mt-6 flex justify-between items-center text-xs text-slate-500 pt-4 border-t border-white/5">
+                        <span>Última actualización: hace 2 segundos</span>
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                            Almacenamiento: 78% disponible
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Features -->
+                <div class="space-y-6">
+                    <!-- Feature Cards -->
+                    <div class="card-v3 p-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 border border-primary/20">
+                            <span class="material-symbols-outlined text-primary text-xl">visibility</span>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Monitoreo 24/7</h4>
+                        <p class="text-slate-500 text-sm">Vigilancia ininterrumpida con grabación continua y alertas automáticas.</p>
+                    </div>
+
+                    <div class="card-v3 p-6">
+                        <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4 border border-emerald-500/20">
+                            <span class="material-symbols-outlined text-emerald-400 text-xl">smart_display</span>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Análisis Inteligente</h4>
+                        <p class="text-slate-500 text-sm">Detección automática de eventos y comportamientos anómalos.</p>
+                    </div>
+
+                    <div class="card-v3 p-6">
+                        <div class="w-12 h-12 bg-steel/10 rounded-xl flex items-center justify-center mb-4 border border-steel/20">
+                            <span class="material-symbols-outlined text-steel-light text-xl">storage</span>
+                        </div>
+                        <h4 class="font-bold text-white mb-2">Almacenamiento Cloud</h4>
+                        <p class="text-slate-500 text-sm">Respaldo seguro con retención configurable y acceso remoto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="py-24 bg-[#0A0A0F] relative overflow-hidden" id="security">
+        <div class="absolute inset-0 bg-gradient-subtle"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <!-- Left - Visual -->
+                <div class="order-2 lg:order-1 relative">
+                    <div class="aspect-square max-w-md mx-auto relative flex items-center justify-center">
+                        <div class="absolute w-full h-full border border-white/10 rounded-full"></div>
+                        <div class="absolute w-[80%] h-[80%] border border-dashed border-primary/30 rounded-full orbit"></div>
+                        <div class="absolute w-[60%] h-[60%] border border-primary/40 rounded-full"></div>
+                        <div class="z-10 card-v3 p-12 rounded-full">
+                            <span class="material-symbols-outlined text-6xl gradient-text">shield_lock</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right - Content -->
+                <div class="order-1 lg:order-2 space-y-8">
+                    <div>
+                        <span class="text-primary font-medium text-sm tracking-wider uppercase mb-4 block">Pilar de Ciberseguridad</span>
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                            Infraestructura<br/>
+                            <span class="gradient-text">Resiliente</span>
+                        </h2>
+                    </div>
+                    <p class="text-lg text-slate-400 leading-relaxed">
+                        Encriptación de grado militar para datos urbanos críticos. Garantizamos integridad de datos mediante verificación de nodos descentralizada y protocolos AES-256.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="card-v3 p-6">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 border border-primary/20">
+                                <span class="material-symbols-outlined text-primary text-xl">vpn_key</span>
+                            </div>
+                            <h4 class="font-bold text-white mb-2">Encriptación E2E</h4>
+                            <p class="text-slate-500 text-sm">Datos encriptados con AES-256 en tránsito y reposo.</p>
+                        </div>
+                        <div class="card-v3 p-6">
+                            <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4 border border-emerald-500/20">
+                                <span class="material-symbols-outlined text-emerald-400 text-xl">verified_user</span>
+                            </div>
+                            <h4 class="font-bold text-white mb-2">Zero Trust</h4>
+                            <p class="text-slate-500 text-sm">Verificación estricta de identidad para cada acceso.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Filosofía Section -->
+    <section class="py-24 bg-[#0A0A0F] relative overflow-hidden" id="nosotros">
+        <div class="absolute inset-0 bg-gradient-subtle"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary font-medium text-sm tracking-wider uppercase mb-4 block">Nuestra Visión</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Cómo <span class="gradient-text">Trabajamos</span></h2>
+            </div>
+
+            <!-- Mission Quote -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <blockquote class="relative card-v3 p-10 text-center">
+                    <div class="absolute -top-3 -left-3 text-primary/30 text-6xl font-serif">"</div>
+                    <p class="text-xl md:text-2xl text-slate-300 leading-relaxed font-light relative z-10">
+                        Proveemos junto a nuestros socios de negocios y colaboradores, productos y servicios con alto valor agregado con los más altos estándares de calidad, que satisfagan las necesidades de nuestros clientes y aporten a la generación de valor en su Empresa.
+                    </p>
+                    <div class="absolute -bottom-3 -right-3 text-primary/30 text-6xl font-serif">"</div>
+                </blockquote>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Valor 1 -->
+                <div class="card-v3 p-8">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 border border-primary/20">
+                        <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Entender la necesidad</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Conocemos el funcionamiento de sus productos en campo para ofrecer la mejor solución acorde a su empresa.
+                    </p>
+                </div>
+
+                <!-- Valor 2 -->
+                <div class="card-v3 p-8">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 border border-primary/20">
+                        <span class="material-symbols-outlined text-primary text-3xl">timer</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Entregar a tiempo</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Identificamos entregables de valor para asegurar su ejecución en orden y en los plazos acordados.
+                    </p>
+                </div>
+
+                <!-- Valor 3 -->
+                <div class="card-v3 p-8">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 border border-primary/20">
+                        <span class="material-symbols-outlined text-primary text-3xl">handshake</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Acompañar</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Nos volvemos su socio tecnológico, brindando soporte y evolución durante todo el ciclo de vida.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto Dedicada -->
+    <section class="py-24 bg-[#0A0A0F] border-y border-white/10 relative overflow-hidden" id="contacto">
+        <div class="absolute inset-0 bg-gradient-subtle"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary font-medium text-sm tracking-wider uppercase mb-4 block">Contacto</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                    Hablemos de su <span class="gradient-text">Proyecto</span>
+                </h2>
+                <p class="text-slate-400 max-w-xl mx-auto">
+                    Estamos listos para ayudarlo a implementar soluciones tecnológicas que transformen su operación.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                <!-- Left - Contact Info -->
+                <div class="space-y-6">
+                    <div class="card-v3 p-8">
+                        <h3 class="text-xl font-bold text-white mb-6">Información de Contacto</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0 border border-primary/20">
+                                    <span class="material-symbols-outlined text-primary text-xl">location_on</span>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold text-primary mb-1">Dirección</div>
+                                    <div class="text-slate-300">Av Alicia Moreau de Justo 1930</div>
+                                    <div class="text-slate-500 text-sm">Ciudad Autónoma de Buenos Aires, Argentina</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center flex-shrink-0 border border-emerald-500/20">
+                                    <span class="material-symbols-outlined text-emerald-400 text-xl">call</span>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold text-emerald-400 mb-1">Teléfono</div>
+                                    <div class="text-slate-300">+54 11 5031-5227</div>
+                                    <div class="text-slate-500 text-sm">Lunes a Viernes 9:00 - 18:00</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 bg-violet-500/10 rounded-2xl flex items-center justify-center flex-shrink-0 border border-violet-500/20">
+                                    <span class="material-symbols-outlined text-violet-400 text-xl">mail</span>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold text-violet-400 mb-1">Email</div>
+                                    <div class="text-slate-300">info@newcomargentina.com</div>
+                                    <div class="text-slate-500 text-sm">Respuesta en menos de 24 horas</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/5">
+                            <button onclick="openContactModal()" class="w-full btn-glow py-4 font-bold text-sm rounded-xl flex items-center justify-center text-white">
+                                Iniciar Proyecto
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right - Map -->
+                <div class="card-v3 relative overflow-hidden min-h-[400px] bg-slate-900/50 rounded-xl border border-primary/10">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.594028662469!2d-58.3650193!3d-34.6131849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a334c8b23e5c53%3A0x9e8e2b7a3c1d4e5f!2sAv.%20Alicia%20Moreau%20de%20Justo%201930%2C%20C1107%20CABA!5e0!3m2!1ses!2sar!4v1705673200000!5m2!1ses!2sar" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; position:absolute; inset:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <!-- GPS Pulse Overlay -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none z-10">
+                        <div class="absolute w-12 h-12 bg-primary/30 rounded-full animate-ping"></div>
+                        <div class="relative w-4 h-4 bg-primary rounded-full shadow-[0_0_20px_rgba(0,102,255,0.8)] border-2 border-white"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Minimalista -->
+    <footer class="bg-[#0D0D12] pt-8 pb-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Logo & Copyright -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <img src="img/logoNewcom.png" alt="Newcom" class="w-full h-full object-contain"/>
+                    </div>
+                    <span class="text-sm text-slate-500">
+                        © 2026 Newcom Argentina S.A. — Todos los derechos reservados.
+                    </span>
+                </div>
+
+                <!-- Links -->
+                <div class="flex items-center gap-6">
+                    <a class="text-sm text-slate-500 hover:text-white transition-colors" href="#">Privacidad</a>
+                    <a class="text-sm text-slate-500 hover:text-white transition-colors" href="#">Términos</a>
+                    <div class="flex items-center gap-3 ml-4 pl-4 border-l border-white/10">
+                        <a href="#" class="text-slate-500 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-lg">share</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div onclick="closeContactModal()" class="absolute inset-0 bg-[#0A0A0F]/90 backdrop-blur-sm"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative w-full max-w-lg card-v3 p-8 animate-[float_0.3s_ease-out]">
+            <!-- Close Button -->
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            
+            <!-- Header -->
+            <div class="mb-8">
+                <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4 border border-primary/20">
+                    <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                    Canal Directo
+                </span>
+                <h3 class="text-2xl font-bold text-white">Solicitar Asesoramiento</h3>
+                <p class="text-slate-400 text-sm mt-2">Complete el formulario y un especialista lo contactará.</p>
+            </div>
+            
+            <!-- Form -->
+            <form class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-slate-300">Nombre Completo *</label>
+                        <input required class="w-full bg-slate-800/50 border border-white/10 text-white text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary/50 outline-none transition-all placeholder-slate-500" placeholder="Juan Pérez" type="text"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-slate-300">Teléfono / WhatsApp *</label>
+                        <input required class="w-full bg-slate-800/50 border border-white/10 text-white text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary/50 outline-none transition-all placeholder-slate-500" placeholder="+54 11 1234-5678" type="tel"/>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-medium text-slate-300">Email Corporativo *</label>
+                    <input required class="w-full bg-slate-800/50 border border-white/10 text-white text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary/50 outline-none transition-all placeholder-slate-500" placeholder="usuario@organizacion.com" type="email"/>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-medium text-slate-300">Área de Interés *</label>
+                    <select required class="w-full bg-slate-800/50 border border-white/10 text-white text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary/50 outline-none transition-all">
+                        <option value="" class="bg-slate-800">Seleccione una opción...</option>
+                        <option value="its" class="bg-slate-800">ITS & Infraestructura Crítica</option>
+                        <option value="software" class="bg-slate-800">Software Factory & Cloud</option>
+                        <option value="apps" class="bg-slate-800">Apps & Movilidad</option>
+                        <option value="data" class="bg-slate-800">QA, IoT & Big Analytics</option>
+                        <option value="otro" class="bg-slate-800">Otro</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-medium text-slate-300">Mensaje</label>
+                    <textarea class="w-full bg-slate-800/50 border border-white/10 text-white text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary/50 outline-none resize-none transition-all placeholder-slate-500" placeholder="Describa brevemente su proyecto o necesidad..." rows="4"></textarea>
+                </div>
+                <button type="submit" class="w-full btn-glow font-semibold text-sm py-4 rounded-lg mt-4 flex items-center justify-center gap-2 text-white">
+                    <span class="material-symbols-outlined text-sm">send</span>
+                    Iniciar Conversación
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const duration = 2000;
+                const startTime = performance.now();
+                
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const current = target * easeOut;
+                    
+                    if (target >= 1) {
+                        counter.textContent = current.toFixed(target % 1 !== 0 ? 1 : 0) + suffix;
+                    } else {
+                        counter.textContent = current.toFixed(2) + suffix;
+                    }
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+                
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        // Progress Bar Animation
+        function animateProgressBars() {
+            const bars = document.querySelectorAll('.progress-animate');
+            bars.forEach(bar => {
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = bar.style.getPropertyValue('--progress-width');
+                }, 100);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'metrics') {
+                        animateCounters();
+                        animateProgressBars();
+                    }
+                    entry.target.classList.add('animate-visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Observe sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initial counter animation for hero
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const heroCounter = document.querySelector('header .counter');
+                if (heroCounter) {
+                    const target = parseFloat(heroCounter.getAttribute('data-target'));
+                    const duration = 2500;
+                    const startTime = performance.now();
+                    
+                    function updateHeroCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const current = target * easeOut;
+                        heroCounter.textContent = current.toFixed(1);
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateHeroCounter);
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateHeroCounter);
+                }
+            }, 500);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Modal Functions
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeContactModal();
+        });
+    </script>
+</body>
+</html>

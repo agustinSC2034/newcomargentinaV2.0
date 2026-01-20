@@ -104,6 +104,89 @@
             100% { transform: translateY(200px); }
         }
 
+        /* ========================================
+           PHONE MOCKUP ANIMATIONS
+           ======================================== */
+        @keyframes chart-draw {
+            0% { stroke-dashoffset: 200; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes chart-pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes list-item-appear {
+            0% { opacity: 0; transform: translateX(-10px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .phone-chart-line {
+            stroke-dasharray: 200;
+            animation: chart-draw 2s ease-out forwards, chart-pulse 3s ease-in-out infinite 2s;
+        }
+
+        .phone-list-item {
+            opacity: 0;
+            animation: list-item-appear 0.5s ease-out forwards;
+        }
+        .phone-list-item:nth-child(1) { animation-delay: 0.5s; }
+        .phone-list-item:nth-child(2) { animation-delay: 0.8s; }
+        .phone-list-item:nth-child(3) { animation-delay: 1.1s; }
+
+        /* ========================================
+           VIDEO ANALYTICS AI MONITORING
+           ======================================== */
+        @keyframes scan-line {
+            0% { top: 0%; opacity: 1; }
+            100% { top: 100%; opacity: 0.3; }
+        }
+
+        @keyframes bbox-pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        @keyframes bbox-appear {
+            0% { opacity: 0; transform: scale(0.8); }
+            20% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        @keyframes data-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes tracking-move {
+            0% { left: 20%; top: 30%; }
+            25% { left: 60%; top: 25%; }
+            50% { left: 55%; top: 60%; }
+            75% { left: 25%; top: 55%; }
+            100% { left: 20%; top: 30%; }
+        }
+
+        .ai-scan-line {
+            animation: scan-line 2.5s linear infinite;
+        }
+
+        .ai-bbox {
+            animation: bbox-pulse 2s ease-in-out infinite;
+        }
+
+        .ai-bbox-detect {
+            animation: bbox-appear 3s ease-in-out infinite;
+        }
+
+        .ai-tracking-box {
+            animation: tracking-move 8s ease-in-out infinite, bbox-pulse 1.5s ease-in-out infinite;
+        }
+
+        .ai-data-blink {
+            animation: data-blink 1s step-end infinite;
+        }
+
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
@@ -448,17 +531,20 @@
         </div>
 
         <div class="hero-content max-w-screen-xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
-            <div class="lg:col-span-7">
+            <div class="lg:col-span-7 lg:col-span-12">
                 <div class="inline-flex items-center gap-3 mb-8 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-navy-deep/10 shadow-sm">
                     <span class="text-primary font-semibold text-sm">Integrador Tecnológico</span>
                     <span class="w-1 h-1 bg-navy-deep/50 rounded-full"></span>
                     <span class="text-navy-deep font-medium text-sm">Hardware + Software</span>
                 </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-navy-deep mb-8 leading-tight drop-shadow-sm">
-                    Integración de<br/>
-                    <span class="text-primary">Software Complejo</span>
+                
+                <!-- Main Title with Dynamic Word -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-navy-deep mb-8 leading-tight drop-shadow-sm">
+                    PARTNER<br class="hidden md:block" />
+                    <span id="dynamic-word" class="text-navy-deep transition-all duration-300 inline-block whitespace-nowrap">INTEGRATOR</span>
                 </h1>
-                <p class="mt-8 max-w-xl text-lg text-navy-deep/80 font-normal leading-relaxed">
+                
+                <p class="mt-6 max-w-xl text-lg text-navy-deep/80 font-normal leading-relaxed">
                     Desarrollo de soluciones tecnológicas, consultoría IT y modernización digital para el sector público y privado.
                 </p>
                 <div class="mt-12">
@@ -469,27 +555,20 @@
                 </div>
             </div>
 
-            <!-- Right Side - The Neural Nexus (Adapted for Light Background) -->
+            <!-- Right Side - The Neural Nexus (HIDDEN FOR NOW)
             <div class="lg:col-span-5 hidden lg:flex justify-center relative" style="perspective: 1000px;">
                 <div class="relative w-96 h-96">
-                    <!-- Orbit 1 - Y Axis -->
                     <div class="absolute inset-0 rounded-full border-2 border-primary/30 orbit-y" style="transform-style: preserve-3d; animation: orbit-y 20s linear infinite;">
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(0,102,255,0.6)]"></div>
                         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-primary/60 rounded-full"></div>
                     </div>
-                    
-                    <!-- Orbit 2 - X Axis -->
                     <div class="absolute inset-10 rounded-full border-2 border-emerald-500/30 orbit-x" style="transform-style: preserve-3d; animation: orbit-x 25s linear infinite;">
                         <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-emerald-500 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.6)]"></div>
                         <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-emerald-500/60 rounded-full"></div>
                     </div>
-                    
-                    <!-- Orbit 3 - Diagonal -->
                     <div class="absolute inset-20 rounded-full border-2 border-violet-500/30 orbit-diagonal" style="transform-style: preserve-3d; animation: orbit-diagonal 30s linear infinite;">
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-violet-500 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.6)]"></div>
                     </div>
-                    
-                    <!-- Floating Labels -->
                     <div class="absolute top-6 right-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-primary shadow-lg" style="animation: float 4s ease-in-out infinite;">
                         Software
                     </div>
@@ -499,8 +578,6 @@
                     <div class="absolute top-1/3 -right-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-violet-600 shadow-lg" style="animation: float 4.5s ease-in-out infinite 0.5s;">
                         Cloud
                     </div>
-                    
-                    <!-- Core Center - Hub Icon -->
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="w-28 h-28 bg-white rounded-2xl border-2 border-gray-200 flex items-center justify-center shadow-xl" style="animation: breathe 3s ease-in-out infinite;">
                             <span class="material-symbols-outlined text-primary text-5xl">memory</span>
@@ -508,6 +585,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
 
         <!-- Subtle Scroll Indicator -->
@@ -694,27 +772,150 @@
 
             <!-- Bloque 2: Apps Móviles - Visual Izq / Texto Der -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-                <!-- Visual: Phone Frame -->
-                <div class="order-2 lg:order-1 relative h-80 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border border-gray-200 transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group overflow-hidden">
+                <!-- Visual: Phone Mockup CSS Animado - MEJORADO -->
+                <div class="order-2 lg:order-1 relative h-[480px] flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50/30 rounded-2xl border border-gray-200 transition-all duration-400 hover:shadow-[0_20px_50px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group overflow-hidden">
                     <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="relative w-48 h-80 bg-white border-[6px] border-gray-800 rounded-[2.5rem] overflow-hidden shadow-2xl">
-                        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-1.5 bg-gray-800 rounded-full"></div>
-                        <div class="h-full pt-8 pb-4 px-3 flex flex-col bg-gray-50">
-                            <div class="bg-primary/10 rounded-xl p-3 mb-3 border border-primary/20">
-                                <div class="text-[10px] text-primary font-semibold mb-1">🔔 NOTIFICACIÓN</div>
-                                <div class="text-[9px] text-gray-600">Nueva tarea asignada</div>
+                    
+                    <!-- Phone Device - iPhone Style -->
+                    <div class="relative w-56 h-[440px]">
+                        <!-- Phone Outer Frame (Titanium/Steel look) -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-[#2C2C2E] via-[#1C1C1E] to-[#2C2C2E] rounded-[3.2rem] shadow-[0_50px_100px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.1)]"></div>
+                        
+                        <!-- Side Buttons Left -->
+                        <div class="absolute -left-[3px] top-28 w-[3px] h-8 bg-[#2C2C2E] rounded-l-sm"></div>
+                        <div class="absolute -left-[3px] top-40 w-[3px] h-12 bg-[#2C2C2E] rounded-l-sm"></div>
+                        <div class="absolute -left-[3px] top-56 w-[3px] h-12 bg-[#2C2C2E] rounded-l-sm"></div>
+                        
+                        <!-- Side Button Right -->
+                        <div class="absolute -right-[3px] top-36 w-[3px] h-16 bg-[#2C2C2E] rounded-r-sm"></div>
+                        
+                        <!-- Phone Inner Bezel -->
+                        <div class="absolute inset-[3px] bg-black rounded-[3rem] overflow-hidden">
+                            <!-- Screen Glass Reflection -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none z-30"></div>
+                            
+                            <!-- Dynamic Island -->
+                            <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-8 bg-black rounded-full z-20 flex items-center justify-center px-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 bg-[#1C1C1E] rounded-full ring-1 ring-gray-800/50 flex items-center justify-center">
+                                        <div class="w-1.5 h-1.5 bg-gray-700 rounded-full"></div>
+                                    </div>
+                                    <div class="w-2.5 h-2.5 bg-[#1C1C1E] rounded-full"></div>
+                                </div>
                             </div>
-                            <div class="bg-white rounded-xl p-3 mb-3 flex items-center gap-2 shadow-sm border border-gray-100">
-                                <span class="material-symbols-outlined text-green-500 text-base">check_circle</span>
-                                <div class="text-[10px] text-gray-700 font-medium">Sincronizado</div>
+                            
+                            <!-- Status Bar -->
+                            <div class="absolute top-0 left-0 right-0 h-12 flex items-end justify-between px-8 pb-1 z-10">
+                                <span class="text-[10px] text-white font-semibold">9:41</span>
+                                <div class="flex items-center gap-1">
+                                    <svg class="w-4 h-3" viewBox="0 0 18 12" fill="white"><path d="M1 3.5C1 2.67 1.67 2 2.5 2h2C5.33 2 6 2.67 6 3.5v5c0 .83-.67 1.5-1.5 1.5h-2C1.67 10 1 9.33 1 8.5v-5zm6 0C7 2.67 7.67 2 8.5 2h2c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5h-2C7.67 10 7 9.33 7 8.5v-5zm6-1c0-.83.67-1.5 1.5-1.5h.5c.83 0 1.5.67 1.5 1.5v6c0 .83-.67 1.5-1.5 1.5h-.5c-.83 0-1.5-.67-1.5-1.5v-6z" opacity="0.4"/><path d="M13 4.5v4c0 .83.67 1.5 1.5 1.5h.5c.83 0 1.5-.67 1.5-1.5v-4c0-.83-.67-1.5-1.5-1.5h-.5c-.83 0-1.5.67-1.5 1.5z"/></svg>
+                                    <svg class="w-6 h-3" viewBox="0 0 25 12" fill="white"><rect x="0" y="1" width="21" height="10" rx="2.5" stroke="white" stroke-width="1" fill="none" opacity="0.4"/><rect x="22" y="3.5" width="2" height="5" rx="1" fill="white" opacity="0.4"/><rect x="1.5" y="2.5" width="16" height="7" rx="1.5" fill="white"/></svg>
+                                </div>
                             </div>
-                            <div class="flex-1 bg-white rounded-xl p-3 shadow-sm border border-gray-100">
-                                <div class="text-[9px] text-gray-500 mb-1">TAREAS HOY</div>
-                                <div class="text-2xl font-bold text-navy-deep">12</div>
-                            </div>
-                            <div class="mt-3 flex gap-2">
-                                <button class="flex-1 bg-primary rounded-xl py-2.5 text-center text-[10px] text-white font-bold">INICIAR</button>
-                                <button class="flex-1 bg-gray-200 rounded-xl py-2.5 text-center text-[10px] text-gray-600 font-medium">HISTORIAL</button>
+                            
+                            <!-- Screen Content -->
+                            <div class="h-full pt-12 bg-[#F2F2F7] flex flex-col">
+                                <!-- App Header -->
+                                <div class="px-4 py-3 bg-gradient-to-r from-primary to-[#3385FF] flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-white text-lg">menu</span>
+                                        <span class="text-white font-bold text-sm">Dashboard</span>
+                                    </div>
+                                    <div class="relative">
+                                        <span class="material-symbols-outlined text-white/90 text-lg">notifications</span>
+                                        <div class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Chart Card -->
+                                <div class="mx-3 mt-3 bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="text-[11px] text-gray-500 font-medium">RENDIMIENTO</div>
+                                        <div class="bg-green-100 text-green-600 text-[9px] font-bold px-2 py-0.5 rounded-full">+24%</div>
+                                    </div>
+                                    <div class="h-16 relative">
+                                        <svg viewBox="0 0 180 50" class="w-full h-full">
+                                            <defs>
+                                                <linearGradient id="chartGradientNew" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:#0066FF;stop-opacity:0.3"/>
+                                                    <stop offset="100%" style="stop-color:#0066FF;stop-opacity:0"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <path d="M0,40 L30,30 L60,35 L90,15 L120,20 L150,10 L180,5 L180,50 L0,50 Z" fill="url(#chartGradientNew)"/>
+                                            <path d="M0,40 L30,30 L60,35 L90,15 L120,20 L150,10 L180,5" fill="none" stroke="#0066FF" stroke-width="2" stroke-linecap="round" class="phone-chart-line"/>
+                                            <circle cx="90" cy="15" r="3" fill="#0066FF" class="animate-pulse"/>
+                                            <circle cx="180" cy="5" r="3" fill="#0066FF"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <!-- Quick Stats -->
+                                <div class="mx-3 mt-2 grid grid-cols-2 gap-2">
+                                    <div class="bg-white rounded-xl p-2.5 shadow-sm border border-gray-100">
+                                        <div class="text-[9px] text-gray-400">TAREAS</div>
+                                        <div class="text-lg font-bold text-navy-deep">12</div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-2.5 shadow-sm border border-gray-100">
+                                        <div class="text-[9px] text-gray-400">COMPLETADAS</div>
+                                        <div class="text-lg font-bold text-green-500">8</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Activity List -->
+                                <div class="flex-1 mx-3 mt-2 space-y-1.5 overflow-hidden">
+                                    <div class="text-[9px] text-gray-400 font-medium px-1">RECIENTE</div>
+                                    
+                                    <div class="phone-list-item flex items-center gap-2.5 bg-white p-2 rounded-xl shadow-sm border border-gray-100">
+                                        <div class="w-7 h-7 bg-green-50 rounded-lg flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="text-[10px] font-medium text-gray-800">Tarea completada</div>
+                                            <div class="text-[8px] text-gray-400">Hace 2 min</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="phone-list-item flex items-center gap-2.5 bg-white p-2 rounded-xl shadow-sm border border-gray-100">
+                                        <div class="w-7 h-7 bg-blue-50 rounded-lg flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-primary text-sm">sync</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="text-[10px] font-medium text-gray-800">Sincronizado</div>
+                                            <div class="text-[8px] text-gray-400">Hace 5 min</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="phone-list-item flex items-center gap-2.5 bg-primary/5 p-2 rounded-xl border border-primary/20">
+                                        <div class="w-7 h-7 bg-primary/10 rounded-lg flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-primary text-sm">notifications_active</span>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="text-[10px] font-medium text-gray-800">Nueva alerta</div>
+                                            <div class="text-[8px] text-primary font-medium">Ver →</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bottom Tab Bar -->
+                                <div class="mx-3 mb-2 bg-white/80 backdrop-blur rounded-2xl px-4 py-2 flex justify-around shadow-sm border border-gray-100">
+                                    <div class="flex flex-col items-center">
+                                        <span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">home</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="material-symbols-outlined text-gray-300 text-lg">bar_chart</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="material-symbols-outlined text-gray-300 text-lg">add_circle</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="material-symbols-outlined text-gray-300 text-lg">person</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Home Indicator -->
+                                <div class="flex justify-center pb-2">
+                                    <div class="w-32 h-1 bg-black/20 rounded-full"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -932,84 +1133,123 @@
 
             <!-- Bloque 6: Video Analytics - Visual Izq / Texto Der -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Visual: Video Wall Grid -->
-                <div class="order-2 lg:order-1 relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden p-4 shadow-xl transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group">
-                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                            <span class="text-xs font-semibold text-white">Video Wall — En Vivo</span>
+                <!-- Visual: AI Monitoring Grid -->
+                <div class="order-2 lg:order-1 relative h-[380px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden p-4 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-400 hover:shadow-[0_25px_60px_rgba(0,102,255,0.2)] hover:-translate-y-1 hover:border-cyan-500/30 group">
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
+                    
+                    <!-- Header -->
+                    <div class="flex justify-between items-center mb-3 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-1.5 bg-red-500/20 px-2 py-1 rounded-md">
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] font-mono text-red-400 font-bold ai-data-blink">● REC</span>
+                            </div>
+                            <span class="text-xs font-bold text-white">AI Vision System</span>
                         </div>
-                        <span class="text-[10px] font-mono text-slate-500 bg-slate-800 px-2 py-1 rounded-full">6 CÁMARAS</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[9px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded">LIVE</span>
+                            <span class="text-[9px] font-mono text-slate-500">4 FEEDS</span>
+                        </div>
                     </div>
                     
-                    <!-- Camera Grid 2x3 -->
-                    <div class="grid grid-cols-3 gap-2 h-[calc(100%-2.5rem)]">
-                        <!-- Camera 1 -->
-                        <div class="relative bg-slate-800 rounded-lg overflow-hidden border border-slate-700">
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
-                            <div class="absolute top-1.5 left-1.5 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                                <span class="text-[8px] text-red-400 font-mono">REC</span>
+                    <!-- Camera Grid 2x2 -->
+                    <div class="grid grid-cols-2 gap-2 h-[calc(100%-3rem)]">
+                        
+                        <!-- Camera 1: Person Detection -->
+                        <div class="relative bg-slate-800/80 rounded-xl overflow-hidden border border-slate-700/50">
+                            <!-- Scan Line -->
+                            <div class="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent ai-scan-line z-10"></div>
+                            <!-- Background Pattern -->
+                            <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(6,182,212,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <!-- Bounding Box - Person -->
+                            <div class="absolute top-[25%] left-[30%] w-[25%] h-[50%] border-2 border-cyan-400 rounded ai-bbox">
+                                <div class="absolute -top-5 left-0 bg-cyan-500 text-[8px] text-white font-mono px-1.5 py-0.5 rounded">PERSON 98%</div>
+                                <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-cyan-400"></div>
+                                <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-cyan-400"></div>
+                                <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-cyan-400"></div>
+                                <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-cyan-400"></div>
                             </div>
-                            <div class="absolute bottom-1.5 left-1.5 text-[8px] text-slate-400 font-mono">CAM-01</div>
-                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">videocam</span>
+                            <!-- Second Box -->
+                            <div class="absolute top-[30%] right-[15%] w-[20%] h-[40%] border-2 border-cyan-400/60 rounded ai-bbox" style="animation-delay: 0.5s;">
+                                <div class="absolute -top-5 left-0 bg-cyan-500/80 text-[8px] text-white font-mono px-1.5 py-0.5 rounded">PERSON 94%</div>
+                            </div>
+                            <!-- Labels -->
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] text-cyan-400 font-mono font-bold">DETECT</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[8px] text-slate-400 font-mono">CAM-01 ENTRADA</div>
+                            <div class="absolute bottom-2 right-2 text-[8px] text-cyan-400 font-mono ai-data-blink">OBJ: 2</div>
                         </div>
                         
-                        <!-- Camera 2 -->
-                        <div class="relative bg-slate-800 rounded-lg overflow-hidden border border-slate-700">
-                            <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
-                            <div class="absolute top-1.5 left-1.5 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                                <span class="text-[8px] text-red-400 font-mono">REC</span>
+                        <!-- Camera 2: Vehicle/LPR -->
+                        <div class="relative bg-slate-800/80 rounded-xl overflow-hidden border border-emerald-500/30">
+                            <div class="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent ai-scan-line z-10" style="animation-delay: 0.8s;"></div>
+                            <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(16,185,129,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <!-- Vehicle Bounding Box -->
+                            <div class="absolute top-[35%] left-[20%] w-[45%] h-[35%] border-2 border-emerald-400 rounded ai-bbox-detect">
+                                <div class="absolute -top-5 left-0 bg-emerald-500 text-[8px] text-white font-mono px-1.5 py-0.5 rounded">VEHICLE</div>
+                                <div class="absolute -bottom-5 left-0 bg-emerald-600 text-[8px] text-white font-mono px-1.5 py-0.5 rounded tracking-wider">ABC 123</div>
                             </div>
-                            <div class="absolute bottom-1.5 left-1.5 text-[8px] text-slate-400 font-mono">CAM-02</div>
-                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">traffic</span>
+                            <!-- Labels -->
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
+                                <span class="text-[8px] text-emerald-400 font-mono font-bold">LPR</span>
+                            </div>
+                            <div class="absolute top-2 right-2 text-[8px] text-emerald-400 font-mono bg-emerald-500/20 px-1.5 py-0.5 rounded">PLATE ✓</div>
+                            <div class="absolute bottom-2 left-2 text-[8px] text-slate-400 font-mono">CAM-02 ACCESO</div>
                         </div>
                         
-                        <!-- Camera 3 - LPR -->
-                        <div class="relative bg-slate-800 rounded-lg overflow-hidden border border-emerald-500/40">
-                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/15 to-transparent"></div>
-                            <div class="absolute top-1.5 left-1.5 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
-                                <span class="text-[8px] text-emerald-400 font-mono">LPR</span>
+                        <!-- Camera 3: Motion Tracking -->
+                        <div class="relative bg-slate-800/80 rounded-xl overflow-hidden border border-amber-500/30">
+                            <div class="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent ai-scan-line z-10" style="animation-delay: 1.2s;"></div>
+                            <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(245,158,11,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <!-- Tracking Box that moves -->
+                            <div class="absolute w-[18%] h-[28%] border-2 border-amber-400 rounded ai-tracking-box">
+                                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-[7px] text-white font-mono px-1 py-0.5 rounded whitespace-nowrap">TRACK #7</div>
                             </div>
-                            <div class="absolute bottom-1.5 left-1.5 text-[8px] text-slate-400 font-mono">CAM-03</div>
-                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-emerald-500/30 text-xl">directions_car</span>
+                            <!-- Motion trail dots -->
+                            <div class="absolute top-[45%] left-[35%] w-1 h-1 bg-amber-400/40 rounded-full"></div>
+                            <div class="absolute top-[50%] left-[40%] w-1.5 h-1.5 bg-amber-400/60 rounded-full"></div>
+                            <div class="absolute top-[48%] left-[47%] w-2 h-2 bg-amber-400/80 rounded-full"></div>
+                            <!-- Labels -->
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] text-amber-400 font-mono font-bold">MOTION</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 text-[8px] text-slate-400 font-mono">CAM-03 PERÍMETRO</div>
+                            <div class="absolute bottom-2 right-2 text-[8px] text-amber-400 font-mono ai-data-blink">ALERT</div>
                         </div>
                         
-                        <!-- Camera 4 -->
-                        <div class="relative bg-slate-800 rounded-lg overflow-hidden border border-slate-700">
-                            <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent"></div>
-                            <div class="absolute top-1.5 left-1.5 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                                <span class="text-[8px] text-red-400 font-mono">REC</span>
+                        <!-- Camera 4: Analytics Dashboard -->
+                        <div class="relative bg-slate-800/80 rounded-xl overflow-hidden border border-violet-500/30">
+                            <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(139,92,246,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <!-- Heat zones -->
+                            <div class="absolute top-[20%] left-[25%] w-[30%] h-[35%] bg-violet-500/30 rounded-full blur-md"></div>
+                            <div class="absolute top-[45%] right-[20%] w-[25%] h-[30%] bg-violet-400/20 rounded-full blur-md"></div>
+                            <!-- Multiple small boxes -->
+                            <div class="absolute top-[25%] left-[28%] w-[12%] h-[20%] border border-violet-400/60 rounded ai-bbox" style="animation-delay: 0.3s;"></div>
+                            <div class="absolute top-[30%] left-[45%] w-[10%] h-[18%] border border-violet-400/60 rounded ai-bbox" style="animation-delay: 0.6s;"></div>
+                            <div class="absolute top-[50%] right-[25%] w-[14%] h-[22%] border border-violet-400/60 rounded ai-bbox" style="animation-delay: 0.9s;"></div>
+                            <!-- Labels -->
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-violet-400 rounded-full"></span>
+                                <span class="text-[8px] text-violet-400 font-mono font-bold">HEATMAP</span>
                             </div>
-                            <div class="absolute bottom-1.5 left-1.5 text-[8px] text-slate-400 font-mono">CAM-04</div>
-                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">storefront</span>
+                            <div class="absolute top-2 right-2 text-[8px] text-violet-400 font-mono">ZONES: 3</div>
+                            <div class="absolute bottom-2 left-2 text-[8px] text-slate-400 font-mono">CAM-04 HALL</div>
+                            <div class="absolute bottom-2 right-2 text-[8px] text-violet-400 font-mono">ANALYZING...</div>
                         </div>
-                        
-                        <!-- Camera 5 -->
-                        <div class="relative bg-slate-800 rounded-lg overflow-hidden border border-slate-700">
-                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent"></div>
-                            <div class="absolute top-1.5 left-1.5 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                                <span class="text-[8px] text-red-400 font-mono">REC</span>
-                            </div>
-                            <div class="absolute bottom-1.5 left-1.5 text-[8px] text-slate-400 font-mono">CAM-05</div>
-                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">location_city</span>
+                    </div>
+                    
+                    <!-- Bottom Stats Bar -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-sm border-t border-slate-700/50 px-4 py-2 flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[9px] font-mono text-slate-400">CPU: <span class="text-cyan-400">34%</span></span>
+                            <span class="text-[9px] font-mono text-slate-400">GPU: <span class="text-emerald-400">67%</span></span>
+                            <span class="text-[9px] font-mono text-slate-400">FPS: <span class="text-white">30</span></span>
                         </div>
-                        
-                        <!-- Camera 6 - Alert -->
-                        <div class="relative bg-slate-800 rounded-lg overflow-hidden border border-amber-500/40">
-                            <div class="absolute inset-0 bg-gradient-to-br from-amber-500/15 to-transparent"></div>
-                            <div class="absolute top-1.5 left-1.5 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
-                                <span class="text-[8px] text-amber-400 font-mono">ALERT</span>
-                            </div>
-                            <div class="absolute bottom-1.5 left-1.5 text-[8px] text-slate-400 font-mono">CAM-06</div>
-                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-amber-500/30 text-xl">warning</span>
-                        </div>
+                        <span class="text-[9px] font-mono text-cyan-400 ai-data-blink">■ AI ENGINE ACTIVE</span>
                     </div>
                 </div>
                 <!-- Texto -->
@@ -1463,6 +1703,104 @@
                 behavior: 'smooth'
             });
         }
+
+        // ========================================
+        // TEXT SCRAMBLE EFFECT - Matrix/Terminal Style
+        // ========================================
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#@$%&ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                this.update = this.update.bind(this);
+            }
+            
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            
+            update() {
+                let output = '';
+                let complete = 0;
+                
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.chars[Math.floor(Math.random() * this.chars.length)];
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="opacity-40">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                
+                this.el.innerHTML = output;
+                
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+        }
+
+        // Initialize Scramble Effect with Color Change
+        const phrases = [
+            'INTEGRATOR',
+            'TELECOMMUNICATIONS',
+            'SPECIALISTS',
+            'ENGINEERS', 
+            'DEVELOPERS'
+        ];
+
+        const el = document.querySelector('#dynamic-word');
+        const fx = new TextScramble(el);
+        let counter = 1; // Start from second word (first change will be to TELECOMMUNICATIONS)
+
+        // Function to update color based on word
+        const updateColor = (word) => {
+            if (word === 'INTEGRATOR') {
+                el.classList.remove('text-primary');
+                el.classList.add('text-navy-deep');
+            } else {
+                el.classList.remove('text-navy-deep');
+                el.classList.add('text-primary');
+            }
+        };
+
+        const next = () => {
+            const currentWord = phrases[counter];
+            updateColor(currentWord);
+            fx.setText(currentWord).then(() => {
+                setTimeout(next, 2200); // Wait 2.2 seconds before next word
+            });
+            counter = (counter + 1) % phrases.length;
+        };
+
+        // Wait 2 seconds showing "INTEGRATOR" static, then start the animation
+        setTimeout(next, 2000);
     </script>
 </body>
 </html>

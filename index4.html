@@ -187,6 +187,162 @@
             animation: data-blink 1s step-end infinite;
         }
 
+        /* ========================================
+           ORBITAL SYSTEM - REFINED DESIGN
+           ======================================== */
+        .orbit-system {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-system {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
+        /* Central hub - INTEGRATOR */
+        .orbit-center {
+            position: absolute;
+            z-index: 10;
+            background: linear-gradient(145deg, #0066FF 0%, #0052CC 100%);
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 0 3px rgba(255, 255, 255, 0.9),
+                0 0 0 6px rgba(0, 102, 255, 0.3),
+                0 25px 50px rgba(0, 102, 255, 0.3),
+                inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            animation: center-glow 3s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-center {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        .orbit-center-text {
+            color: white;
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .orbit-center-text {
+                font-size: 0.8rem;
+            }
+        }
+
+        @keyframes center-glow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 0 3px rgba(255, 255, 255, 0.9),
+                    0 0 0 6px rgba(0, 102, 255, 0.3),
+                    0 25px 50px rgba(0, 102, 255, 0.3),
+                    inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 0 3px rgba(255, 255, 255, 0.9),
+                    0 0 0 10px rgba(0, 102, 255, 0.2),
+                    0 25px 60px rgba(0, 102, 255, 0.4),
+                    inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Orbit ring - the rotating container */
+        .orbit-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 102, 255, 0.15);
+            animation: orbit-rotate 25s linear infinite;
+        }
+
+        /* Inner decorative ring */
+        .orbit-ring::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 75%;
+            height: 75%;
+            border: 1px dashed rgba(0, 102, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes orbit-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Orbiting words - positioned at 4 cardinal points */
+        .orbit-word {
+            position: absolute;
+            background: white;
+            border: 2px solid rgba(0, 102, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            color: #001E3C;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Counter-rotate to keep text horizontal */
+            animation: counter-rotate 25s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-word {
+                padding: 8px 14px;
+                font-size: 0.6rem;
+            }
+        }
+
+        @keyframes counter-rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+
+        /* Fixed positions - TOP, RIGHT, BOTTOM, LEFT */
+        .orbit-word[data-position="top"] { top: 0%; left: 50%; }
+        .orbit-word[data-position="right"] { top: 50%; left: 100%; }
+        .orbit-word[data-position="bottom"] { top: 100%; left: 50%; }
+        .orbit-word[data-position="left"] { top: 50%; left: 0%; }
+
+        .orbit-word:hover {
+            background: #0066FF;
+            color: white;
+            border-color: #0066FF;
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.35);
+            z-index: 20;
+        }
+
+        .orbit-word.active {
+            background: linear-gradient(135deg, #001E3C 0%, #0A3A6B 100%);
+            color: white;
+            border-color: #001E3C;
+            box-shadow: 0 8px 30px rgba(0, 30, 60, 0.4);
+        }
+
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
@@ -530,32 +686,25 @@
             <div class="video-overlay"></div>
         </div>
 
-        <div class="hero-content max-w-screen-xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
-            <div class="lg:col-span-7">
+        <div class="hero-content max-w-screen-xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center py-20">
+            <!-- Left Side - Title and CTA -->
+            <div class="text-center lg:text-left order-2 lg:order-1">
                 <div class="inline-flex items-center gap-3 mb-8 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-navy-deep/10 shadow-sm">
                     <span class="text-primary font-semibold text-sm">Integrador Tecnológico</span>
                     <span class="w-1 h-1 bg-navy-deep/50 rounded-full"></span>
                     <span class="text-navy-deep font-medium text-sm">Hardware + Software</span>
                 </div>
                 
-                <!-- Main Title -->
-                <h1 class="text-6xl md:text-7xl lg:text-8xl font-black text-navy-deep mb-4 leading-none tracking-tight drop-shadow-sm">
-                    PARTNER<br/>INTEGRATOR
+                <!-- Main Title - Normal and Static -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-navy-deep mb-6 leading-tight drop-shadow-sm">
+                    PARTNER<br/>
+                    <span class="text-primary">INTEGRATOR</span>
                 </h1>
                 
-                <!-- Scramble Animation Container -->
-                <div class="flex items-center gap-3 mb-8">
-                    <span class="text-navy-deep/40 text-xl font-mono">//</span>
-                    <div class="relative h-10 overflow-hidden">
-                        <span id="scrambleText" class="text-2xl md:text-3xl font-bold text-primary font-mono tracking-wider"></span>
-                        <span class="animate-pulse text-primary">|</span>
-                    </div>
-                </div>
-                
-                <p class="mt-6 max-w-xl text-lg text-navy-deep/80 font-normal leading-relaxed">
+                <p class="mt-4 max-w-lg text-lg text-navy-deep/80 font-normal leading-relaxed mx-auto lg:mx-0">
                     Desarrollo de soluciones tecnológicas, consultoría IT y modernización digital para el sector público y privado.
                 </p>
-                <div class="mt-12">
+                <div class="mt-10 flex justify-center lg:justify-start">
                     <button onclick="openContactModal()" class="bg-gradient-to-r from-primary to-[#3385FF] hover:from-[#3385FF] hover:to-primary text-white px-10 py-4 font-bold text-sm rounded-xl flex items-center gap-3 shadow-[0_8px_30px_rgba(0,102,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,102,255,0.6)] transition-all duration-300 hover:scale-105 border border-white/20">
                         <span class="material-symbols-outlined text-lg">mail</span>
                         Contactanos
@@ -563,42 +712,20 @@
                 </div>
             </div>
 
-            <!-- Right Side - The Neural Nexus (Adapted for Light Background) -->
-            <div class="lg:col-span-5 hidden lg:flex justify-center relative" style="perspective: 1000px;">
-                <div class="relative w-96 h-96">
-                    <!-- Orbit 1 - Y Axis -->
-                    <div class="absolute inset-0 rounded-full border-2 border-primary/30 orbit-y" style="transform-style: preserve-3d; animation: orbit-y 20s linear infinite;">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(0,102,255,0.6)]"></div>
-                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-primary/60 rounded-full"></div>
+            <!-- Right Side - Orbital System -->
+            <div class="flex justify-center order-1 lg:order-2 mb-8 lg:mb-0">
+                <div class="orbit-system">
+                    <!-- Center Hub - INTEGRATOR -->
+                    <div class="orbit-center">
+                        <span class="orbit-center-text">INTEGRATOR</span>
                     </div>
                     
-                    <!-- Orbit 2 - X Axis -->
-                    <div class="absolute inset-10 rounded-full border-2 border-emerald-500/30 orbit-x" style="transform-style: preserve-3d; animation: orbit-x 25s linear infinite;">
-                        <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-emerald-500 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.6)]"></div>
-                        <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-emerald-500/60 rounded-full"></div>
-                    </div>
-                    
-                    <!-- Orbit 3 - Diagonal -->
-                    <div class="absolute inset-20 rounded-full border-2 border-violet-500/30 orbit-diagonal" style="transform-style: preserve-3d; animation: orbit-diagonal 30s linear infinite;">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-violet-500 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.6)]"></div>
-                    </div>
-                    
-                    <!-- Floating Labels -->
-                    <div class="absolute top-6 right-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-primary shadow-lg" style="animation: float 4s ease-in-out infinite;">
-                        Software
-                    </div>
-                    <div class="absolute bottom-16 left-0 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-emerald-600 shadow-lg" style="animation: float 5s ease-in-out infinite 1s;">
-                        IoT
-                    </div>
-                    <div class="absolute top-1/3 -right-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-violet-600 shadow-lg" style="animation: float 4.5s ease-in-out infinite 0.5s;">
-                        Cloud
-                    </div>
-                    
-                    <!-- Core Center - Hub Icon -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-28 h-28 bg-white rounded-2xl border-2 border-gray-200 flex items-center justify-center shadow-xl" style="animation: breathe 3s ease-in-out infinite;">
-                            <span class="material-symbols-outlined text-primary text-5xl">memory</span>
-                        </div>
+                    <!-- Orbiting Ring with Words -->
+                    <div class="orbit-ring" id="orbit-ring">
+                        <span class="orbit-word active" data-position="top" data-index="0">TELECOMMUNICATIONS</span>
+                        <span class="orbit-word" data-position="right" data-index="1">SPECIALISTS</span>
+                        <span class="orbit-word" data-position="bottom" data-index="2">ENGINEERS</span>
+                        <span class="orbit-word" data-position="left" data-index="3">DEVELOPERS</span>
                     </div>
                 </div>
             </div>
@@ -1721,90 +1848,33 @@
         }
 
         // ========================================
-        // TEXT SCRAMBLE EFFECT - Matrix/Terminal Style
+        // ORBITAL GEAR EFFECT - Highlight Rotation
         // ========================================
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                this.chars = '!<>-_\\/[]{}—=+*^?#@$%&ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                this.update = this.update.bind(this);
-            }
+        const orbitWords = document.querySelectorAll('.orbit-word');
+        let activeIndex = 0;
+
+        const highlightNextWord = () => {
+            // Remove active from all
+            orbitWords.forEach(word => word.classList.remove('active'));
             
-            setText(newText) {
-                const oldText = this.el.innerText;
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise((resolve) => this.resolve = resolve);
-                this.queue = [];
-                
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to = newText[i] || '';
-                    const start = Math.floor(Math.random() * 40);
-                    const end = start + Math.floor(Math.random() * 40);
-                    this.queue.push({ from, to, start, end });
-                }
-                
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
+            // Move to next
+            activeIndex = (activeIndex + 1) % orbitWords.length;
             
-            update() {
-                let output = '';
-                let complete = 0;
-                
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    
-                    if (this.frame >= end) {
-                        complete++;
-                        output += to;
-                    } else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.28) {
-                            char = this.chars[Math.floor(Math.random() * this.chars.length)];
-                            this.queue[i].char = char;
-                        }
-                        output += `<span class="text-primary/50">${char}</span>`;
-                    } else {
-                        output += from;
-                    }
-                }
-                
-                this.el.innerHTML = output;
-                
-                if (complete === this.queue.length) {
-                    this.resolve();
-                } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
-                }
-            }
-        }
-
-        // Initialize Scramble Effect
-        const phrases = [
-            'TELECOMMUNICATIONS',
-            'SPECIALISTS',
-            'ENGINEERS', 
-            'DEVELOPERS',
-            'INTEGRATORS',
-            'INNOVATORS'
-        ];
-
-        const el = document.querySelector('#scrambleText');
-        const fx = new TextScramble(el);
-        let counter = 0;
-
-        const next = () => {
-            fx.setText(phrases[counter]).then(() => {
-                setTimeout(next, 1800); // Wait 1.8 seconds before next word
-            });
-            counter = (counter + 1) % phrases.length;
+            // Add active to current
+            orbitWords[activeIndex].classList.add('active');
         };
 
-        // Start the animation
-        next();
+        // Highlight changes every 2.5 seconds (while orbit continues rotating)
+        setInterval(highlightNextWord, 2500);
+
+        // Click to highlight
+        orbitWords.forEach((word, index) => {
+            word.addEventListener('click', () => {
+                orbitWords.forEach(w => w.classList.remove('active'));
+                word.classList.add('active');
+                activeIndex = index;
+            });
+        });
     </script>
 </body>
 </html>

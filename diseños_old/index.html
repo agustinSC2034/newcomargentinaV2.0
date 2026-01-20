@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="icon" type="image/png" href="img/logoNewcom.png"/>
+    <title>Newcom Argentina - Integrador Tecnológico IT & Sistemas Complejos</title>
+    <meta content="Integramos Hardware de precisión y Software de alto nivel para resolver problemas complejos. ITS, Desarrollo de Software, Apps Móviles, IoT y Big Data." name="description"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0066FF",
+                        "electric-blue": "#0052FF",
+                        "background-dark": "#000000",
+                        "card-dark": "#0a0a0a",
+                        "card-hover": "#111111",
+                        "border-dark": "#1a1a1a",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    animation: {
+                        'scan': 'scan 2s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'slide': 'slide 3s ease-in-out infinite',
+                        'count': 'count 2s ease-out forwards',
+                        'wave': 'wave 1.5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%, 100%': { transform: 'translateX(-100%)' },
+                            '50%': { transform: 'translateX(100%)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(0, 102, 255, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(0, 102, 255, 0.6)' },
+                        },
+                        slide: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(200%)' },
+                        },
+                        wave: {
+                            '0%, 100%': { transform: 'scaleY(0.5)' },
+                            '50%': { transform: 'scaleY(1)' },
+                        },
+                        'radar-sweep': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        'cyber-pulse': {
+                            '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                        },
+                        'glitch': {
+                            '0%, 90%, 100%': { opacity: '1' },
+                            '92%, 98%': { opacity: '0.8' },
+                            '94%, 96%': { opacity: '0.4' },
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --primary-glow: rgba(0, 102, 255, 0.4);
+            --electric-cobalt: #0066FF;
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glow Effects */
+        .glow-hover {
+            transition: all 0.4s ease;
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.4);
+            border-color: rgba(0, 102, 255, 0.5) !important;
+        }
+
+        /* Scanlines Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1) 0px,
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            opacity: 0.3;
+        }
+
+        /* Cyber Sentinel Animations */
+        .radar-sweep {
+            animation: radar-sweep 4s linear infinite;
+        }
+        .cyber-pulse {
+            animation: cyber-pulse 2s ease-in-out infinite;
+        }
+        .glitch-text {
+            animation: glitch 3s ease-in-out infinite;
+        }
+        @keyframes radar-sweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes cyber-pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        @keyframes glitch {
+            0%, 90%, 100% { opacity: 1; }
+            92%, 98% { opacity: 0.8; }
+            94%, 96% { opacity: 0.4; }
+        }
+        .radar-bg {
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(0, 102, 255, 0.3) 30deg, transparent 60deg);
+        }
+
+        /* Digital Ring Glow */
+        .digital-ring-glow {
+            box-shadow: 0 0 60px var(--primary-glow), inset 0 0 30px rgba(0, 102, 255, 0.15);
+        }
+
+        /* WIM Scanner Animation */
+        .wim-scanner {
+            position: relative;
+            overflow: hidden;
+        }
+        .wim-scanner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.3), transparent);
+            animation: scan 2.5s ease-in-out infinite;
+        }
+
+        /* Truck Blueprint Style */
+        .truck-blueprint {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 3s ease forwards;
+        }
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Counter Animation */
+        .counter {
+            display: inline-block;
+        }
+
+        /* Wave Animation for WIM */
+        .wave-bar {
+            transform-origin: bottom;
+        }
+        .wave-bar:nth-child(1) { animation-delay: 0s; }
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { animation-delay: 0.6s; }
+        .wave-bar:nth-child(8) { animation-delay: 0.7s; }
+
+        /* Geo Nodes */
+        .geo-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--electric-cobalt);
+            box-shadow: 0 0 15px var(--electric-cobalt);
+        }
+
+        /* Selection Style */
+        ::selection {
+            background: var(--electric-cobalt);
+            color: white;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Card Hover Animation */
+        .card-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-lift:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Progress Bar Animation */
+        .progress-animate {
+            animation: progress-fill 2s ease-out forwards;
+            width: 0;
+        }
+        @keyframes progress-fill {
+            to { width: var(--progress-width); }
+        }
+
+        /* Axle Detection Points */
+        .axle-point {
+            animation: axle-pulse 1s ease-in-out infinite;
+        }
+        @keyframes axle-pulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-200 font-display antialiased overflow-x-hidden">
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-[60] bg-black/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <img src="img/logoNewcom.png" alt="Newcom" class="w-full h-full object-contain"/>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-lg tracking-tight text-white uppercase font-mono">NEWCOM</span>
+                        <span class="text-[10px] text-primary font-mono tracking-[0.3em]">ARGENTINA</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a class="text-[11px] font-mono font-medium uppercase tracking-widest hover:text-primary transition-colors text-gray-400" href="#ecosystem">SOLUCIONES</a>
+                    <a class="text-[11px] font-mono font-medium uppercase tracking-widest hover:text-primary transition-colors text-gray-400" href="#capacidades">CAPACIDADES</a>
+                    <a class="text-[11px] font-mono font-medium uppercase tracking-widest hover:text-primary transition-colors text-gray-400" href="#wim">PESAJE DINÁMICO</a>
+                    <a class="text-[11px] font-mono font-medium uppercase tracking-widest hover:text-primary transition-colors text-gray-400" href="#monitoreo">MONITOREO</a>
+                    <a class="text-[11px] font-mono font-medium uppercase tracking-widest hover:text-primary transition-colors text-gray-400" href="#nosotros">NOSOTROS</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-mono text-green-500 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        SYS: ONLINE
+                    </span>
+                    <a onclick="openContactModal()" class="hidden sm:block bg-primary hover:bg-blue-600 text-white px-5 py-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                        Contacto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center overflow-hidden bg-black pt-16">
+        <!-- Background -->
+        <div class="absolute inset-0 z-0 opacity-30">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBoNDBWMEgwIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTAgNDBoMXYtMWgtMXoiIGZpbGw9IiMzMzMiIGZpbGwtb3BhY2l0eT0iLjMiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYSkiLz48L3N2Zz4=')] opacity-50"></div>
+        </div>
+
+        <!-- Animated Circles -->
+        <div class="absolute top-1/3 left-1/4 w-[60vw] h-[60vw] border border-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div class="absolute top-1/3 left-1/4 w-[50vw] h-[50vw] border border-dashed border-primary/10 rounded-full -translate-x-1/2 -translate-y-1/2 animate-[spin_60s_linear_infinite] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-3 mb-8 border-l-2 border-primary pl-4">
+                    <span class="text-primary font-mono text-xs uppercase tracking-[0.2em]">Integrador Tecnológico</span>
+                    <span class="w-1 h-1 bg-white rounded-full"></span>
+                    <span class="text-gray-400 font-mono text-xs uppercase tracking-[0.2em]">Hardware + Software</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[0.9] tracking-tighter uppercase">
+                    SOLUCIONES<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-cyan-400">IT</span>
+                </h1>
+                <p class="mt-8 max-w-xl text-lg text-gray-400 font-light leading-relaxed border-l border-white/10 pl-6">
+                    Líderes en Sistemas Inteligentes de Transporte (ITS), Desarrollo de Software a Medida y Soluciones de Misión Crítica.
+                </p>
+                <div class="mt-12">
+                    <button onclick="openContactModal()" class="px-10 py-4 bg-primary text-white font-mono font-bold uppercase text-sm tracking-widest hover:bg-blue-500 transition-all flex items-center gap-3 group border border-primary/50 shadow-[0_0_30px_rgba(0,102,255,0.3)] hover:shadow-[0_0_40px_rgba(0,102,255,0.5)]">
+                        <span class="material-symbols-outlined text-lg">mail</span>
+                        Contactanos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side - The Cyber Sentinel -->
+            <div class="lg:col-span-5 hidden lg:flex justify-center relative">
+                <div class="relative w-96 h-96">
+                    <!-- Radar Background Sweep -->
+                    <div class="absolute inset-0 rounded-full radar-bg radar-sweep opacity-50"></div>
+                    
+                    <!-- Outer Orbit Ring -->
+                    <div class="absolute inset-0 border-2 border-primary/40 rounded-full shadow-[0_0_30px_rgba(0,102,255,0.3)]"></div>
+                    
+                    <!-- Middle Ring -->
+                    <div class="absolute inset-8 border border-primary/30 rounded-full animate-[spin_25s_linear_infinite_reverse]">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary rounded-full shadow-[0_0_15px_#0066FF]"></div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_10px_#22d3ee]"></div>
+                    </div>
+                    
+                    <!-- Inner Ring -->
+                    <div class="absolute inset-16 border border-dashed border-white/20 rounded-full animate-[spin_15s_linear_infinite]">
+                        <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-green-400 rounded-full shadow-[0_0_10px_#4ade80]"></div>
+                        <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_#0066FF]"></div>
+                    </div>
+                    
+                    <!-- Terminal Labels -->
+                    <div class="absolute -top-2 left-1/2 -translate-x-1/2 font-mono text-[10px] text-green-400 glitch-text">
+                        SYS: ACTIVE
+                    </div>
+                    <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 font-mono text-[10px] text-primary animate-pulse">
+                        SCANNING...
+                    </div>
+                    <div class="absolute top-1/2 -left-16 -translate-y-1/2 font-mono text-[9px] text-cyan-400/70 writing-mode-vertical" style="writing-mode: vertical-rl;">
+                        NODE_01 /// ONLINE
+                    </div>
+                    <div class="absolute top-1/2 -right-16 -translate-y-1/2 font-mono text-[9px] text-cyan-400/70" style="writing-mode: vertical-rl;">
+                        NODE_02 /// SYNC
+                    </div>
+                    
+                    <!-- Core Center - Scanning Eye -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-28 h-28 bg-black border-2 border-primary/50 rounded-full flex items-center justify-center cyber-pulse shadow-[0_0_50px_rgba(0,102,255,0.5),inset_0_0_30px_rgba(0,102,255,0.2)]">
+                            <span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">visibility</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ping Wave -->
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="w-28 h-28 border-2 border-primary/30 rounded-full animate-ping"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="absolute bottom-0 w-full border-t border-white/10 bg-black/80 backdrop-blur-md">
+            <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 py-5 flex justify-between items-center text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+                    SCROLL PARA DIAGNÓSTICOS
+                </span>
+                <span class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    FEED EN VIVO ACTIVO
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trusted By Section -->
+    <div class="bg-black py-8 border-y border-white/15 overflow-hidden relative">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+            <p class="text-center text-[10px] text-gray-400 uppercase tracking-widest mb-8 font-mono">Infraestructura Crítica de Confianza</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-85 hover:opacity-100 transition-opacity duration-500">
+                <div class="text-sm font-bold text-white flex items-center gap-2 font-mono"><span class="material-symbols-outlined text-primary text-base">security</span> AUSA</div>
+                <div class="text-sm font-bold text-white flex items-center gap-2 font-mono"><span class="material-symbols-outlined text-primary text-base">toll</span> AUBASA</div>
+                <div class="text-sm font-bold text-white flex items-center gap-2 font-mono"><span class="material-symbols-outlined text-primary text-base">local_police</span> POLICÍA CABA</div>
+                <div class="text-sm font-bold text-white flex items-center gap-2 font-mono"><span class="material-symbols-outlined text-primary text-base">traffic</span> VIALIDAD</div>
+                <div class="text-sm font-bold text-white flex items-center gap-2 font-mono"><span class="material-symbols-outlined text-primary text-base">public</span> MIN. TRANSPORTE</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ecosystem Section - Bento Grid -->
+    <section class="py-24 bg-black relative" id="ecosystem">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <span class="text-primary font-mono text-xs uppercase tracking-widest mb-2 block">/// ECOSISTEMA TECNOLÓGICO</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight uppercase">Pilares <span class="text-gray-500">de Integración</span></h2>
+                    <p class="text-gray-400 text-sm mt-4 max-w-xl">Cuatro verticales tecnológicas que combinan hardware especializado y software de alto rendimiento.</p>
+                </div>
+                <div class="hidden md:block w-32 h-1 bg-zinc-800 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-primary w-1/3 animate-slide"></div>
+                </div>
+            </div>
+
+            <!-- Bento Grid - 4 Pilares Tecnológicos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- PILAR 1: ITS & Infraestructura Crítica - Large Card -->
+                <div class="md:col-span-2 lg:row-span-2 relative group overflow-hidden border border-white/20 bg-zinc-900 glow-hover card-lift min-h-[500px]">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"></div>
+                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute top-6 right-6 font-mono text-[10px] text-primary border border-primary/30 px-2 py-1 bg-black/50 backdrop-blur">
+                        PILAR 01: HARDWARE
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 w-full z-10">
+                        <div class="w-12 h-12 mb-4 border border-primary/50 flex items-center justify-center bg-black/50 backdrop-blur">
+                            <span class="material-symbols-outlined text-primary text-xl">filter_center_focus</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-3 tracking-tight">ITS & Infraestructura Crítica</h3>
+                        <p class="text-gray-400 text-sm font-mono mb-4 border-l-2 border-primary pl-3 max-w-md">
+                            Gestión de movilidad y fiscalización electrónica mediante hardware de precisión. LPR, Anillo Digital y Pesaje Dinámico (WIM).
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4 mt-6">
+                            <span class="text-primary font-mono text-sm font-bold">99.8% ACCURACY</span>
+                            <span class="text-gray-500">|</span>
+                            <span class="text-gray-400 font-mono text-xs">25+ CIUDADES</span>
+                            <span class="text-gray-500">|</span>
+                            <span class="text-gray-400 font-mono text-xs">AUSA/AUBASA</span>
+                        </div>
+                        <div class="h-[1px] w-full bg-white/10 mt-6 group-hover:bg-primary/50 transition-colors"></div>
+                    </div>
+                </div>
+
+                <!-- PILAR 2: Software Factory & Cloud -->
+                <div class="relative group overflow-hidden border border-white/20 bg-zinc-900 glow-hover card-lift min-h-[240px]">
+                    <div class="absolute inset-0 opacity-25">
+                        <div class="p-4 font-mono text-[8px] text-green-500 leading-tight select-none overflow-hidden">
+                            public class Backend {<br/>
+                            &nbsp;&nbsp;@Autowired<br/>
+                            &nbsp;&nbsp;Service svc;<br/>
+                            }<br/>
+                            // .NET | PHP | Python
+                        </div>
+                    </div>
+                    <div class="relative z-10 p-6 h-full flex flex-col justify-between">
+                        <div class="flex justify-between items-start">
+                            <span class="material-symbols-outlined text-2xl text-gray-300 group-hover:text-primary transition-colors">terminal</span>
+                            <span class="font-mono text-[10px] text-gray-400">PILAR 02</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-2 uppercase">Software Factory & Cloud</h3>
+                            <p class="text-gray-300 text-xs font-mono leading-relaxed">
+                                Arquitecturas escalables, microservicios y refactorización de sistemas legacy.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="text-[9px] font-mono text-primary bg-primary/10 px-2 py-0.5 border border-primary/30">Java</span>
+                                <span class="text-[9px] font-mono text-primary bg-primary/10 px-2 py-0.5 border border-primary/30">.Net</span>
+                                <span class="text-[9px] font-mono text-primary bg-primary/10 px-2 py-0.5 border border-primary/30">PHP</span>
+                                <span class="text-[9px] font-mono text-primary bg-primary/10 px-2 py-0.5 border border-primary/30">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                </div>
+
+                <!-- PILAR 3: Experiencia Digital & Movilidad -->
+                <div class="relative group overflow-hidden border border-white/20 bg-zinc-900 glow-hover card-lift min-h-[240px]">
+                    <div class="absolute top-4 right-4">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div class="p-6 h-full flex flex-col justify-between">
+                        <div class="w-10 h-10 bg-white/10 flex items-center justify-center border border-white/20">
+                            <span class="material-symbols-outlined text-white">smartphone</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-1 uppercase">Apps & Movilidad</h3>
+                            <p class="text-gray-300 text-xs font-mono">Soluciones multiplataforma para fuerza de trabajo en campo y usuario final.</p>
+                            <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="text-[9px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 border border-cyan-500/30">iOS</span>
+                                <span class="text-[9px] font-mono text-green-400 bg-green-500/10 px-2 py-0.5 border border-green-500/30">Android</span>
+                                <span class="text-[9px] font-mono text-blue-400 bg-blue-500/10 px-2 py-0.5 border border-blue-500/30">React Native</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PILAR 4: QA, IoT & Big Analytics -->
+                <div class="md:col-span-2 relative group overflow-hidden border border-white/20 bg-zinc-900 glow-hover card-lift min-h-[200px]">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-transparent"></div>
+                    <div class="p-8 flex flex-col md:flex-row items-start md:items-center gap-6 h-full">
+                        <div class="w-16 h-16 bg-primary/15 border border-primary/40 flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-primary text-3xl">analytics</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-2 uppercase">QA, IoT & Big Analytics</h3>
+                            <p class="text-gray-300 text-sm font-mono max-w-lg">
+                                Testing funcional/no funcional, integración de sensores IoT y análisis de Big Data para decisiones basadas en evidencia.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mt-4">
+                                <span class="text-[10px] font-mono text-gray-300">• Testing Automatizado</span>
+                                <span class="text-[10px] font-mono text-gray-300">• Sensores IoT</span>
+                                <span class="text-[10px] font-mono text-gray-300">• Data Pipelines</span>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 hidden lg:block">
+                            <span class="text-primary font-mono text-sm border border-primary/30 px-3 py-1 bg-black/50">PILAR 04</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics Row Compacto -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+                <div class="bg-zinc-900 border border-white/15 p-5 text-center glow-hover">
+                    <div class="text-2xl font-mono font-bold text-white">25+</div>
+                    <div class="text-[10px] font-mono text-gray-400 uppercase mt-1">Ciudades Digitalizadas</div>
+                </div>
+                <div class="bg-zinc-900 border border-white/15 p-5 text-center glow-hover">
+                    <div class="text-2xl font-mono font-bold text-white">10K+</div>
+                    <div class="text-[10px] font-mono text-gray-400 uppercase mt-1">Usuarios Activos/Día</div>
+                </div>
+                <div class="bg-zinc-900 border border-white/15 p-5 text-center glow-hover">
+                    <div class="text-2xl font-mono font-bold text-primary">99.97%</div>
+                    <div class="text-[10px] font-mono text-gray-400 uppercase mt-1">SLA Garantizado</div>
+                </div>
+                <div class="bg-zinc-900 border border-white/15 p-5 text-center glow-hover">
+                    <div class="text-2xl font-mono font-bold text-white flex items-center justify-center gap-1">
+                        <span class="material-symbols-outlined text-amber-400 text-lg">emoji_events</span>
+                        8
+                    </div>
+                    <div class="text-[10px] font-mono text-gray-400 uppercase mt-1">Reconocimientos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive: Capacidades Verticales -->
+    <section class="py-24 bg-zinc-950 border-y border-zinc-900 relative overflow-hidden" id="capacidades">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-primary font-mono text-xs uppercase tracking-widest mb-4 block">/// DEEP DIVE</span>
+                <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-4">Capacidades <span class="text-gray-500">Verticales</span></h2>
+                <p class="text-gray-400 font-mono text-sm max-w-2xl mx-auto">Profundización técnica en cada vertical de integración tecnológica.</p>
+            </div>
+
+            <!-- Bloque 1: ITS - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-primary/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-primary rounded-full"></span>
+                        <span class="text-primary font-mono text-[10px] uppercase tracking-widest">Pilar 01</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">ITS / Smart Cities</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Utilizamos herramientas tecnológicas para aumentar la eficiencia de los servicios públicos. Integramos toda la cadena de valor IoT: desde la definición del modelo de negocio hasta la infraestructura de sensores y casos de uso en prevención.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Sensores piezoeléctricos WIM</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Cámaras LPR multibanda</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Controladores de semáforos inteligentes</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Gateways IoT industriales</li>
+                    </ul>
+                </div>
+                <!-- Visual: Nodos conectados -->
+                <div class="relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg viewBox="0 0 200 200" class="w-64 h-64">
+                            <!-- Conexiones -->
+                            <line x1="100" y1="40" x2="40" y2="100" stroke="#0066FF" stroke-width="1" opacity="0.5"/>
+                            <line x1="100" y1="40" x2="160" y2="100" stroke="#0066FF" stroke-width="1" opacity="0.5"/>
+                            <line x1="40" y1="100" x2="100" y2="160" stroke="#0066FF" stroke-width="1" opacity="0.5"/>
+                            <line x1="160" y1="100" x2="100" y2="160" stroke="#0066FF" stroke-width="1" opacity="0.5"/>
+                            <line x1="40" y1="100" x2="160" y2="100" stroke="#0066FF" stroke-width="1" opacity="0.3"/>
+                            <!-- Nodos -->
+                            <circle cx="100" cy="40" r="12" fill="#0066FF" class="animate-pulse"/>
+                            <circle cx="40" cy="100" r="10" fill="#3B82F6"/>
+                            <circle cx="160" cy="100" r="10" fill="#3B82F6"/>
+                            <circle cx="100" cy="160" r="12" fill="#0066FF" class="animate-pulse"/>
+                            <circle cx="100" cy="100" r="8" fill="#60A5FA"/>
+                            <!-- Labels -->
+                            <text x="100" y="20" fill="#888" font-size="8" text-anchor="middle" font-family="monospace">SENSOR</text>
+                            <text x="20" y="105" fill="#888" font-size="8" text-anchor="middle" font-family="monospace">LPR</text>
+                            <text x="180" y="105" fill="#888" font-size="8" text-anchor="middle" font-family="monospace">WIM</text>
+                            <text x="100" y="185" fill="#888" font-size="8" text-anchor="middle" font-family="monospace">GATEWAY</text>
+                        </svg>
+                    </div>
+                    <div class="absolute bottom-4 left-4 font-mono text-[10px] text-gray-500">NETWORK TOPOLOGY</div>
+                </div>
+            </div>
+
+            <!-- Bloque 2: Software Factory - Visual Izq / Texto Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <!-- Visual: Terminal/Código -->
+                <div class="order-2 lg:order-1 relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden font-mono text-xs">
+                    <div class="absolute top-0 left-0 right-0 h-8 bg-zinc-800 border-b border-white/10 flex items-center px-3 gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+                        <span class="ml-4 text-gray-500">NewcomBackend.java</span>
+                    </div>
+                    <div class="p-4 pt-12 text-[11px] leading-relaxed overflow-hidden">
+                        <div class="text-gray-500">// Microservicio de procesamiento</div>
+                        <div><span class="text-purple-400">@Service</span></div>
+                        <div><span class="text-blue-400">public class</span> <span class="text-green-400">TransactionProcessor</span> {</div>
+                        <div class="pl-4"><span class="text-purple-400">@Autowired</span></div>
+                        <div class="pl-4"><span class="text-blue-400">private</span> LPRService lprService;</div>
+                        <div class="pl-4 mt-2"><span class="text-blue-400">public</span> Response <span class="text-yellow-400">process</span>() {</div>
+                        <div class="pl-8"><span class="text-blue-400">return</span> lprService</div>
+                        <div class="pl-12">.validate()</div>
+                        <div class="pl-12">.enrich()</div>
+                        <div class="pl-12">.persist();</div>
+                        <div class="pl-4">}</div>
+                        <div>}</div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-green-500/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span class="text-green-400 font-mono text-[10px] uppercase tracking-widest">Pilar 02</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Software Factory</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Desarrollamos software sobre tecnologías JAVA, .Net y PHP bajo metodologías ágiles. Realizamos aplicaciones a medida, mantenimiento evolutivo y refactorización de sistemas existentes.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-green-500"></span> Arquitectura de microservicios</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-green-500"></span> APIs RESTful & GraphQL</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-green-500"></span> Integración con sistemas legacy</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-green-500"></span> DevOps & CI/CD pipelines</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 3: Apps - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-cyan-500/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-cyan-500 rounded-full"></span>
+                        <span class="text-cyan-400 font-mono text-[10px] uppercase tracking-widest">Pilar 03</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Apps Móviles</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Diseño y desarrollo multiplataforma híbridas y nativas (iOS, Android, Windows Mobile). Soluciones de campo integradas con sistemas centrales.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-500"></span> Apps nativas iOS & Android</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-500"></span> React Native cross-platform</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-500"></span> Modo offline con sync</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-cyan-500"></span> Push notifications & geofencing</li>
+                    </ul>
+                </div>
+                <!-- Visual: Phone Frame -->
+                <div class="relative h-80 flex items-center justify-center">
+                    <div class="relative w-44 h-72 bg-zinc-900 border-4 border-zinc-700 rounded-3xl overflow-hidden shadow-2xl">
+                        <div class="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-zinc-700 rounded-full"></div>
+                        <div class="h-full pt-6 pb-4 px-2 flex flex-col">
+                            <div class="bg-primary/20 rounded-lg p-3 mb-2">
+                                <div class="text-[10px] text-primary font-mono mb-1">ALERT</div>
+                                <div class="text-[9px] text-gray-300">Nueva infracción detectada</div>
+                            </div>
+                            <div class="bg-zinc-800 rounded-lg p-3 mb-2 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-green-400 text-base">check_circle</span>
+                                <div class="text-[9px] text-gray-300">Sincronizado</div>
+                            </div>
+                            <div class="flex-1 bg-zinc-800/50 rounded-lg p-2">
+                                <div class="text-[8px] text-gray-500 mb-1">PATENTES HOY</div>
+                                <div class="text-xl font-bold text-white font-mono">1,247</div>
+                            </div>
+                            <div class="mt-2 flex gap-2">
+                                <div class="flex-1 bg-primary rounded-lg py-2 text-center text-[8px] text-white font-bold">ESCANEAR</div>
+                                <div class="flex-1 bg-zinc-800 rounded-lg py-2 text-center text-[8px] text-gray-400">HISTORIAL</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque 4: Cloud Computing & DevOps - Visual Izq / Texto Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+                <!-- Visual: Cloud Architecture Diagram -->
+                <div class="order-2 lg:order-1 relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden flex items-center justify-center">
+                    <svg viewBox="0 0 240 200" class="w-72 h-60">
+                        <!-- Cloud Shape -->
+                        <defs>
+                            <linearGradient id="cloudGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F97316;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#EA580C;stop-opacity:0.1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Main Cloud -->
+                        <path d="M180,80 a30,30 0 0,0 -50,-25 a40,40 0 0,0 -75,20 a25,25 0 0,0 0,50 h120 a25,25 0 0,0 5,-45z" 
+                              fill="url(#cloudGrad1)" stroke="#F97316" stroke-width="1.5"/>
+                        <!-- AWS/Azure Icons inside cloud -->
+                        <text x="95" y="75" fill="#F97316" font-size="9" font-weight="600" text-anchor="middle" font-family="monospace">AWS</text>
+                        <text x="145" y="75" fill="#0066FF" font-size="9" font-weight="600" text-anchor="middle" font-family="monospace">Azure</text>
+                        
+                        <!-- Connection lines -->
+                        <line x1="80" y1="125" x2="80" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        <line x1="120" y1="125" x2="120" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        <line x1="160" y1="125" x2="160" y2="150" stroke="#F97316" stroke-width="1.5" stroke-dasharray="4" opacity="0.7"/>
+                        
+                        <!-- Servers/Containers -->
+                        <rect x="65" y="150" width="30" height="35" rx="2" fill="transparent" stroke="#F97316" stroke-width="1"/>
+                        <rect x="69" y="158" width="8" height="2" fill="#F97316" rx="1"/>
+                        <rect x="69" y="163" width="8" height="2" fill="#F97316" rx="1"/>
+                        <rect x="69" y="168" width="8" height="2" fill="#F97316" rx="1"/>
+                        <text x="80" y="195" fill="#888" font-size="7" text-anchor="middle" font-family="monospace">SERVER</text>
+                        
+                        <rect x="105" y="150" width="30" height="35" rx="2" fill="transparent" stroke="#0066FF" stroke-width="1"/>
+                        <circle cx="120" cy="163" r="5" fill="none" stroke="#0066FF" stroke-width="1"/>
+                        <circle cx="120" cy="163" r="2" fill="#0066FF"/>
+                        <text x="120" y="195" fill="#888" font-size="7" text-anchor="middle" font-family="monospace">K8S</text>
+                        
+                        <rect x="145" y="150" width="30" height="35" rx="2" fill="transparent" stroke="#F97316" stroke-width="1"/>
+                        <rect x="149" y="156" width="22" height="5" rx="1" fill="#F97316" opacity="0.3"/>
+                        <rect x="149" y="163" width="22" height="5" rx="1" fill="#F97316" opacity="0.5"/>
+                        <rect x="149" y="170" width="22" height="5" rx="1" fill="#F97316" opacity="0.7"/>
+                        <text x="160" y="195" fill="#888" font-size="7" text-anchor="middle" font-family="monospace">DB</text>
+                        
+                        <!-- CI/CD Arrow -->
+                        <path d="M30,100 L50,100" stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrowhead1)"/>
+                        <defs>
+                            <marker id="arrowhead1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#22C55E"/>
+                            </marker>
+                        </defs>
+                        <text x="20" y="95" fill="#22C55E" font-size="7" font-weight="600" font-family="monospace">CI/CD</text>
+                    </svg>
+                    <div class="absolute bottom-4 left-4 font-mono text-[10px] text-gray-500">CLOUD ARCHITECTURE</div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-orange-500/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                        <span class="text-orange-400 font-mono text-[10px] uppercase tracking-widest">Pilar 04</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Cloud Computing & DevOps</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Diseño, migración y gestión de arquitecturas en la nube (AWS, Azure). Transformamos infraestructura estática en entornos elásticos y de alta disponibilidad.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Arquitecturas Híbridas & Multi-Cloud</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Kubernetes & Containerización</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Automatización CI/CD</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500"></span> Optimización de Costos (FinOps)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 5: Data - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Visual: Gráfico de barras animado -->
+                <div class="order-2 lg:order-1 relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden p-6">
+                    <div class="absolute top-4 left-4 font-mono text-[10px] text-gray-500">ANALYTICS DASHBOARD</div>
+                    <div class="h-full flex items-end justify-center gap-4 pt-8">
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-primary/50 rounded-t animate-[pulse_2s_ease-in-out_infinite]" style="height: 60%"></div>
+                            <span class="text-[9px] text-gray-500 font-mono">LUN</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-primary/50 rounded-t animate-[pulse_2s_ease-in-out_infinite_0.2s]" style="height: 80%"></div>
+                            <span class="text-[9px] text-gray-500 font-mono">MAR</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-primary/50 rounded-t animate-[pulse_2s_ease-in-out_infinite_0.4s]" style="height: 45%"></div>
+                            <span class="text-[9px] text-gray-500 font-mono">MIE</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-primary/50 rounded-t animate-[pulse_2s_ease-in-out_infinite_0.6s]" style="height: 90%"></div>
+                            <span class="text-[9px] text-gray-500 font-mono">JUE</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="w-12 bg-gradient-to-t from-primary to-primary/50 rounded-t animate-[pulse_2s_ease-in-out_infinite_0.8s]" style="height: 70%"></div>
+                            <span class="text-[9px] text-gray-500 font-mono">VIE</span>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 right-4 text-right">
+                        <div class="text-2xl font-bold text-white font-mono">+23%</div>
+                        <div class="text-[9px] text-green-400 font-mono">vs semana anterior</div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-purple-500/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                        <span class="text-purple-400 font-mono text-[10px] uppercase tracking-widest">Pilar 05</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Data & QA</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Cubrimos pruebas funcionales y no funcionales con herramientas de gestión. Realizamos Big Analytics sobre datos generados por clientes para detectar necesidades y preferencias.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-purple-500"></span> Dashboards en tiempo real</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-purple-500"></span> ETL & Data Pipelines</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-purple-500"></span> Machine Learning predictivo</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-purple-500"></span> Reportes automatizados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloque 6: Video Analytics - Texto Izq / Visual Der -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 border border-red-500/30 px-3 py-1 bg-black/50">
+                        <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                        <span class="text-red-400 font-mono text-[10px] uppercase tracking-widest">Pilar 06</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Video Analytics</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Análisis de video inteligente con algoritmos de visión computacional. Detección automática de eventos, reconocimiento de patentes y monitoreo en tiempo real de infraestructura crítica.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Reconocimiento de patentes (LPR)</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Detección de incidentes viales</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Conteo vehicular inteligente</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-500"></span> Alertas en tiempo real 24/7</li>
+                    </ul>
+                </div>
+                <!-- Visual: Video Wall Grid -->
+                <div class="relative h-80 bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            <span class="font-mono text-[10px] text-red-400 uppercase">REC • LIVE</span>
+                        </div>
+                        <span class="font-mono text-[9px] text-gray-500">6 CAMERAS ACTIVE</span>
+                    </div>
+                    
+                    <!-- Camera Grid 2x3 -->
+                    <div class="grid grid-cols-3 gap-2 h-[calc(100%-2.5rem)]">
+                        <!-- Camera 1 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-001</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">videocam</span>
+                        </div>
+                        
+                        <!-- Camera 2 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-002</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">traffic</span>
+                        </div>
+                        
+                        <!-- Camera 3 - LPR -->
+                        <div class="relative bg-zinc-800 border border-primary/30 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                <span class="text-[7px] font-mono text-primary">LPR</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-003</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary/30 text-xl">directions_car</span>
+                        </div>
+                        
+                        <!-- Camera 4 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-004</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">storefront</span>
+                        </div>
+                        
+                        <!-- Camera 5 -->
+                        <div class="relative bg-zinc-800 border border-white/10 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-005</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-xl">location_city</span>
+                        </div>
+                        
+                        <!-- Camera 6 - Alert -->
+                        <div class="relative bg-zinc-800 border border-amber-500/30 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-amber-500/15 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                                <span class="text-[7px] font-mono text-amber-400">ALERT</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-006</div>
+                            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-amber-500/30 text-xl">warning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WIM Section - Flagship Feature -->
+    <section class="py-24 bg-zinc-950 border-y border-zinc-900 relative overflow-hidden" id="wim">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary font-mono text-xs uppercase tracking-widest mb-4 block">/// FLAGSHIP TECHNOLOGY</span>
+                <h2 class="text-4xl md:text-6xl font-black text-white tracking-tight uppercase mb-4">
+                    PESAJE DINÁMICO <span class="text-primary">WIM</span>
+                </h2>
+                <p class="text-gray-400 font-mono text-sm max-w-2xl mx-auto">
+                    Weigh-In-Motion: Sistema de pesaje inteligente que detecta sobrecarga a velocidad de autopista sin interrumpir el flujo vehicular.
+                </p>
+            </div>
+
+            <!-- WIM Visual Component -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left - Truck Visualization -->
+                <div class="relative">
+                    <div class="glass-panel p-8 rounded-sm border border-white/20 bg-zinc-900/50 relative overflow-hidden wim-scanner">
+                        <!-- Technical Labels -->
+                        <div class="absolute top-4 left-4 font-mono text-[10px] text-primary flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                            LIVE SCAN ACTIVE
+                        </div>
+                        <div class="absolute top-4 right-4 font-mono text-[10px] text-gray-500">
+                            MOD: WIM-X500
+                        </div>
+
+                        <!-- Truck Blueprint SVG -->
+                        <div class="relative py-12">
+                            <svg viewBox="0 0 400 150" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Grid Background -->
+                                <defs>
+                                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="400" height="150" fill="url(#grid)"/>
+                                
+                                <!-- Truck Body - Blueprint Style -->
+                                <g class="truck-blueprint" fill="none" stroke="#3B82F6" stroke-width="2">
+                                    <!-- Cabin -->
+                                    <path d="M 50 50 L 50 100 L 100 100 L 100 70 L 80 50 Z" stroke-opacity="1"/>
+                                    <!-- Container -->
+                                    <rect x="100" y="40" width="200" height="60" stroke-opacity="0.9"/>
+                                    <!-- Cabin Window -->
+                                    <path d="M 55 55 L 75 55 L 85 70 L 55 70 Z" stroke-opacity="0.7"/>
+                                </g>
+
+                                <!-- Wheels -->
+                                <circle cx="70" cy="110" r="12" fill="none" stroke="#3B82F6" stroke-width="2" stroke-opacity="1"/>
+                                <circle cx="70" cy="110" r="6" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.7"/>
+                                <circle cx="150" cy="110" r="12" fill="none" stroke="#3B82F6" stroke-width="2" stroke-opacity="1"/>
+                                <circle cx="150" cy="110" r="6" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.7"/>
+                                <circle cx="250" cy="110" r="12" fill="none" stroke="#3B82F6" stroke-width="2" stroke-opacity="1"/>
+                                <circle cx="250" cy="110" r="6" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.7"/>
+                                <circle cx="280" cy="110" r="12" fill="none" stroke="#3B82F6" stroke-width="2" stroke-opacity="1"/>
+                                <circle cx="280" cy="110" r="6" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.7"/>
+
+                                <!-- Axle Detection Points -->
+                                <g class="axle-point">
+                                    <circle cx="70" cy="130" r="4" fill="#0066FF"/>
+                                    <line x1="70" y1="110" x2="70" y2="140" stroke="#0066FF" stroke-width="1" stroke-dasharray="2,2"/>
+                                </g>
+                                <g class="axle-point" style="animation-delay: 0.3s">
+                                    <circle cx="150" cy="130" r="4" fill="#0066FF"/>
+                                    <line x1="150" y1="110" x2="150" y2="140" stroke="#0066FF" stroke-width="1" stroke-dasharray="2,2"/>
+                                </g>
+                                <g class="axle-point" style="animation-delay: 0.6s">
+                                    <circle cx="265" cy="130" r="4" fill="#0066FF"/>
+                                    <line x1="265" y1="110" x2="265" y2="140" stroke="#0066FF" stroke-width="1" stroke-dasharray="2,2"/>
+                                </g>
+
+                                <!-- Road/Sensor Line -->
+                                <line x1="0" y1="145" x2="400" y2="145" stroke="#333" stroke-width="2"/>
+                                <rect x="30" y="143" width="340" height="4" fill="url(#sensorGradient)" opacity="0.5"/>
+                                <defs>
+                                    <linearGradient id="sensorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#0066FF;stop-opacity:0"/>
+                                        <stop offset="50%" style="stop-color:#0066FF;stop-opacity:1"/>
+                                        <stop offset="100%" style="stop-color:#0066FF;stop-opacity:0"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- Labels -->
+                                <text x="70" y="25" fill="#9CA3AF" font-family="JetBrains Mono" font-size="8" text-anchor="middle">AXLE 1</text>
+                                <text x="150" y="25" fill="#9CA3AF" font-family="JetBrains Mono" font-size="8" text-anchor="middle">AXLE 2</text>
+                                <text x="265" y="25" fill="#9CA3AF" font-family="JetBrains Mono" font-size="8" text-anchor="middle">AXLE 3-4</text>
+                            </svg>
+                        </div>
+
+                        <!-- Weight Wave Visualization -->
+                        <div class="mt-6 border-t border-white/20 pt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-mono text-xs text-gray-300">WEIGHT VARIANCE SIGNAL</span>
+                                <span class="font-mono text-xs text-green-400">± 0.5% TOLERANCE</span>
+                            </div>
+                            <div class="flex items-end justify-center gap-1 h-16">
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 60%"></div>
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 80%"></div>
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 100%"></div>
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 70%"></div>
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 90%"></div>
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 50%"></div>
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 75%"></div>
+                                <div class="w-2 bg-primary/80 rounded-t wave-bar animate-wave" style="height: 85%"></div>
+                                <div class="w-2 bg-primary/60 rounded-t wave-bar animate-wave" style="height: 65%"></div>
+                                <div class="w-2 bg-primary/60 rounded-t wave-bar animate-wave" style="height: 95%"></div>
+                                <div class="w-2 bg-primary/60 rounded-t wave-bar animate-wave" style="height: 55%"></div>
+                                <div class="w-2 bg-primary/60 rounded-t wave-bar animate-wave" style="height: 80%"></div>
+                                <div class="w-2 bg-primary/40 rounded-t wave-bar animate-wave" style="height: 70%"></div>
+                                <div class="w-2 bg-primary/40 rounded-t wave-bar animate-wave" style="height: 60%"></div>
+                                <div class="w-2 bg-primary/40 rounded-t wave-bar animate-wave" style="height: 85%"></div>
+                                <div class="w-2 bg-primary/40 rounded-t wave-bar animate-wave" style="height: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right - Technical Data -->
+                <div class="space-y-6">
+                    <!-- Technical Labels Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-zinc-900/50 border border-white/20 p-4 glow-hover">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-2">sensors</span>
+                            <h4 class="font-mono text-xs text-white uppercase mb-1">Axle Detection</h4>
+                            <p class="font-mono text-[10px] text-gray-300">Detección precisa de cada eje en movimiento</p>
+                        </div>
+                        <div class="bg-zinc-900/50 border border-white/20 p-4 glow-hover">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-2">monitoring</span>
+                            <h4 class="font-mono text-xs text-white uppercase mb-1">Weight Variance</h4>
+                            <p class="font-mono text-[10px] text-gray-300">Tolerancia de ±0.5% en medición</p>
+                        </div>
+                        <div class="bg-zinc-900/50 border border-white/20 p-4 glow-hover">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-2">speed</span>
+                            <h4 class="font-mono text-xs text-white uppercase mb-1">Speed Compensation</h4>
+                            <p class="font-mono text-[10px] text-gray-300">Calibración automática por velocidad</p>
+                        </div>
+                    </div>
+
+                    <!-- Live Data Panel -->
+                    <div class="glass-panel p-6 border border-white/20 bg-zinc-900/50">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="font-mono text-sm text-white uppercase">Live Telemetry</h4>
+                            <span class="text-[10px] font-mono text-green-400 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+                                STREAMING
+                            </span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="font-mono text-xs text-gray-300">GROSS WEIGHT</span>
+                                <span class="font-mono text-lg text-white font-bold">42,850 <span class="text-xs text-gray-400">kg</span></span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="font-mono text-xs text-gray-300">VEHICLE SPEED</span>
+                                <span class="font-mono text-lg text-white font-bold">87 <span class="text-xs text-gray-400">km/h</span></span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                                <span class="font-mono text-xs text-gray-300">AXLE COUNT</span>
+                                <span class="font-mono text-lg text-white font-bold">5</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-mono text-xs text-gray-300">STATUS</span>
+                                <span class="font-mono text-sm text-green-400 font-bold bg-green-500/15 px-2 py-1 border border-green-500/30">WITHIN LIMITS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-4">
+                        <button class="flex-1 bg-primary hover:bg-blue-600 text-white font-mono font-bold uppercase text-xs py-4 tracking-wider transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-sm">download</span>
+                            Spec Sheet
+                        </button>
+                        <button class="flex-1 border border-white/30 hover:border-white/50 text-white font-mono font-bold uppercase text-xs py-4 tracking-wider transition-colors bg-zinc-900/50">
+                            Ver Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Centro de Monitoreo & Videovigilancia Section -->
+    <section class="py-24 bg-black" id="monitoreo">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
+            <div class="text-center mb-16">
+                <span class="text-primary font-mono text-xs uppercase tracking-widest mb-4 block">/// CENTRO DE MONITOREO</span>
+                <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-4">
+                    Videovigilancia <span class="text-gray-500">Urbana</span>
+                </h2>
+                <p class="text-gray-400 font-mono text-sm max-w-2xl mx-auto">
+                    Integración de cámaras de seguridad, analíticas de video y centros de comando para la prevención del delito y gestión de emergencias.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left - Video Wall Simulation -->
+                <div class="glass-panel p-6 border border-white/20 bg-zinc-900/50 relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            <span class="font-mono text-xs text-red-400 uppercase">REC • LIVE</span>
+                        </div>
+                        <span class="font-mono text-[10px] text-gray-500">CENTRO DE COMANDO</span>
+                    </div>
+                    
+                    <!-- Video Wall Grid -->
+                    <div class="grid grid-cols-3 gap-2 mb-4">
+                        <!-- Screen 1 -->
+                        <div class="aspect-video bg-zinc-800 border border-white/10 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-001</div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                                <span class="material-symbols-outlined text-white text-2xl">videocam</span>
+                            </div>
+                        </div>
+                        <!-- Screen 2 -->
+                        <div class="aspect-video bg-zinc-800 border border-white/10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-002</div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                                <span class="material-symbols-outlined text-white text-2xl">traffic</span>
+                            </div>
+                        </div>
+                        <!-- Screen 3 -->
+                        <div class="aspect-video bg-zinc-800 border border-primary/30 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-003</div>
+                            <div class="absolute top-1 right-1 text-[7px] font-mono text-primary bg-primary/20 px-1">LPR</div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                                <span class="material-symbols-outlined text-primary text-2xl">directions_car</span>
+                            </div>
+                        </div>
+                        <!-- Screen 4 -->
+                        <div class="aspect-video bg-zinc-800 border border-white/10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-004</div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                                <span class="material-symbols-outlined text-white text-2xl">storefront</span>
+                            </div>
+                        </div>
+                        <!-- Screen 5 - Main/Large -->
+                        <div class="aspect-video bg-zinc-800 border border-white/10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-005</div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                                <span class="material-symbols-outlined text-white text-2xl">location_city</span>
+                            </div>
+                        </div>
+                        <!-- Screen 6 -->
+                        <div class="aspect-video bg-zinc-800 border border-white/10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent"></div>
+                            <div class="absolute top-1 left-1 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] font-mono text-red-400">REC</span>
+                            </div>
+                            <div class="absolute bottom-1 left-1 text-[7px] font-mono text-gray-400">CAM-006</div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                                <span class="material-symbols-outlined text-white text-2xl">park</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Bar -->
+                    <div class="flex justify-between items-center pt-4 border-t border-white/10">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] font-mono text-green-400">● 6 CÁMARAS ONLINE</span>
+                            <span class="text-[10px] font-mono text-gray-500">|</span>
+                            <span class="text-[10px] font-mono text-gray-400">0 ALERTAS</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-gray-500">24/7 MONITORING</span>
+                    </div>
+                </div>
+
+                <!-- Right - Features -->
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-zinc-900/50 border border-white/20 p-5 glow-hover">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-3">videocam</span>
+                            <h4 class="font-mono text-sm text-white uppercase mb-2">Cámaras IP HD</h4>
+                            <p class="text-gray-400 text-xs font-mono">Integración con cualquier fabricante y protocolo ONVIF.</p>
+                        </div>
+                        <div class="bg-zinc-900/50 border border-white/20 p-5 glow-hover">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-3">psychology</span>
+                            <h4 class="font-mono text-sm text-white uppercase mb-2">Analítica de Video</h4>
+                            <p class="text-gray-400 text-xs font-mono">Detección de eventos, reconocimiento facial y de patentes.</p>
+                        </div>
+                        <div class="bg-zinc-900/50 border border-white/20 p-5 glow-hover">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-3">notifications_active</span>
+                            <h4 class="font-mono text-sm text-white uppercase mb-2">Alertas en Tiempo Real</h4>
+                            <p class="text-gray-400 text-xs font-mono">Notificaciones automáticas ante eventos de seguridad.</p>
+                        </div>
+                        <div class="bg-zinc-900/50 border border-white/20 p-5 glow-hover">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-3">storage</span>
+                            <h4 class="font-mono text-sm text-white uppercase mb-2">Almacenamiento Cloud</h4>
+                            <p class="text-gray-400 text-xs font-mono">Grabación continua con retención configurable.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-6 border border-white/20 bg-zinc-900/50">
+                        <h4 class="font-mono text-sm text-white uppercase mb-4">Casos de Uso</h4>
+                        <ul class="space-y-3 text-sm text-gray-400 font-mono">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Seguridad ciudadana y prevención del delito</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Monitoreo de tránsito y gestión vial</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Control de accesos y perímetros</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary"></span> Gestión de emergencias y coordinación</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="py-24 bg-zinc-950 border-y border-zinc-900 relative overflow-hidden" id="security">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-20 pointer-events-none">
+            <div class="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-black to-black"></div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <!-- Left - Visual -->
+                <div class="order-2 lg:order-1 relative">
+                    <div class="aspect-square max-w-md mx-auto relative flex items-center justify-center">
+                        <div class="absolute w-full h-full border border-zinc-800 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                        <div class="absolute w-[80%] h-[80%] border border-dashed border-zinc-700 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                        <div class="absolute w-[60%] h-[60%] border border-primary/20 rounded-full shadow-[0_0_30px_rgba(0,102,255,0.2)]"></div>
+                        <div class="z-10 bg-black p-8 rounded-full border border-zinc-800 digital-ring-glow">
+                            <span class="material-symbols-outlined text-6xl text-primary">shield_lock</span>
+                        </div>
+                        <div class="absolute top-0 w-[1px] h-full bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
+                        <div class="absolute left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+                    </div>
+                </div>
+
+                <!-- Right - Content -->
+                <div class="order-1 lg:order-2 space-y-10">
+                    <div>
+                        <span class="text-primary font-mono text-xs uppercase tracking-widest mb-2 block">/// CYBERSECURITY PILLAR</span>
+                        <h2 class="text-4xl md:text-5xl font-black text-white leading-none uppercase">
+                            Infraestructura<br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600">Resiliente</span>
+                        </h2>
+                    </div>
+                    <p class="text-lg text-gray-400 font-light border-l-2 border-primary pl-6">
+                        Encriptación de grado militar para datos urbanos críticos. Garantizamos integridad de datos mediante verificación de nodos descentralizada y protocolos AES-256.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="bg-zinc-900/50 p-6 border border-white/20 glow-hover card-lift">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-4">vpn_key</span>
+                            <h4 class="text-white font-bold text-sm uppercase mb-2">Encriptación End-to-End</h4>
+                            <p class="text-gray-300 text-xs font-mono">Datos encriptados en tránsito y reposo usando AES-256.</p>
+                        </div>
+                        <div class="bg-zinc-900/50 p-6 border border-white/20 glow-hover card-lift">
+                            <span class="material-symbols-outlined text-primary text-2xl mb-4">verified_user</span>
+                            <h4 class="text-white font-bold text-sm uppercase mb-2">Arquitectura Zero Trust</h4>
+                            <p class="text-gray-300 text-xs font-mono">Verificación estricta de identidad para cada usuario y dispositivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Filosofía Section (Metodología + Visión unificadas) -->
+    <section class="py-24 bg-zinc-950 border-y border-zinc-900" id="nosotros">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
+            <div class="text-center mb-16">
+                <span class="text-primary font-mono text-xs uppercase tracking-widest mb-4 block">/// NUESTRA VISIÓN</span>
+                <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight uppercase">Cómo <span class="text-gray-500">Trabajamos</span></h2>
+            </div>
+
+            <!-- Metodología - 3 Pilares -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Valor 1 -->
+                <div class="bg-zinc-900/50 border border-white/20 p-8 glow-hover card-lift">
+                    <div class="w-14 h-14 bg-primary/15 border border-primary/40 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white uppercase mb-3">Entender la necesidad</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Conocemos el funcionamiento de sus productos en campo para ofrecer la mejor solución acorde a su empresa.
+                    </p>
+                </div>
+
+                <!-- Valor 2 -->
+                <div class="bg-zinc-900/50 border border-white/20 p-8 glow-hover card-lift">
+                    <div class="w-14 h-14 bg-primary/15 border border-primary/40 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">timer</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white uppercase mb-3">Entregar a tiempo</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Identificamos entregables de valor para asegurar su ejecución en orden y en los plazos acordados.
+                    </p>
+                </div>
+
+                <!-- Valor 3 -->
+                <div class="bg-zinc-900/50 border border-white/20 p-8 glow-hover card-lift">
+                    <div class="w-14 h-14 bg-primary/15 border border-primary/40 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">handshake</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white uppercase mb-3">Acompañar</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Nos volvemos su socio tecnológico, brindando soporte y evolución durante todo el ciclo de vida.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Visión / Misión -->
+            <div class="max-w-4xl mx-auto relative">
+                <div class="glass-panel p-10 border border-white/20 bg-zinc-900/50 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                    <div class="absolute -top-6 left-8 text-primary opacity-20 text-7xl font-bold">"</div>
+                    <blockquote class="relative z-10">
+                        <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light italic pl-6">
+                            Proveemos junto a nuestros socios de negocios y colaboradores, productos y servicios con alto valor agregado con los más altos estándares de calidad, que satisfagan las necesidades de nuestros clientes y aporten a la generación de valor en su Empresa.
+                        </p>
+                    </blockquote>
+                    <div class="absolute -bottom-4 right-8 text-primary opacity-20 text-7xl font-bold">"</div>
+                    <div class="mt-6 pt-6 border-t border-white/10 flex items-center gap-4 pl-6">
+                        <div class="w-10 h-10 bg-primary/20 border border-primary/40 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary">verified</span>
+                        </div>
+                        <div>
+                            <div class="font-mono text-xs text-primary uppercase tracking-widest">Nuestra Misión</div>
+                            <div class="text-sm text-gray-400 font-mono">Newcom Argentina S.A.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto Dedicada -->
+    <section class="py-24 bg-zinc-950 border-y border-zinc-900 relative overflow-hidden" id="contacto">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-primary font-mono text-xs uppercase tracking-widest mb-4 block">/// CONTACTO</span>
+                <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-4">
+                    Hablemos de su <span class="text-gray-500">Proyecto</span>
+                </h2>
+                <p class="text-gray-400 font-mono text-sm max-w-xl mx-auto">
+                    Estamos listos para ayudarlo a implementar soluciones tecnológicas que transformen su operación.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                <!-- Left - Contact Info -->
+                <div class="space-y-8">
+                    <div class="glass-panel p-8 border border-white/20 bg-zinc-900/50">
+                        <h3 class="font-mono text-lg text-white uppercase mb-6">Información de Contacto</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/15 border border-primary/40 flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-primary">location_on</span>
+                                </div>
+                                <div>
+                                    <div class="font-mono text-xs text-primary uppercase tracking-widest mb-1">Dirección</div>
+                                    <div class="text-gray-300">Av Alicia Moreau de Justo 1930</div>
+                                    <div class="text-gray-400 text-sm">Ciudad Autónoma de Buenos Aires, Argentina</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/15 border border-primary/40 flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-primary">call</span>
+                                </div>
+                                <div>
+                                    <div class="font-mono text-xs text-primary uppercase tracking-widest mb-1">Teléfono</div>
+                                    <div class="text-gray-300">+54 11 5031-5227</div>
+                                    <div class="text-gray-400 text-sm">Lunes a Viernes 9:00 - 18:00</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/15 border border-primary/40 flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-primary">mail</span>
+                                </div>
+                                <div>
+                                    <div class="font-mono text-xs text-primary uppercase tracking-widest mb-1">Email</div>
+                                    <div class="text-gray-300">info@newcomargentina.com</div>
+                                    <div class="text-gray-400 text-sm">Respuesta en menos de 24 horas</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10">
+                            <button onclick="openContactModal()" class="w-full bg-primary hover:bg-blue-600 text-white font-mono font-bold uppercase text-sm py-4 tracking-wider transition-colors flex items-center justify-center glow-hover border border-primary">
+                                Iniciar Proyecto
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right - Map -->
+                <div class="glass-panel border border-white/20 bg-black relative overflow-hidden min-h-[400px] rounded-none">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.594028662469!2d-58.3650193!3d-34.6131849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a334c8b23e5c53%3A0x9e8e2b7a3c1d4e5f!2sAv.%20Alicia%20Moreau%20de%20Justo%201930%2C%20C1107%20CABA!5e0!3m2!1ses!2sar!4v1705673200000!5m2!1ses!2sar" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; position:absolute; inset:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="grayscale invert hue-rotate-180 brightness-90 contrast-125 opacity-70">
+                    </iframe>
+                    <!-- GPS Overlay - Tactical Crosshair / Mira Táctica (Alta Visibilidad) -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none z-10">
+                        <!-- Crosshair Lines / Cruz (más gruesas y visibles) -->
+                        <div class="absolute w-[300px] h-[2px] bg-blue-500/50"></div>
+                        <div class="absolute h-[300px] w-[2px] bg-blue-500/50"></div>
+                        <!-- Outer Ring / Anillo Exterior -->
+                        <div class="absolute w-[200px] h-[200px] border border-blue-500/30 rounded-full"></div>
+                        <!-- Inner Ring / Anillo Interior -->
+                        <div class="absolute w-[100px] h-[100px] border border-blue-500/50 rounded-full"></div>
+                        <!-- Ping Animation / Onda Expansiva (más grande) -->
+                        <div class="absolute w-8 h-8 bg-blue-500 rounded-full animate-ping opacity-75"></div>
+                        <!-- Center Point / Punto Central (más grande con glow intenso) -->
+                        <div class="relative w-5 h-5 bg-[#0066FF] rounded-full border-2 border-white shadow-[0_0_20px_#0066FF]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Minimalista -->
+    <footer class="bg-black pt-10 pb-8 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Logo & Copyright -->
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <img src="img/logoNewcom.png" alt="Newcom" class="w-full h-full object-contain"/>
+                    </div>
+                    <span class="text-[11px] font-mono text-gray-500 uppercase tracking-wider">
+                        © 2026 Newcom Argentina S.A. // Todos los Sistemas Operacionales.
+                    </span>
+                </div>
+
+                <!-- Links -->
+                <div class="flex items-center gap-6">
+                    <a class="text-[11px] font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-wider" href="#">Privacidad</a>
+                    <a class="text-[11px] font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-wider" href="#">Términos</a>
+                    <div class="flex items-center gap-3 ml-4 pl-4 border-l border-white/10">
+                        <a href="#" class="text-gray-500 hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-lg">share</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal (Dark/Glassmorphism) -->
+    <div id="contactModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div onclick="closeContactModal()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative w-full max-w-lg bg-zinc-900/90 backdrop-blur-xl border border-white/20 shadow-[0_0_60px_rgba(0,102,255,0.3)] p-8 animate-[slide-in_0.3s_ease-out]">
+            <!-- Close Button -->
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            
+            <!-- Header -->
+            <div class="mb-8">
+                <div class="inline-flex items-center gap-2 border border-primary/30 px-3 py-1 bg-black/50 mb-4">
+                    <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                    <span class="text-primary font-mono text-[10px] uppercase tracking-widest">Canal Seguro</span>
+                </div>
+                <h3 class="text-2xl font-bold text-white uppercase tracking-tight">Solicitar Asesoramiento</h3>
+                <p class="text-gray-400 text-sm mt-2 font-mono">Complete el formulario y un especialista lo contactará.</p>
+            </div>
+            
+            <!-- Form -->
+            <form class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-mono text-gray-300 uppercase">Nombre Completo *</label>
+                        <input required class="w-full bg-black/50 border border-white/20 text-white text-xs px-4 py-3 focus:border-primary focus:ring-0 outline-none font-mono placeholder-gray-500 transition-colors" placeholder="Juan Pérez" type="text"/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-mono text-gray-300 uppercase">Teléfono / WhatsApp *</label>
+                        <input required class="w-full bg-black/50 border border-white/20 text-white text-xs px-4 py-3 focus:border-primary focus:ring-0 outline-none font-mono placeholder-gray-500 transition-colors" placeholder="+54 11 1234-5678" type="tel"/>
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-mono text-gray-300 uppercase">Email Corporativo *</label>
+                    <input required class="w-full bg-black/50 border border-white/20 text-white text-xs px-4 py-3 focus:border-primary focus:ring-0 outline-none font-mono placeholder-gray-500 transition-colors" placeholder="usuario@organizacion.com" type="email"/>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-mono text-gray-300 uppercase">Área de Interés *</label>
+                    <select required class="w-full bg-black/50 border border-white/20 text-white text-xs px-4 py-3 focus:border-primary focus:ring-0 outline-none font-mono transition-colors">
+                        <option value="">Seleccione una opción...</option>
+                        <option value="its">ITS & Infraestructura Crítica</option>
+                        <option value="software">Software Factory & Cloud</option>
+                        <option value="apps">Apps & Movilidad</option>
+                        <option value="data">QA, IoT & Big Analytics</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-mono text-gray-300 uppercase">Mensaje</label>
+                    <textarea class="w-full bg-black/50 border border-white/20 text-white text-xs px-4 py-3 focus:border-primary focus:ring-0 outline-none resize-none font-mono placeholder-gray-500 transition-colors" placeholder="Describa brevemente su proyecto o necesidad..." rows="4"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white font-bold text-xs py-4 uppercase tracking-widest hover:bg-blue-600 transition-colors mt-4 font-mono flex items-center justify-center gap-2 glow-hover border border-primary">
+                    <span class="material-symbols-outlined text-sm">send</span>
+                    Iniciar Conversación
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const duration = 2000;
+                const startTime = performance.now();
+                
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing function
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const current = target * easeOut;
+                    
+                    if (target >= 1) {
+                        counter.textContent = current.toFixed(target % 1 !== 0 ? 1 : 0) + suffix;
+                    } else {
+                        counter.textContent = current.toFixed(2) + suffix;
+                    }
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+                
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        // Progress Bar Animation
+        function animateProgressBars() {
+            const bars = document.querySelectorAll('.progress-animate');
+            bars.forEach(bar => {
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = bar.style.getPropertyValue('--progress-width');
+                }, 100);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'metrics') {
+                        animateCounters();
+                        animateProgressBars();
+                    }
+                    entry.target.classList.add('animate-visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Observe sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initial counter animation for hero
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const heroCounter = document.querySelector('header .counter');
+                if (heroCounter) {
+                    const target = parseFloat(heroCounter.getAttribute('data-target'));
+                    const duration = 2500;
+                    const startTime = performance.now();
+                    
+                    function updateHeroCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const current = target * easeOut;
+                        heroCounter.textContent = current.toFixed(1);
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateHeroCounter);
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateHeroCounter);
+                }
+            }, 500);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Wave animation timing variation
+        document.querySelectorAll('.wave-bar').forEach((bar, index) => {
+            bar.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Modal Functions
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeContactModal();
+        });
+    </script>
+</body>
+</html>
