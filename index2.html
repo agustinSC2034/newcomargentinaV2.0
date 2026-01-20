@@ -245,8 +245,8 @@
             border-radius: 2px;
         }
 
-        /* Constellation Background Canvas */
-        #constellation-canvas {
+        /* Digital Circuit Grid Background */
+        .circuit-grid-bg {
             position: absolute;
             top: 0;
             left: 0;
@@ -254,12 +254,115 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Static circuit pattern layer */
+        .circuit-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                /* Vertical lines */
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(0, 102, 255, 0.03) 80px,
+                    rgba(0, 102, 255, 0.03) 81px
+                ),
+                /* Horizontal lines */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(0, 102, 255, 0.03) 80px,
+                    rgba(0, 102, 255, 0.03) 81px
+                );
+        }
+
+        /* Circuit nodes at intersections */
+        .circuit-nodes {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(0, 102, 255, 0.08) 2px, transparent 2px);
+            background-size: 80px 80px;
+        }
+
+        /* Animated data lines canvas */
+        #circuit-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Ensure hero content is above canvas */
         .hero-content {
             position: relative;
             z-index: 10;
+        }
+
+        /* Infinite Logo Slider */
+        @keyframes slide-infinite {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .logo-slider {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .logo-slider::before,
+        .logo-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .logo-slider::before {
+            left: 0;
+            background: linear-gradient(90deg, white 0%, transparent 100%);
+        }
+
+        .logo-slider::after {
+            right: 0;
+            background: linear-gradient(270deg, white 0%, transparent 100%);
+        }
+
+        .logo-track {
+            display: flex;
+            animation: slide-infinite 25s linear infinite;
+            width: max-content;
+        }
+
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+
+        .client-logo {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            margin: 0 1rem;
+            background: #f8f9fa;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover {
+            background: white;
+            border-color: #0066FF;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.1);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -299,8 +402,12 @@
 
     <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center overflow-hidden hero-gradient pt-16">
-        <!-- Constellation Digital Background -->
-        <canvas id="constellation-canvas"></canvas>
+        <!-- Digital Circuit Grid Background -->
+        <div class="circuit-grid-bg">
+            <div class="circuit-pattern"></div>
+            <div class="circuit-nodes"></div>
+            <canvas id="circuit-canvas"></canvas>
+        </div>
 
         <div class="hero-content max-w-screen-xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
             <div class="lg:col-span-7">
@@ -365,45 +472,113 @@
             </div>
         </div>
 
-        <!-- Bottom Bar -->
-        <div class="hero-content absolute bottom-0 w-full bg-white/5 backdrop-blur-sm border-t border-white/10">
-            <div class="max-w-screen-xl mx-auto px-4 py-4 flex justify-between items-center text-sm text-white/60">
-                <span class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
-                    Scroll para más información
-                </span>
-                <span class="flex items-center gap-2">
-                    <span class="status-dot"></span>
-                    Feed en vivo activo
-                </span>
-            </div>
+        <!-- Subtle Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+            <span class="material-symbols-outlined text-white/40 text-3xl animate-bounce">keyboard_arrow_down</span>
         </div>
     </header>
 
-    <!-- Trusted By Section -->
-    <div class="bg-white py-12 border-b border-gray-100 relative">
-        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
-        <div class="max-w-screen-xl mx-auto px-4">
-            <p class="text-center text-sm text-gray-500 mb-8 font-medium">Infraestructura de Confianza para Organizaciones Líderes</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                <div class="text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-lg">security</span> AUSA
+    <!-- Clients Slider Section -->
+    <section class="bg-white py-16 border-b border-gray-100 relative overflow-hidden">
+        <div class="max-w-screen-xl mx-auto px-4 mb-10">
+            <div class="text-center">
+                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">Confianza Comprobada</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-navy-deep">Nuestros Clientes</h2>
+            </div>
+        </div>
+        
+        <!-- Infinite Logo Slider -->
+        <div class="logo-slider">
+            <div class="logo-track">
+                <!-- First Set -->
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">security</span>
+                        <span class="font-bold text-gray-700 text-lg">AUSA</span>
+                    </div>
                 </div>
-                <div class="text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-lg">toll</span> AUBASA
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">toll</span>
+                        <span class="font-bold text-gray-700 text-lg">AUBASA</span>
+                    </div>
                 </div>
-                <div class="text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-lg">local_police</span> POLICÍA CABA
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">local_police</span>
+                        <span class="font-bold text-gray-700 text-lg">Policía de la Ciudad</span>
+                    </div>
                 </div>
-                <div class="text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-lg">traffic</span> VIALIDAD
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">traffic</span>
+                        <span class="font-bold text-gray-700 text-lg">Vialidad Nacional</span>
+                    </div>
                 </div>
-                <div class="text-sm font-bold text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-lg">public</span> MIN. TRANSPORTE
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+                        <span class="font-bold text-gray-700 text-lg">Gobierno CABA</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">directions_bus</span>
+                        <span class="font-bold text-gray-700 text-lg">Min. Transporte</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">apartment</span>
+                        <span class="font-bold text-gray-700 text-lg">Sector Privado</span>
+                    </div>
+                </div>
+                <!-- Duplicate Set for Infinite Loop -->
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">security</span>
+                        <span class="font-bold text-gray-700 text-lg">AUSA</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">toll</span>
+                        <span class="font-bold text-gray-700 text-lg">AUBASA</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">local_police</span>
+                        <span class="font-bold text-gray-700 text-lg">Policía de la Ciudad</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">traffic</span>
+                        <span class="font-bold text-gray-700 text-lg">Vialidad Nacional</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+                        <span class="font-bold text-gray-700 text-lg">Gobierno CABA</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">directions_bus</span>
+                        <span class="font-bold text-gray-700 text-lg">Min. Transporte</span>
+                    </div>
+                </div>
+                <div class="client-logo">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-2xl">apartment</span>
+                        <span class="font-bold text-gray-700 text-lg">Sector Privado</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Ecosystem Section - Bento Grid -->
     <section class="py-24 bg-pearl relative" id="ecosystem">
@@ -1169,7 +1344,7 @@
             <div class="text-center mb-16">
                 <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Solución de Peaje</span>
                 <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">
-                    Lector de Patentes <span class="text-primary">LPR</span>
+                    Lector de Patentes
                 </h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-8">
                     Sistema de reconocimiento automático de patentes para telepeajes. Captura y procesamiento en tiempo real con alta precisión incluso a velocidades de autopista.
@@ -1850,119 +2025,184 @@
         });
 
         // ========================================
-        // CONSTELLATION DIGITAL BACKGROUND
+        // DIGITAL CIRCUIT GRID ANIMATION
         // ========================================
         (function() {
-            const canvas = document.getElementById('constellation-canvas');
+            const canvas = document.getElementById('circuit-canvas');
             if (!canvas) return;
             
             const ctx = canvas.getContext('2d');
             let animationId;
-            let nodes = [];
+            let dataSignals = [];
+            let circuitPaths = [];
             
             // Configuration
             const config = {
-                nodeCount: 100,
-                connectionDistance: 200,
-                nodeSpeed: 0.5,
-                nodeSize: 2.5,
-                lineWidth: 1,
-                // Subtle but visible opacity (15-20%)
-                nodeOpacity: 0.3,
-                lineOpacity: 0.18
+                gridSize: 80,
+                signalCount: 12,
+                signalSpeed: 1.5,
+                lineColor: 'rgba(0, 102, 255, 0.06)',
+                signalColor: 'rgba(0, 102, 255, 0.4)',
+                signalGlow: 'rgba(0, 102, 255, 0.15)',
+                signalLength: 60
             };
             
-            // Node class with enhanced movement
-            class Node {
+            // Generate circuit paths (horizontal and vertical lines with 90° turns)
+            function generateCircuitPaths() {
+                circuitPaths = [];
+                const cols = Math.ceil(canvas.width / config.gridSize) + 1;
+                const rows = Math.ceil(canvas.height / config.gridSize) + 1;
+                
+                // Create horizontal paths with occasional vertical segments
+                for (let row = 1; row < rows - 1; row += 2) {
+                    const y = row * config.gridSize;
+                    const path = [];
+                    let x = 0;
+                    
+                    while (x < canvas.width) {
+                        // Horizontal segment
+                        const segmentLength = config.gridSize * (2 + Math.floor(Math.random() * 3));
+                        path.push({ x: x, y: y, type: 'h' });
+                        x += segmentLength;
+                        
+                        // Occasionally add a vertical jog
+                        if (Math.random() > 0.6 && x < canvas.width - config.gridSize) {
+                            const jogDirection = Math.random() > 0.5 ? 1 : -1;
+                            const jogLength = config.gridSize * jogDirection;
+                            path.push({ x: x, y: y, type: 'v', length: jogLength });
+                            path.push({ x: x, y: y + jogLength, type: 'h' });
+                        }
+                    }
+                    path.push({ x: canvas.width + 50, y: path[path.length - 1]?.y || y, type: 'end' });
+                    circuitPaths.push(path);
+                }
+            }
+            
+            // Data Signal class - travels along circuit paths
+            class DataSignal {
                 constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * config.nodeSpeed;
-                    this.vy = (Math.random() - 0.5) * config.nodeSpeed;
-                    this.radius = Math.random() * config.nodeSize + 0.8;
-                    // Add pulsation effect
-                    this.pulsePhase = Math.random() * Math.PI * 2;
-                    this.pulseSpeed = 0.02 + Math.random() * 0.02;
-                    this.baseRadius = this.radius;
+                    this.reset();
+                }
+                
+                reset() {
+                    // Pick a random path
+                    this.pathIndex = Math.floor(Math.random() * circuitPaths.length);
+                    this.path = circuitPaths[this.pathIndex];
+                    if (!this.path || this.path.length < 2) {
+                        this.pathIndex = 0;
+                        this.path = circuitPaths[0] || [];
+                    }
+                    
+                    this.progress = 0;
+                    this.speed = config.signalSpeed * (0.5 + Math.random() * 0.8);
+                    this.x = -config.signalLength;
+                    this.y = this.path[0]?.y || config.gridSize;
+                    this.length = config.signalLength * (0.5 + Math.random() * 0.5);
+                    this.brightness = 0.3 + Math.random() * 0.4;
                 }
                 
                 update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
+                    this.x += this.speed;
                     
-                    // Bounce off edges with slight randomization
-                    if (this.x < 0 || this.x > canvas.width) {
-                        this.vx *= -1;
-                        this.vx += (Math.random() - 0.5) * 0.1; // Add slight variation
+                    // Find current segment based on x position
+                    if (this.path && this.path.length > 0) {
+                        for (let i = 0; i < this.path.length - 1; i++) {
+                            const segment = this.path[i];
+                            const nextSegment = this.path[i + 1];
+                            
+                            if (this.x >= segment.x && this.x < nextSegment.x) {
+                                // Handle vertical jogs
+                                if (segment.type === 'v' && segment.length) {
+                                    const jogProgress = (this.x - segment.x) / config.gridSize;
+                                    this.y = segment.y + (segment.length * Math.min(jogProgress, 1));
+                                } else {
+                                    this.y = segment.y;
+                                }
+                                break;
+                            }
+                        }
                     }
-                    if (this.y < 0 || this.y > canvas.height) {
-                        this.vy *= -1;
-                        this.vy += (Math.random() - 0.5) * 0.1; // Add slight variation
+                    
+                    // Reset when off screen
+                    if (this.x > canvas.width + config.signalLength) {
+                        this.reset();
                     }
-                    
-                    // Keep within bounds
-                    this.x = Math.max(0, Math.min(canvas.width, this.x));
-                    this.y = Math.max(0, Math.min(canvas.height, this.y));
-                    
-                    // Update pulse
-                    this.pulsePhase += this.pulseSpeed;
-                    this.radius = this.baseRadius + Math.sin(this.pulsePhase) * 0.5;
                 }
                 
                 draw() {
-                    // Draw node with subtle glow
+                    // Draw signal glow
+                    const gradient = ctx.createLinearGradient(
+                        this.x - this.length, this.y,
+                        this.x, this.y
+                    );
+                    gradient.addColorStop(0, 'transparent');
+                    gradient.addColorStop(0.5, `rgba(0, 102, 255, ${this.brightness * 0.3})`);
+                    gradient.addColorStop(1, `rgba(0, 102, 255, ${this.brightness})`);
+                    
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255, 255, 255, ${config.nodeOpacity})`;
+                    ctx.moveTo(this.x - this.length, this.y);
+                    ctx.lineTo(this.x, this.y);
+                    ctx.strokeStyle = gradient;
+                    ctx.lineWidth = 2;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                    
+                    // Draw bright head
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(100, 180, 255, ${this.brightness})`;
                     ctx.fill();
                     
-                    // Add subtle glow effect to larger nodes
-                    if (this.baseRadius > 1.5) {
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.radius + 1, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(100, 180, 255, ${config.nodeOpacity * 0.3})`;
-                        ctx.fill();
-                    }
+                    // Glow effect
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 6, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(0, 102, 255, ${this.brightness * 0.3})`;
+                    ctx.fill();
                 }
             }
             
-            // Resize canvas to match header
+            // Draw static circuit lines
+            function drawCircuitLines() {
+                ctx.strokeStyle = config.lineColor;
+                ctx.lineWidth = 1;
+                
+                circuitPaths.forEach(path => {
+                    if (!path || path.length < 2) return;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(path[0].x, path[0].y);
+                    
+                    for (let i = 1; i < path.length; i++) {
+                        const segment = path[i - 1];
+                        const point = path[i];
+                        
+                        if (segment.type === 'v' && segment.length) {
+                            // Draw vertical segment
+                            ctx.lineTo(segment.x, segment.y + segment.length);
+                        }
+                        ctx.lineTo(point.x, point.y);
+                    }
+                    
+                    ctx.stroke();
+                });
+            }
+            
+            // Resize canvas
             function resizeCanvas() {
-                const header = canvas.parentElement;
+                const header = canvas.parentElement.parentElement;
                 canvas.width = header.offsetWidth;
                 canvas.height = header.offsetHeight;
-                
-                // Reinitialize nodes on resize
-                initNodes();
+                generateCircuitPaths();
+                initSignals();
             }
             
-            // Initialize nodes
-            function initNodes() {
-                nodes = [];
-                for (let i = 0; i < config.nodeCount; i++) {
-                    nodes.push(new Node());
-                }
-            }
-            
-            // Draw connections between nearby nodes
-            function drawConnections() {
-                for (let i = 0; i < nodes.length; i++) {
-                    for (let j = i + 1; j < nodes.length; j++) {
-                        const dx = nodes[i].x - nodes[j].x;
-                        const dy = nodes[i].y - nodes[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (distance < config.connectionDistance) {
-                            // Fade line opacity based on distance
-                            const opacity = config.lineOpacity * (1 - distance / config.connectionDistance);
-                            ctx.beginPath();
-                            ctx.moveTo(nodes[i].x, nodes[i].y);
-                            ctx.lineTo(nodes[j].x, nodes[j].y);
-                            ctx.strokeStyle = `rgba(100, 180, 255, ${opacity})`;
-                            ctx.lineWidth = config.lineWidth;
-                            ctx.stroke();
-                        }
-                    }
+            // Initialize signals
+            function initSignals() {
+                dataSignals = [];
+                for (let i = 0; i < config.signalCount; i++) {
+                    const signal = new DataSignal();
+                    signal.x = Math.random() * canvas.width; // Spread initially
+                    dataSignals.push(signal);
                 }
             }
             
@@ -1970,14 +2210,14 @@
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
-                // Update and draw nodes
-                nodes.forEach(node => {
-                    node.update();
-                    node.draw();
-                });
+                // Draw static circuit lines
+                drawCircuitLines();
                 
-                // Draw connections
-                drawConnections();
+                // Update and draw signals
+                dataSignals.forEach(signal => {
+                    signal.update();
+                    signal.draw();
+                });
                 
                 animationId = requestAnimationFrame(animate);
             }
@@ -1988,21 +2228,21 @@
                 animate();
             }
             
-            // Handle window resize with debounce
+            // Handle resize
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(resizeCanvas, 250);
             });
             
-            // Start when DOM is ready
+            // Start
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
             } else {
                 init();
             }
             
-            // Pause animation when not visible (performance optimization)
+            // Performance optimization
             document.addEventListener('visibilitychange', () => {
                 if (document.hidden) {
                     cancelAnimationFrame(animationId);
