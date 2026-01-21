@@ -187,6 +187,181 @@
             animation: data-blink 1s step-end infinite;
         }
 
+        /* ========================================
+           ORBITAL SYSTEM - REFINED DESIGN
+           ======================================== */
+        .orbit-system {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-system {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
+        /* Central hub - INTEGRATOR */
+        .orbit-center {
+            position: absolute;
+            z-index: 10;
+            background: linear-gradient(145deg, #0066FF 0%, #0052CC 100%);
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 0 3px rgba(255, 255, 255, 0.9),
+                0 0 0 6px rgba(0, 102, 255, 0.3),
+                0 25px 50px rgba(0, 102, 255, 0.3),
+                inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            animation: center-glow 3s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-center {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        .orbit-center-text {
+            color: white;
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .orbit-center-text {
+                font-size: 0.8rem;
+            }
+        }
+
+        @keyframes center-glow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 0 3px rgba(255, 255, 255, 0.9),
+                    0 0 0 6px rgba(0, 102, 255, 0.3),
+                    0 25px 50px rgba(0, 102, 255, 0.3),
+                    inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 0 3px rgba(255, 255, 255, 0.9),
+                    0 0 0 10px rgba(0, 102, 255, 0.2),
+                    0 25px 60px rgba(0, 102, 255, 0.4),
+                    inset 0 -5px 20px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Orbit ring - the rotating container */
+        .orbit-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 102, 255, 0.15);
+            animation: orbit-rotate 25s linear infinite;
+        }
+
+        /* Inner decorative ring */
+        .orbit-ring::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 75%;
+            height: 75%;
+            border: 1px dashed rgba(0, 102, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes orbit-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Orbiting words - positioned at 4 cardinal points */
+        .orbit-word {
+            position: absolute;
+            background: white;
+            border: 2px solid rgba(0, 102, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            color: #001E3C;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Counter-rotate to keep text horizontal */
+            animation: counter-rotate 25s linear infinite;
+        }
+
+        @media (max-width: 768px) {
+            .orbit-word {
+                padding: 6px 10px;
+                font-size: 0.5rem;
+                letter-spacing: 0.02em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .orbit-system {
+                width: 280px;
+                height: 280px;
+            }
+            .orbit-center {
+                width: 100px;
+                height: 100px;
+            }
+            .orbit-center-text {
+                font-size: 0.65rem;
+            }
+            .orbit-word {
+                padding: 5px 8px;
+                font-size: 0.45rem;
+            }
+        }
+
+        @keyframes counter-rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+
+        /* Fixed positions - TOP, RIGHT, BOTTOM, LEFT */
+        .orbit-word[data-position="top"] { top: 0%; left: 50%; }
+        .orbit-word[data-position="right"] { top: 50%; left: 100%; }
+        .orbit-word[data-position="bottom"] { top: 100%; left: 50%; }
+        .orbit-word[data-position="left"] { top: 50%; left: 0%; }
+
+        .orbit-word:hover {
+            background: #0066FF;
+            color: white;
+            border-color: #0066FF;
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.35);
+            z-index: 20;
+        }
+
+        .orbit-word.active {
+            background: linear-gradient(135deg, #001E3C 0%, #0A3A6B 100%);
+            color: white;
+            border-color: #001E3C;
+            box-shadow: 0 8px 30px rgba(0, 30, 60, 0.4);
+        }
+
         /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
@@ -530,32 +705,25 @@
             <div class="video-overlay"></div>
         </div>
 
-        <div class="hero-content max-w-screen-xl mx-auto px-4 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
-            <div class="lg:col-span-7">
+        <div class="hero-content max-w-screen-xl mx-auto px-4 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center py-12 lg:py-20">
+            <!-- Left Side - Title and CTA (Aparece PRIMERO en mobile) -->
+            <div class="text-center lg:text-left order-1 lg:order-1">
                 <div class="inline-flex items-center gap-3 mb-8 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-navy-deep/10 shadow-sm">
                     <span class="text-primary font-semibold text-sm">Integrador Tecnológico</span>
                     <span class="w-1 h-1 bg-navy-deep/50 rounded-full"></span>
                     <span class="text-navy-deep font-medium text-sm">Hardware + Software</span>
                 </div>
                 
-                <!-- Main Title -->
-                <h1 class="text-6xl md:text-7xl lg:text-8xl font-black text-navy-deep mb-4 leading-none tracking-tight drop-shadow-sm">
-                    PARTNER<br/>INTEGRATOR
+                <!-- Main Title - Normal and Static -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-navy-deep mb-4 sm:mb-6 leading-tight drop-shadow-sm">
+                    PARTNER<br/>
+                    <span class="text-primary">INTEGRATOR</span>
                 </h1>
                 
-                <!-- Scramble Animation Container -->
-                <div class="flex items-center gap-3 mb-8">
-                    <span class="text-navy-deep/40 text-xl font-mono">//</span>
-                    <div class="relative h-10 overflow-hidden">
-                        <span id="scrambleText" class="text-2xl md:text-3xl font-bold text-primary font-mono tracking-wider"></span>
-                        <span class="animate-pulse text-primary">|</span>
-                    </div>
-                </div>
-                
-                <p class="mt-6 max-w-xl text-lg text-navy-deep/80 font-normal leading-relaxed">
+                <p class="mt-4 max-w-lg text-lg text-navy-deep/80 font-normal leading-relaxed mx-auto lg:mx-0">
                     Desarrollo de soluciones tecnológicas, consultoría IT y modernización digital para el sector público y privado.
                 </p>
-                <div class="mt-12">
+                <div class="mt-10 flex justify-center lg:justify-start">
                     <button onclick="openContactModal()" class="bg-gradient-to-r from-primary to-[#3385FF] hover:from-[#3385FF] hover:to-primary text-white px-10 py-4 font-bold text-sm rounded-xl flex items-center gap-3 shadow-[0_8px_30px_rgba(0,102,255,0.4)] hover:shadow-[0_12px_40px_rgba(0,102,255,0.6)] transition-all duration-300 hover:scale-105 border border-white/20">
                         <span class="material-symbols-outlined text-lg">mail</span>
                         Contactanos
@@ -563,59 +731,37 @@
                 </div>
             </div>
 
-            <!-- Right Side - The Neural Nexus (Adapted for Light Background) -->
-            <div class="lg:col-span-5 hidden lg:flex justify-center relative" style="perspective: 1000px;">
-                <div class="relative w-96 h-96">
-                    <!-- Orbit 1 - Y Axis -->
-                    <div class="absolute inset-0 rounded-full border-2 border-primary/30 orbit-y" style="transform-style: preserve-3d; animation: orbit-y 20s linear infinite;">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(0,102,255,0.6)]"></div>
-                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-primary/60 rounded-full"></div>
+            <!-- Right Side - Orbital System (Aparece SEGUNDO en mobile) -->
+            <div class="flex justify-center order-2 lg:order-2 mt-4 lg:mt-0">
+                <div class="orbit-system">
+                    <!-- Center Hub - INTEGRATOR -->
+                    <div class="orbit-center">
+                        <span class="orbit-center-text">INTEGRATOR</span>
                     </div>
                     
-                    <!-- Orbit 2 - X Axis -->
-                    <div class="absolute inset-10 rounded-full border-2 border-emerald-500/30 orbit-x" style="transform-style: preserve-3d; animation: orbit-x 25s linear infinite;">
-                        <div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-emerald-500 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.6)]"></div>
-                        <div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-emerald-500/60 rounded-full"></div>
-                    </div>
-                    
-                    <!-- Orbit 3 - Diagonal -->
-                    <div class="absolute inset-20 rounded-full border-2 border-violet-500/30 orbit-diagonal" style="transform-style: preserve-3d; animation: orbit-diagonal 30s linear infinite;">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-violet-500 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.6)]"></div>
-                    </div>
-                    
-                    <!-- Floating Labels -->
-                    <div class="absolute top-6 right-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-primary shadow-lg" style="animation: float 4s ease-in-out infinite;">
-                        Software
-                    </div>
-                    <div class="absolute bottom-16 left-0 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-emerald-600 shadow-lg" style="animation: float 5s ease-in-out infinite 1s;">
-                        IoT
-                    </div>
-                    <div class="absolute top-1/3 -right-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg px-3 py-2 text-[11px] font-semibold text-violet-600 shadow-lg" style="animation: float 4.5s ease-in-out infinite 0.5s;">
-                        Cloud
-                    </div>
-                    
-                    <!-- Core Center - Hub Icon -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-28 h-28 bg-white rounded-2xl border-2 border-gray-200 flex items-center justify-center shadow-xl" style="animation: breathe 3s ease-in-out infinite;">
-                            <span class="material-symbols-outlined text-primary text-5xl">memory</span>
-                        </div>
+                    <!-- Orbiting Ring with Words -->
+                    <div class="orbit-ring" id="orbit-ring">
+                        <span class="orbit-word active" data-position="top" data-index="0">TELECOMMUNICATIONS</span>
+                        <span class="orbit-word" data-position="right" data-index="1">SPECIALISTS</span>
+                        <span class="orbit-word" data-position="bottom" data-index="2">ENGINEERS</span>
+                        <span class="orbit-word" data-position="left" data-index="3">DEVELOPERS</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Subtle Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-            <span class="material-symbols-outlined text-navy-deep/30 text-3xl animate-bounce">keyboard_arrow_down</span>
+        <div class="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:block">
+            <span class="material-symbols-outlined text-navy-deep/30 text-2xl sm:text-3xl animate-bounce">keyboard_arrow_down</span>
         </div>
     </header>
 
     <!-- Soluciones Section - Panel de Servicios Unificado -->
-    <section class="py-20 bg-pearl relative" id="ecosystem">
-        <div class="max-w-screen-xl mx-auto px-4">
-            <div class="text-center mb-14">
-                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-3 block">Nuestros Servicios</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep">Lo Que Hacemos</h2>
+    <section class="py-12 sm:py-16 lg:py-20 bg-pearl relative" id="ecosystem">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-14">
+                <span class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 block">Nuestros Servicios</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-navy-deep">Lo Que Hacemos</h2>
                 <p class="text-gray-500 mt-4 max-w-xl mx-auto">
                     Soluciones tecnológicas integrales para impulsar su transformación digital
                 </p>
@@ -732,24 +878,24 @@
     </section>
 
     <!-- Deep Dive: Capacidades Verticales -->
-    <section class="py-24 bg-white border-y border-gray-100 relative" id="capacidades">
+    <section class="py-12 sm:py-16 lg:py-24 bg-white border-y border-gray-100 relative" id="capacidades">
         <!-- Subtle topographic pattern -->
         <div class="absolute inset-0 bg-topo-pattern"></div>
-        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-20">
-                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Nuestras Capacidades</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4">Cómo Lo Hacemos</h2>
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 sm:mb-16 lg:mb-20">
+                <span class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 block">Nuestras Capacidades</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-navy-deep mb-4">Cómo Lo Hacemos</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Conoce en detalle cada una de nuestras áreas de especialización.</p>
             </div>
 
             <!-- Bloque 1: Software Factory (Ahora primero) - Texto Izq / Visual Der -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-                <div class="space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-24">
+                <div class="space-y-4 sm:space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
                         <span class="w-2 h-2 bg-primary rounded-full"></span>
                         Desarrollo de Software
                     </span>
-                    <h3 class="text-3xl font-bold text-navy-deep">Software a Medida</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-navy-deep">Software a Medida</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Desarrollamos software sobre tecnologías JAVA, .Net y PHP. Creamos aplicaciones a medida, realizamos mantenimiento evolutivo y modernizamos sistemas que necesitan actualizarse.
                     </p>
@@ -761,7 +907,7 @@
                     </ul>
                 </div>
                 <!-- Visual: Terminal/Código -->
-                <div class="relative h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden font-mono text-xs shadow-xl transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group">
+                <div class="relative h-64 sm:h-80 bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden font-mono text-xs shadow-xl transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group">
                     <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="absolute top-0 left-0 right-0 h-10 bg-slate-800 border-b border-slate-700 flex items-center px-4 gap-2">
                         <span class="w-3 h-3 rounded-full bg-red-500"></span>
@@ -787,13 +933,13 @@
             </div>
 
             <!-- Bloque 2: Apps Móviles - Visual Izq / Texto Der -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-24">
                 <!-- Visual: Phone Mockup CSS Animado - MEJORADO -->
-                <div class="order-2 lg:order-1 relative h-[480px] flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50/30 rounded-2xl border border-gray-200 transition-all duration-400 hover:shadow-[0_20px_50px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group overflow-hidden">
+                <div class="order-2 lg:order-1 relative h-[380px] sm:h-[480px] flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50/30 rounded-2xl border border-gray-200 transition-all duration-400 hover:shadow-[0_20px_50px_rgba(0,102,255,0.15)] hover:-translate-y-1 hover:border-primary/30 group overflow-hidden">
                     <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     <!-- Phone Device - iPhone Style -->
-                    <div class="relative w-56 h-[440px]">
+                    <div class="relative w-44 sm:w-56 h-[350px] sm:h-[440px]">
                         <!-- Phone Outer Frame (Titanium/Steel look) -->
                         <div class="absolute inset-0 bg-gradient-to-b from-[#2C2C2E] via-[#1C1C1E] to-[#2C2C2E] rounded-[3.2rem] shadow-[0_50px_100px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.1)]"></div>
                         
@@ -901,12 +1047,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2 space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-600 px-4 py-2 rounded-full text-sm font-semibold">
+                <div class="order-1 lg:order-2 space-y-4 sm:space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
                         <span class="w-2 h-2 bg-cyan-500 rounded-full"></span>
                         Aplicaciones Móviles
                     </span>
-                    <h3 class="text-3xl font-bold text-navy-deep">Desarrollo de Apps Moviles</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-navy-deep">Desarrollo de Apps Moviles</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Diseñamos y desarrollamos aplicaciones multiplataforma, tanto híbridas como nativas. Soluciones móviles integradas con sus sistemas centrales.
                     </p>
@@ -920,13 +1066,13 @@
             </div>
 
             <!-- Bloque 3: Cloud Computing & DevOps - Texto Izq / Visual Der -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-                <div class="space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-24">
+                <div class="space-y-4 sm:space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
                         <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
                         Cloud & DevOps
                     </span>
-                    <h3 class="text-3xl font-bold text-navy-deep">Cloud Computing & DevOps</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-navy-deep">Cloud Computing & DevOps</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Diseño, migración y gestión de arquitecturas en la nube. Transformamos infraestructura estática en entornos elásticos y de alta disponibilidad.
                     </p>
@@ -938,7 +1084,7 @@
                     </ul>
                 </div>
                 <!-- Visual: Cloud Architecture Diagram -->
-                <div class="relative h-80 bg-gradient-to-br from-orange-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center shadow-lg transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
+                <div class="relative h-64 sm:h-80 bg-gradient-to-br from-orange-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center shadow-lg transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
                     <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     <svg viewBox="0 0 240 200" class="w-72 h-60">
                         <!-- Cloud Shape -->
@@ -989,9 +1135,9 @@
             </div>
 
             <!-- Bloque 4: Testing & Análisis - Visual Izq / Texto Der -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-24">
                 <!-- Visual: Testing Dashboard -->
-                <div class="order-2 lg:order-1 relative h-80 bg-gradient-to-br from-purple-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden p-6 shadow-lg transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
+                <div class="order-2 lg:order-1 relative h-64 sm:h-80 bg-gradient-to-br from-purple-50 to-gray-50 border border-gray-200 rounded-2xl overflow-hidden p-4 sm:p-6 shadow-lg transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
                     <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     <div class="absolute top-4 left-6 flex items-center gap-2">
                         <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
@@ -1050,12 +1196,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2 space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-purple-500/10 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold">
+                <div class="order-1 lg:order-2 space-y-4 sm:space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-purple-500/10 text-purple-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
                         <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
                         Testing & Datos
                     </span>
-                    <h3 class="text-3xl font-bold text-navy-deep">Testing de Software</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-navy-deep">Testing de Software</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Aseguramos la calidad con pruebas funcionales y de rendimiento. Analizamos datos de su negocio para detectar oportunidades y tomar decisiones basadas en información real.
                     </p>
@@ -1069,14 +1215,14 @@
             </div>
 
             <!-- Bloque 5: Smart Cities & IoT - Texto Izq / Visual Der -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-24">
                 <!-- Texto -->
-                <div class="space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-4 py-2 rounded-full text-sm font-semibold">
+                <div class="space-y-4 sm:space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-green-500/10 text-green-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
                         <span class="w-2 h-2 bg-green-500 rounded-full"></span>
                         Ciudades Inteligentes
                     </span>
-                    <h3 class="text-3xl font-bold text-navy-deep">IoT y Gestión Urbana</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-navy-deep">IoT y Gestión Urbana</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Infraestructura inteligente para la gestión urbana. Integramos sensores IoT, sistemas de lectura de patentes (LPR) y soluciones de pesaje dinámico para el control de tránsito.
                     </p>
@@ -1088,7 +1234,7 @@
                     </ul>
                 </div>
                 <!-- Visual: Nodos conectados -->
-                <div class="relative h-80 bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
+                <div class="relative h-64 sm:h-80 bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden flex items-center justify-center transition-all duration-400 hover:shadow-[0_16px_40px_rgba(0,102,255,0.12)] hover:-translate-y-1 hover:border-primary/20 group">
                     <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     <svg viewBox="0 0 200 200" class="w-64 h-64">
                         <!-- Conexiones -->
@@ -1113,9 +1259,9 @@
             </div>
 
             <!-- Bloque 6: Video Analytics - Visual Izq / Texto Der -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <!-- Visual: AI Monitoring Grid -->
-                <div class="order-2 lg:order-1 relative h-[380px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden p-4 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-400 hover:shadow-[0_25px_60px_rgba(0,102,255,0.2)] hover:-translate-y-1 hover:border-cyan-500/30 group">
+                <div class="order-2 lg:order-1 relative h-[300px] sm:h-[380px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden p-3 sm:p-4 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-400 hover:shadow-[0_25px_60px_rgba(0,102,255,0.2)] hover:-translate-y-1 hover:border-cyan-500/30 group">
                     <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
                     
                     <!-- Header -->
@@ -1134,7 +1280,7 @@
                     </div>
                     
                     <!-- Camera Grid 2x2 -->
-                    <div class="grid grid-cols-2 gap-2 h-[calc(100%-3rem)]">
+                    <div class="grid grid-cols-2 gap-1.5 sm:gap-2 h-[calc(100%-3rem)]">
                         
                         <!-- Camera 1: Person Detection -->
                         <div class="relative bg-slate-800/80 rounded-xl overflow-hidden border border-slate-700/50">
@@ -1234,12 +1380,12 @@
                     </div>
                 </div>
                 <!-- Texto -->
-                <div class="order-1 lg:order-2 space-y-6">
-                    <span class="inline-flex items-center gap-2 bg-red-500/10 text-red-600 px-4 py-2 rounded-full text-sm font-semibold">
+                <div class="order-1 lg:order-2 space-y-4 sm:space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-red-500/10 text-red-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
                         <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                         Video Analytics
                     </span>
-                    <h3 class="text-3xl font-bold text-navy-deep">Análisis de Video Inteligente</h3>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-navy-deep">Análisis de Video Inteligente</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Análisis de video con algoritmos de visión computacional. Detección automática de eventos, reconocimiento de patentes y monitoreo en tiempo real de infraestructura crítica.
                     </p>
@@ -1255,45 +1401,45 @@
     </section>
 
     <!-- Consultoría IT & Outsourcing Section -->
-    <section class="py-24 bg-pearl border-y border-gray-100" id="consultoria">
-        <div class="max-w-screen-xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Servicios Profesionales</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">Consultoría IT & Outsourcing</h2>
+    <section class="py-12 sm:py-16 lg:py-24 bg-pearl border-y border-gray-100" id="consultoria">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 block">Servicios Profesionales</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">Consultoría IT & Outsourcing</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mt-8">
                     Asesoramos en la implementación de procesos tecnológicos, monitoreo de infraestructura y tercerización de administración IT.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Servicio 1 -->
-                <div class="card-corporate p-8">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary text-3xl">settings_suggest</span>
+                <div class="card-corporate p-6 sm:p-8">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                        <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl">settings_suggest</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Consultoría Tecnológica</h3>
+                    <h3 class="text-lg sm:text-xl font-bold text-navy-deep mb-3">Consultoría Tecnológica</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
                         Le ayudamos a definir la mejor estrategia tecnológica para su negocio, evaluando opciones y recomendando soluciones.
                     </p>
                 </div>
 
                 <!-- Servicio 2 -->
-                <div class="card-corporate p-8">
-                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-emerald-600 text-3xl">monitoring</span>
+                <div class="card-corporate p-6 sm:p-8">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                        <span class="material-symbols-outlined text-emerald-600 text-2xl sm:text-3xl">monitoring</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Monitoreo de Infraestructura</h3>
+                    <h3 class="text-lg sm:text-xl font-bold text-navy-deep mb-3">Monitoreo de Infraestructura</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
                         Vigilamos sus sistemas las 24 horas para detectar problemas antes de que afecten su operación.
                     </p>
                 </div>
 
                 <!-- Servicio 3 -->
-                <div class="card-corporate p-8">
-                    <div class="w-16 h-16 bg-violet-50 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-violet-600 text-3xl">groups</span>
+                <div class="card-corporate p-6 sm:p-8">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-violet-50 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                        <span class="material-symbols-outlined text-violet-600 text-2xl sm:text-3xl">groups</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Outsourcing IT</h3>
+                    <h3 class="text-lg sm:text-xl font-bold text-navy-deep mb-3">Outsourcing IT</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
                         Nos encargamos de la administración de su infraestructura tecnológica para que usted se enfoque en su negocio.
                     </p>
@@ -1303,55 +1449,55 @@
     </section>
 
     <!-- Nuestra Visión Section (Antes Security, ahora única sección de filosofía) -->
-    <section class="py-24 bg-white border-y border-gray-100 relative overflow-hidden" id="nosotros">
+    <section class="py-12 sm:py-16 lg:py-24 bg-white border-y border-gray-100 relative overflow-hidden" id="nosotros">
         <!-- Subtle radial gradient -->
         <div class="absolute inset-0 bg-gradient-radial from-primary/[0.03] via-transparent to-transparent"></div>
-        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Sobre Nosotros</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">Nuestra Visión</h2>
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 block">Sobre Nosotros</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">Nuestra Visión</h2>
             </div>
 
             <!-- Mission Quote -->
-            <div class="max-w-4xl mx-auto mb-16">
-                <blockquote class="relative card-corporate p-10 text-center">
-                    <div class="absolute -top-3 -left-3 text-primary/30 text-6xl font-serif">"</div>
-                    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed font-light relative z-10">
+            <div class="max-w-4xl mx-auto mb-10 sm:mb-16">
+                <blockquote class="relative card-corporate p-6 sm:p-10 text-center">
+                    <div class="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 text-primary/30 text-4xl sm:text-6xl font-serif">"</div>
+                    <p class="text-base sm:text-xl md:text-2xl text-gray-700 leading-relaxed font-light relative z-10">
                         Trabajamos junto a nuestros clientes y socios para crear soluciones tecnológicas de alto valor. Nos comprometemos con la calidad y con generar resultados reales para su negocio.
                     </p>
                     <div class="absolute -bottom-3 -right-3 text-primary/30 text-6xl font-serif">"</div>
                 </blockquote>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Valor 1 -->
-                <div class="card-corporate p-8">
-                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                <div class="card-corporate p-6 sm:p-8">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                        <span class="material-symbols-outlined text-primary text-2xl sm:text-3xl">psychology</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Entender su Necesidad</h3>
+                    <h3 class="text-lg sm:text-xl font-bold text-navy-deep mb-3">Entender su Necesidad</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
                         Nos tomamos el tiempo de conocer su negocio y sus desafíos para ofrecerle la solución que realmente necesita.
                     </p>
                 </div>
 
                 <!-- Valor 2 -->
-                <div class="card-corporate p-8">
-                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-emerald-600 text-3xl">timer</span>
+                <div class="card-corporate p-6 sm:p-8">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                        <span class="material-symbols-outlined text-emerald-600 text-2xl sm:text-3xl">timer</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Cumplir los Plazos</h3>
+                    <h3 class="text-lg sm:text-xl font-bold text-navy-deep mb-3">Cumplir los Plazos</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
                         Organizamos cada proyecto en etapas claras para asegurar que usted vea avances reales en los tiempos acordados.
                     </p>
                 </div>
 
                 <!-- Valor 3 -->
-                <div class="card-corporate p-8">
-                    <div class="w-16 h-16 bg-violet-50 rounded-2xl flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-violet-600 text-3xl">handshake</span>
+                <div class="card-corporate p-6 sm:p-8">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-violet-50 rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                        <span class="material-symbols-outlined text-violet-600 text-2xl sm:text-3xl">handshake</span>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-deep mb-3">Ser su Socio</h3>
+                    <h3 class="text-lg sm:text-xl font-bold text-navy-deep mb-3">Ser su Socio</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">
                         No desaparecemos al entregar. Lo acompañamos con soporte continuo y mejoras durante todo el ciclo de vida.
                     </p>
@@ -1361,12 +1507,12 @@
     </section>
 
     <!-- Sección Contacto Dedicada -->
-    <section class="py-24 bg-pearl relative" id="contacto">
+    <section class="py-12 sm:py-16 lg:py-24 bg-pearl relative" id="contacto">
         <div class="absolute inset-0 bg-gradient-radial from-primary/[0.03] via-transparent to-transparent"></div>
-        <div class="max-w-screen-xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <span class="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">Contacto</span>
-                <h2 class="text-4xl md:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-10 sm:mb-16">
+                <span class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-4 block">Contacto</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-navy-deep mb-4 inline-block accent-line">
                     Hablemos de su Proyecto
                 </h2>
                 <p class="text-gray-600 max-w-xl mx-auto mt-8">
@@ -1374,10 +1520,10 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                 <!-- Left - Contact Info -->
                 <div class="space-y-6">
-                    <div class="card-corporate p-8">
+                    <div class="card-corporate p-6 sm:p-8">
                         <h3 class="text-xl font-bold text-navy-deep mb-6">Información de Contacto</h3>
                         
                         <div class="space-y-6">
@@ -1424,7 +1570,7 @@
                 </div>
 
                 <!-- Right - Map -->
-                <div class="card-corporate relative overflow-hidden min-h-[400px] rounded-2xl">
+                <div class="card-corporate relative overflow-hidden min-h-[300px] sm:min-h-[400px] rounded-2xl">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.594028662469!2d-58.3650193!3d-34.6131849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a334c8b23e5c53%3A0x9e8e2b7a3c1d4e5f!2sAv.%20Alicia%20Moreau%20de%20Justo%201930%2C%20C1107%20CABA!5e0!3m2!1ses!2sar!4v1705673200000!5m2!1ses!2sar" 
                         width="100%" 
@@ -1445,16 +1591,16 @@
     </section>
 
     <!-- Footer Minimalista -->
-    <footer class="bg-white pt-8 pb-6 border-t border-gray-200">
-        <div class="max-w-screen-xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer class="bg-white pt-6 sm:pt-8 pb-4 sm:pb-6 border-t border-gray-200">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-4">
                 <!-- Logo & Copyright -->
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 flex items-center justify-center">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <div class="w-7 sm:w-8 h-7 sm:h-8 flex items-center justify-center">
                         <img src="img/logoNewcom.png" alt="Newcom" class="w-full h-full object-contain"/>
                     </div>
-                    <span class="text-sm text-gray-500">
-                        © 2026 Newcom Argentina S.A. — Todos los derechos reservados.
+                    <span class="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
+                        © 2026 Newcom Argentina S.A.
                     </span>
                 </div>
 
@@ -1473,7 +1619,7 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button id="scrollTopBtn" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-primary to-[#3385FF] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center opacity-0 pointer-events-none translate-y-4 group">
+    <button id="scrollTopBtn" onclick="scrollToTop()" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-primary to-[#3385FF] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center opacity-0 pointer-events-none translate-y-4 group">
         <span class="material-symbols-outlined text-2xl group-hover:-translate-y-1 transition-transform duration-300">keyboard_arrow_up</span>
     </button>
 
@@ -1686,90 +1832,33 @@
         }
 
         // ========================================
-        // TEXT SCRAMBLE EFFECT - Matrix/Terminal Style
+        // ORBITAL GEAR EFFECT - Highlight Rotation
         // ========================================
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                this.chars = '!<>-_\\/[]{}—=+*^?#@$%&ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                this.update = this.update.bind(this);
-            }
+        const orbitWords = document.querySelectorAll('.orbit-word');
+        let activeIndex = 0;
+
+        const highlightNextWord = () => {
+            // Remove active from all
+            orbitWords.forEach(word => word.classList.remove('active'));
             
-            setText(newText) {
-                const oldText = this.el.innerText;
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise((resolve) => this.resolve = resolve);
-                this.queue = [];
-                
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to = newText[i] || '';
-                    const start = Math.floor(Math.random() * 40);
-                    const end = start + Math.floor(Math.random() * 40);
-                    this.queue.push({ from, to, start, end });
-                }
-                
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
+            // Move to next
+            activeIndex = (activeIndex + 1) % orbitWords.length;
             
-            update() {
-                let output = '';
-                let complete = 0;
-                
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    
-                    if (this.frame >= end) {
-                        complete++;
-                        output += to;
-                    } else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.28) {
-                            char = this.chars[Math.floor(Math.random() * this.chars.length)];
-                            this.queue[i].char = char;
-                        }
-                        output += `<span class="text-primary/50">${char}</span>`;
-                    } else {
-                        output += from;
-                    }
-                }
-                
-                this.el.innerHTML = output;
-                
-                if (complete === this.queue.length) {
-                    this.resolve();
-                } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
-                }
-            }
-        }
-
-        // Initialize Scramble Effect
-        const phrases = [
-            'TELECOMMUNICATIONS',
-            'SPECIALISTS',
-            'ENGINEERS', 
-            'DEVELOPERS',
-            'INTEGRATORS',
-            'INNOVATORS'
-        ];
-
-        const el = document.querySelector('#scrambleText');
-        const fx = new TextScramble(el);
-        let counter = 0;
-
-        const next = () => {
-            fx.setText(phrases[counter]).then(() => {
-                setTimeout(next, 1800); // Wait 1.8 seconds before next word
-            });
-            counter = (counter + 1) % phrases.length;
+            // Add active to current
+            orbitWords[activeIndex].classList.add('active');
         };
 
-        // Start the animation
-        next();
+        // Highlight changes every 2.5 seconds (while orbit continues rotating)
+        setInterval(highlightNextWord, 2500);
+
+        // Click to highlight
+        orbitWords.forEach((word, index) => {
+            word.addEventListener('click', () => {
+                orbitWords.forEach(w => w.classList.remove('active'));
+                word.classList.add('active');
+                activeIndex = index;
+            });
+        });
     </script>
 </body>
 </html>
