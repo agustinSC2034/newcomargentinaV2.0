@@ -10,6 +10,8 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
@@ -1646,24 +1648,24 @@
             </div>
             
             <!-- Form -->
-            <form class="space-y-4">
+            <form id="contactForm" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-gray-700">Nombre Completo *</label>
-                        <input required class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-gray-400" placeholder="Juan Pérez" type="text"/>
+                        <input name="nombre" required class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-gray-400" placeholder="Juan Pérez" type="text"/>
                     </div>
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-gray-700">Teléfono / WhatsApp *</label>
-                        <input required class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-gray-400" placeholder="+54 11 1234-5678" type="tel"/>
+                        <input name="telefono" required class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-gray-400" placeholder="+54 11 1234-5678" type="tel"/>
                     </div>
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-medium text-gray-700">Email Corporativo *</label>
-                    <input required class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-gray-400" placeholder="usuario@organizacion.com" type="email"/>
+                    <input name="email" required class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder-gray-400" placeholder="usuario@organizacion.com" type="email"/>
                 </div>
                 <div class="space-y-2">
-                    <label class="text-sm font-medium text-gray-700">Área de Interés *</label>
-                    <select required class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                    <label class="text-sm font-medium text-gray-700">Área de Interés</label>
+                    <select name="area" class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
                         <option value="">Seleccione una opción...</option>
                         <option value="software">Software Factory & Cloud</option>
                         <option value="apps">Apps & Movilidad</option>
@@ -1675,11 +1677,13 @@
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-medium text-gray-700">Mensaje</label>
-                    <textarea class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none transition-all placeholder-gray-400" placeholder="Describa brevemente su proyecto o necesidad..." rows="4"></textarea>
+                    <textarea name="mensaje" class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm px-4 py-3 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none transition-all placeholder-gray-400" placeholder="Describa brevemente su proyecto o necesidad..." rows="4"></textarea>
                 </div>
-                <button type="submit" class="w-full btn-primary font-bold text-sm py-4 rounded-lg mt-4 flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-sm">send</span>
-                    Iniciar Conversación
+                <!-- reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="6LeIHVQsAAAAAJub72D9VNJ7tG6XL4iQkoaOxbcC"></div>
+                <button type="submit" id="submitBtn" class="w-full btn-primary font-bold text-sm py-4 rounded-lg mt-4 flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm" id="submitIcon">send</span>
+                    <span id="submitText">Iniciar Conversación</span>
                 </button>
             </form>
         </div>
@@ -1859,6 +1863,176 @@
                 activeIndex = index;
             });
         });
+
+        // ========================================
+        // FORMULARIO DE CONTACTO
+        // ========================================
+        const contactForm = document.getElementById('contactForm');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Verificar reCAPTCHA
+                const recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    showNotification('Por favor completa el reCAPTCHA', 'error');
+                    return;
+                }
+                
+                // Obtener datos del formulario
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Validación básica
+                if (!data.nombre || !data.email || !data.telefono) {
+                    showNotification('Por favor completa todos los campos obligatorios', 'error');
+                    return;
+                }
+                
+                // Validar email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(data.email)) {
+                    showNotification('Por favor ingresa un email válido', 'error');
+                    return;
+                }
+                
+                // Obtener elementos del botón
+                const submitBtn = document.getElementById('submitBtn');
+                const submitIcon = document.getElementById('submitIcon');
+                const submitText = document.getElementById('submitText');
+                const originalIcon = submitIcon.textContent;
+                const originalText = submitText.textContent;
+                
+                // Estado de carga
+                submitBtn.disabled = true;
+                submitIcon.textContent = 'hourglass_empty';
+                submitIcon.classList.add('animate-spin');
+                submitText.textContent = 'Enviando...';
+                
+                // Enviar al servidor PHP
+                fetch('contacto.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    return response.text().then(text => {
+                        try {
+                            const json = JSON.parse(text);
+                            return { ok: response.ok, data: json };
+                        } catch (e) {
+                            console.error('Respuesta del servidor:', text);
+                            throw new Error('Error en el servidor');
+                        }
+                    });
+                })
+                .then(({ ok, data }) => {
+                    if (data.success) {
+                        showNotification(data.message, 'success');
+                        contactForm.reset();
+                        closeContactModal();
+                    } else {
+                        showNotification(data.message || 'Error al enviar el mensaje', 'error');
+                    }
+                    
+                    // Resetear reCAPTCHA
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.reset();
+                    }
+                    
+                    // Restaurar botón
+                    submitBtn.disabled = false;
+                    submitIcon.textContent = originalIcon;
+                    submitIcon.classList.remove('animate-spin');
+                    submitText.textContent = originalText;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Error de conexión. Por favor intenta más tarde.', 'error');
+                    
+                    // Resetear reCAPTCHA
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.reset();
+                    }
+                    
+                    // Restaurar botón
+                    submitBtn.disabled = false;
+                    submitIcon.textContent = originalIcon;
+                    submitIcon.classList.remove('animate-spin');
+                    submitText.textContent = originalText;
+                });
+            });
+        }
+        
+        // Sistema de notificaciones
+        function showNotification(message, type = 'info') {
+            // Remover notificación anterior si existe
+            const existingNotification = document.querySelector('.notification-toast');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Crear elemento de notificación
+            const notification = document.createElement('div');
+            notification.className = 'notification-toast';
+            
+            const bgColor = type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6';
+            const icon = type === 'success' ? 'check_circle' : type === 'error' ? 'error' : 'info';
+            
+            notification.innerHTML = `
+                <span class="material-symbols-outlined" style="font-size: 20px;">${icon}</span>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()" style="background: none; border: none; color: white; cursor: pointer; padding: 0; margin-left: 10px;">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                </button>
+            `;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${bgColor};
+                color: white;
+                padding: 16px 20px;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                max-width: 400px;
+                font-size: 14px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remover después de 5 segundos
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.style.animation = 'slideOut 0.3s ease-in';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+        }
     </script>
+    
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>
