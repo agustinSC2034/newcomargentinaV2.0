@@ -11,7 +11,7 @@ $destinatarios = [
 ];
 $remitente = 'info@newcomargentina.com';
 $asunto_prefijo = '[Web Newcom Argentina] Nuevo mensaje de contacto de ';
-$recaptcha_secret = 'REMOVED_PRIVATE_CREDENTIAL';
+$recaptcha_secret = getenv('RECAPTCHA_SECRET_KEY');
 
 // Headers para respuesta JSON
 header('Content-Type: application/json; charset=utf-8');
@@ -54,6 +54,13 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (empty($recaptcha_response)) {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'Por favor completa el reCAPTCHA']);
+    exit;
+}
+
+// La clave se configura en el servidor, fuera del repositorio.
+if (!is_string($recaptcha_secret) || trim($recaptcha_secret) === '') {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'El formulario no está disponible temporalmente. Intenta más tarde.']);
     exit;
 }
 
